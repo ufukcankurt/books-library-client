@@ -1,0 +1,96 @@
+.registerFormContainer {
+  width: 30.1%;
+  /* background: #ff97a4; */
+  background-color: #fff;
+  padding-top: 5vh;
+  padding-left: 4vw;
+  padding-right: 4vw;
+}
+
+.registerFormTitle h3 {
+  text-transform: uppercase;
+  font-size: 40px;
+  font-family: "Chelsea Market", cursive;
+}
+
+.registerFormContainer form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.registerFormContainer form section {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 35%;
+  text-align: start;
+}
+
+.registerFormContainer form input {
+  padding: 15px 30px;
+  margin: 10px 0;
+  font-size: 15px;
+  border: 2px solid rgb(219, 219, 219);
+  border-radius: 10px;
+}
+
+.registerFormContainer form input::-webkit-outer-spin-button,
+.registerFormContainer form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.registerFormContainer form label {
+  margin: 10px 0;
+}
+
+.registerFormContainer form .multiple-input-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.registerFormContainer form .multiple-input-container input {
+  margin-right: 10px;
+}
+
+.registerFormContainer form .multiple-input-container label {
+  padding: 10px;
+  border: 2px solid rgb(144, 144, 144);
+  border-radius: 10px;
+  transition: all 0.3s;
+  margin-right: 10px;
+}
+
+.registerFormContainer form input[type="radio"] {
+  display: none;
+}
+
+.registerFormContainer form input[type="number"] {
+  width: 10%;
+}
+
+.registerFormContainer form input[type="radio"]:checked + label {
+  border: solid 2px rgb(221, 39, 22);
+}
+
+.registerFormContainer form input[type="submit"]:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+.registerFormContainer form .haveAccount {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.registerFormContainer form .registerFormButton{
+    cursor: pointer;
+}
+
+.registerFormContainer form .haveAccount a{
+    margin-left: 5px;
+    text-decoration: none;
+    color: rgb(221, 39, 22);
+    font-weight: 700;
+}

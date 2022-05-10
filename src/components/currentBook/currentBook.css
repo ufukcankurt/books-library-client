@@ -1,0 +1,36 @@
+.CurrentBookContainer{
+    display: flex;
+    margin-top: 20px;
+    padding: 5px 0;
+}
+
+.currentBookImg{
+    width: 100px;
+    height: 150px;
+    border-radius: 5px;
+}
+
+.currentBookImg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.currentBookInfo{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+
+.currentBookName{
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.currentBookAuthor{
+    font-size: 15px;
+    font-weight: 400;
+    color: gray;
+}
+

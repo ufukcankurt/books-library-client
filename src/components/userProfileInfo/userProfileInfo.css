@@ -1,0 +1,101 @@
+.coverPhotoContainer {
+  width: 100%;
+  max-height: 300px;
+  height: 100%;
+  position: relative;
+}
+
+.coverPhotoContainer .coverPhoto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.coverPhotoContainer .profilePhoto {
+  width: 125px;
+  height: 125px;
+  object-fit: cover;
+  position: absolute;
+  bottom: -62px;
+  left: 25px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.settingsContainer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px 0;
+}
+
+.settingsContainer .settingsButton {
+  cursor: pointer;
+  padding: 10px;
+  margin-right: 20px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+}
+
+.descriptionContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 15px;
+}
+
+.descriptionContainer .usernameInfo .nameText {
+  font-size: 22px;
+  font-stretch: 100%;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.descriptionContainer .usernameInfo .usernameText {
+  font-size: 16px;
+  color: gray;
+  font-weight: 400;
+  margin-top: 5px;
+}
+
+.descriptionContainer .bioInfo {
+  max-height: 150px;
+  overflow-y: scroll;
+  margin: 20px 0;
+}
+
+.descriptionContainer .userProperty {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.descriptionContainer .userProperty .education,
+.descriptionContainer .userProperty .job,
+.descriptionContainer .userProperty .city,
+.descriptionContainer .userProperty .birthday,
+.descriptionContainer .userProperty .website,
+.descriptionContainer .userProperty .goal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  margin-bottom: 7px;
+  font-size: 14px;
+}
+
+.followersInfo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.followersInfo .bookNumbers,
+.followersInfo .followingNumbers,
+.followersInfo .followerNumbers {
+  margin-right: 17px;
+  font-weight: 700;
+}
+
+.followersInfo .followersInfoSpan {
+  color: gray;
+  font-weight: 400;
+}

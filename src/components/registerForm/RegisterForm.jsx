@@ -1,10 +1,24 @@
 import "./registerForm.css";
 import { Link } from "react-router-dom";
 import { useState } from "react"
+import axios from "axios"
+
+// "http://localhost:8000/api/auth/register"
 
 const RegisterForm = () => {
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async(e) => {
     e.preventDefault();
+    try {
+      // const res = await axios.post("http://localhost:8000/api/auth/register",  formData )
+
+      await axios.post("http://localhost:8000/api/auth/register", formData)
+      .then((response) => console.log(response.data))
+      
+    } catch (error) {
+      console.log(error)
+    }
+
   };
 
   const handleChange = (e) => {
@@ -107,6 +121,7 @@ const RegisterForm = () => {
             required={true}
             value={formData.dob_year}
             onChange={handleChange}
+            maxLength={4}
           />
         </div>
 

@@ -1,0 +1,57 @@
+.bookContainer{
+    display: flex;
+    height: 150px;
+    width: 100%;
+    margin-top: 25px;
+    border: 1px solid lightgray;
+    border-radius: 15px;
+}
+
+.bookBookImg{
+    width: 100px;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.bookBookImg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.bookBookInfo{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    margin-top: 20px;
+}
+
+.bookBookName{
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.bookBookAuthor{
+    font-size: 17px;
+    font-weight: 500;
+    margin-top: 5px;
+    color: gray;
+}
+
+.bookBookPages{
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 5px;
+    color: gray;
+}
+
+.bookBookSettings{
+    
+}
+
+.bookAddQuote{
+    
+}

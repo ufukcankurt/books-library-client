@@ -1,0 +1,40 @@
+.userShelfFeedContainer{
+    width: 100%;
+    padding: 15px;
+}
+
+.userShelfFeedTitle{
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.userShelfFeedSearch{
+    margin-top: 25px;
+    position: relative;
+}
+
+.userShelfFeedSearch input{
+    width: 100%;
+    padding: 10px 42px 10px 15px;
+    margin: 0px 0;
+    margin-bottom: 15px;
+    font-size: 15px;
+    border: 2px solid rgb(219, 219, 219);
+    border-radius: 5px;
+}
+
+.userShelfFeedSearch button{
+    cursor: pointer;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    border: none;
+    background-color: #fff;
+    background-color: transparent;
+    padding: 4px 10px;
+}
+
+.userShelfFeedSearch button svg {
+    margin-top: 5px;
+  }

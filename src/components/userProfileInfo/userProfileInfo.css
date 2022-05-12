@@ -1,3 +1,8 @@
+.UserProfileInfoContainer {
+  border-bottom: 1px solid lightgray;
+  background-color: #d3d3d333;
+}
+
 .coverPhotoContainer {
   width: 100%;
   max-height: 300px;
@@ -39,7 +44,7 @@
 .descriptionContainer {
   display: flex;
   flex-direction: column;
-  padding: 10px 15px;
+  padding: 10px 15px 0 15px;
 }
 
 .descriptionContainer .usernameInfo .nameText {
@@ -91,8 +96,16 @@
 .followersInfo .bookNumbers,
 .followersInfo .followingNumbers,
 .followersInfo .followerNumbers {
-  margin-right: 17px;
+  cursor: pointer;
+  margin-right: 7px;
+  padding: 15px;
   font-weight: 700;
+}
+
+.followersInfo .bookNumbers:hover,
+.followersInfo .followingNumbers:hover,
+.followersInfo .followerNumbers:hover {
+  background-color: #e7e7e7;
 }
 
 .followersInfo .followersInfoSpan {

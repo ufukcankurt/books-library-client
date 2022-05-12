@@ -1,4 +1,5 @@
 .newsFeedContainer{
     width: 70%;
     margin-top: 20px;
+    box-sizing: border-box;
 }

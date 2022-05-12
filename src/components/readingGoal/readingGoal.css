@@ -1,6 +1,9 @@
 .readingGoalContainer{
     width: 100%;
-    margin-top: 60px;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
 }
 
 .readingGoalTitle{

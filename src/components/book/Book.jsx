@@ -1,5 +1,5 @@
 import "./book.css";
-import { BorderColor } from "@material-ui/icons";
+import { Edit } from "@material-ui/icons";
 
 const Book = () => {
   return (
@@ -10,11 +10,17 @@ const Book = () => {
       <div className="bookBookInfo">
         <p className="bookBookName">Köpek Kalbi</p>
         <p className="bookBookAuthor">Mihail Bulgakov</p>
-        <p className="bookBookPages">132</p>
+        <p className="bookBookPages">132 Sayfa</p>
+        <p className="bookBookDate">12.05.2022 / 20.05.2022</p>
       </div>
       <div className="bookBookSettings">
-        <p className="bookAddQuote">Not Ekle</p>
-        <BorderColor />
+        <div className="bookBookStatus">
+          Kitap Durumunu Güncelle
+        </div>
+        <div className="bookBookSettingsAddQuote">
+          <p className="bookAddQuoteTitle">Not Ekle</p>
+
+        </div>
       </div>
     </div>
   );

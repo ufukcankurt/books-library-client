@@ -1,1 +1,4 @@
-.FeedContainer{}
+.FeedContainer{
+    box-sizing: border-box;
+    width: 100%;
+}

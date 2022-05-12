@@ -1,14 +1,30 @@
 import "./loginForm.css";
 import { Link } from "react-router-dom";
 import {useState} from "react"
+import axios from "axios";
 
 const LoginForm = () => {
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    try {
+      const res = await fetch("http://localhost:8000/api/auth/login", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: {username}
+      })
+      console.log(res);
+      
+    } catch (error) {
+      console.log(error)
+    }
+
   };
 
   console.log("user:", username);

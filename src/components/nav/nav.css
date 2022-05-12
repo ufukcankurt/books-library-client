@@ -20,6 +20,7 @@
 
 .navContainer .navContent .navSearch {
   position: relative;
+  margin-left: -35px;
 }
 
 .navContainer .navContent .navSearch input {
@@ -53,6 +54,7 @@
 
 .modalLink{
   padding: 10px 7px;
+  color: black;
 }
 
 
@@ -72,9 +74,11 @@
 
 .navModal {
   width: 250px;
-  height: 300px;
-  background-color: rgba(211, 211, 211, 0.5);
+  /* height: 320px; */
+  padding-bottom: 18px;
+  background-color: rgb(211, 211, 211);
   position: absolute;
+  z-index: 5;
   top: 45px;
   right: 0;
   border-top: 1px solid lightgray;
@@ -122,4 +126,13 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  color: black;
+}
+
+.hrLink{
+  height: 1px;
+    width: 100%;
+    margin: 10px 0;
+    background-color: gray;
+    border: none;
 }

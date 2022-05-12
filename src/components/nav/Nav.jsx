@@ -16,7 +16,7 @@ const Nav = () => {
   return (
     <div className="navContainer">
       <div className="navContent">
-        <Link to="/register" style={{ textDecoration: "none" }}>
+        <Link to="/" style={{ textDecoration: "none" }}>
           <div className="navLogo">
             <img src="/assets/logo.png" alt="" />
           </div>
@@ -49,7 +49,7 @@ const Nav = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/" style={{ textDecoration: "none" }}>
+                <Link to="/news" style={{ textDecoration: "none" }}>
                   <div className="modalDiv">
                     <img
                       className="modalImage"
@@ -71,7 +71,7 @@ const Nav = () => {
           >
             <ul>
               <li>
-                <Link to="/register" style={{ textDecoration: "none" }}>
+                <Link to="/ufukcankurt" style={{ textDecoration: "none" }}>
                   <div className="modalDiv">
                     <img
                       className="modalProfilImage"
@@ -130,6 +130,7 @@ const Nav = () => {
                   </div>
                 </Link>
               </li>
+              <hr className="hrLink"/>
               <li>
                 <Link to="/" style={{ textDecoration: "none" }}>
                   <div className="modalDiv">
@@ -139,6 +140,18 @@ const Nav = () => {
                       alt=""
                     />
                     <span className="modalPrivate">Kullanıcı Ayarları</span>
+                  </div>
+                </Link>
+              </li>
+              <li>
+                <Link to="/login" style={{ textDecoration: "none" }}>
+                  <div className="modalDiv">
+                    <img
+                      className="modalImage"
+                      src="/assets/logout.png"
+                      alt=""
+                    />
+                    <span className="modalPrivate">Çıkış Yap</span>
                   </div>
                 </Link>
               </li>

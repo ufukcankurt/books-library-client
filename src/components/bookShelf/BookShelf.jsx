@@ -8,7 +8,7 @@ const BookShelf = () => {
       <div className="bookShelfName">Okuduğu kitaplar</div>
       <div className="bookShelfInfo">
         <p className="bookShelfBooksCount">158 Kitap</p>
-        <Link to="/ufukcankurt/books/okuyacaklarım" style={{ textDecoration: "none" }}>
+        <Link to="/ufukcankurt/shelf/okuyacaklarım" style={{ textDecoration: "none" }}>
           <p className="bookShelfMore">Hepsini gör</p>
         </Link>
       </div>

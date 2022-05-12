@@ -68,7 +68,7 @@ const UserProfileInfo = () => {
           </div>
         </div>
         <div className="followersInfo">
-          <Link to="/ufukcankurt/books" style={{color:"inherit", textDecoration:"none"}}>
+          <Link to="/ufukcankurt/shelf" style={{color:"inherit", textDecoration:"none"}}>
             <div className="bookNumbers">
               158 <span className="followersInfoSpan">Kitap</span>
             </div>
@@ -79,7 +79,7 @@ const UserProfileInfo = () => {
           <div className="followerNumbers">
             780 <span className="followersInfoSpan">Takipçi</span>
           </div>
-          <Link  to="/ufukcankurt/books" style={{color:"inherit", textDecoration:"none"}}>
+          <Link  to="/ufukcankurt/shelf" style={{color:"inherit", textDecoration:"none"}}>
           <div className="followerNumbers">
             <span className="followersInfoSpan">Kitaplık</span>
           </div>

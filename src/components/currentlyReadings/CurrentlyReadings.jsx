@@ -6,7 +6,6 @@ const CurrentlyReadings = () => {
         <div className="currentlyReadingsContainer">
             <h2 className="currentlyReadingsTitle">Şu anda okuyor</h2>
             <CurrentBook/>
-            <CurrentBook/>
         </div>
     )
 }

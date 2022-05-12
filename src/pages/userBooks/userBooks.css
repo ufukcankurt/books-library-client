@@ -1,0 +1,66 @@
+.userBooksContainer {
+  display: flex;
+  justify-content: flex-end;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.booksFeedTop {
+  display: flex;
+  flex-direction: column;
+}
+
+.booksFeedTopTitles {
+  display: flex;
+  justify-content: space-between;
+}
+
+.booksFeedNewShelfButton {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+}
+
+.userBooksContainer .userBooksTimeline {
+  width: 46%;
+  border-right: 1px solid lightgray;
+  border-left: 1px solid lightgray;
+}
+
+.booksFeedNewShelfModal {
+  width: 100%;
+  flex-direction: column;
+  padding: 15px;
+  margin-top: 25px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  background-color: #fffaf080;
+}
+
+.booksFeedNewShelfModal input {
+  padding: 15px 30px;
+  margin: 10px 0;
+  font-size: 15px;
+  border: 2px solid rgb(219, 219, 219);
+  border-radius: 10px;
+  background-color: #fffaf080;
+}
+
+.booksFeedNewShelfModal label {
+  margin: 10px 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.booksFeedCreateShelfButton {
+  width: 75px;
+  cursor: pointer;
+  padding: 10px;
+  margin-left: auto;
+  margin-top: 5px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  text-align: center;
+}

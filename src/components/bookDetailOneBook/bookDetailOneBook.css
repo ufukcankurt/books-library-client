@@ -1,0 +1,106 @@
+.bookDetailOneBookContainer {
+    padding-bottom: 10px;
+    border-bottom: 1px solid lightgray;
+    position: relative;
+}
+
+.bookDetailOneBookTopside {
+  display: flex;
+  margin-top: 20px;
+}
+
+.bookDetailOneBookImage {
+  width: 25%;
+  height: 200px;
+}
+
+.bookDetailOneBookImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bookDetailOneBookContent {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.bookDetailOneBookButtons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bookDetailOneBookStatusBtn {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  font-size: 15px;
+  text-align: center;
+}
+
+.bookDetailOneBookAddQuoteBtn {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  font-size: 15px;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.bookDetailOneBookDetailName {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.bookDetailOneBookDetailAuthor {
+  font-size: 17px;
+  font-weight: 500;
+  margin-top: 5px;
+  color: gray;
+}
+
+.bookDetailOneBookDetailPage {
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 5px;
+  color: gray;
+}
+
+.bookDetailOneBookDetailDate,
+.bookDetailOneBookDetailType,
+.bookDetailOneBookDetailEdition {
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 5px;
+  color: gray;
+}
+
+.bookDetailOneBookBehindBook {
+  margin-top: 25px;
+  padding: 0 10px;
+}
+
+.bookDetailOneBookBehindBookTitle {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.bookDetailOneBookBehindBookText {
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.bookDetailOneBookOthersQuote{
+    margin-top: 40px;
+    color: gray;
+    font-weight: 400;
+    text-transform: uppercase;
+}

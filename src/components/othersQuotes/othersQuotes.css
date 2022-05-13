@@ -1,0 +1,83 @@
+.othersQuotesContainer {
+  width: 100%;
+  margin-top: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightgray;
+}
+
+.othersQuotesTopside {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.othersQuotesUserImg {
+  width: 10%;
+  height: 55px;
+  border-radius: 50%;
+}
+
+.othersQuotesUserImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.othersQuotesUserInfo {
+  width: 90%;
+  margin-left: 15px;
+}
+
+.othersQuotesNamesContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.othersQuotesNamesContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.othersQuotesFullname {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.othersQuotesUsername {
+  font-weight: 400;
+  color: gray;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.othersQuotesSeeAll {
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: red;
+}
+
+.othersQuotesDate {
+  font-weight: 400;
+  color: gray;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.othersQuotesText p {
+  display: -webkit-box;
+  -webkit-line-clamp: 10;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-height: 398px;
+  width: 100%;
+  height: 100%;
+  white-space: normal;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 0 10px;
+}

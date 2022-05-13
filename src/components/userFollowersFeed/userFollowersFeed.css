@@ -1,0 +1,11 @@
+.userFollowersFeedContainer{
+    background-color: #fffaf080;
+}
+
+.userFollowersFeedTitle{
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 20px 0 20px 15px;
+    border-bottom: 1px solid lightgray;
+}

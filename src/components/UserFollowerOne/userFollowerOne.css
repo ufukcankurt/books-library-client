@@ -1,0 +1,50 @@
+.userFollowerOneContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  border-bottom: 1px solid lightgray;
+  background-color: inherit;
+}
+
+.userFollowerOneLeftside {
+  display: flex;
+}
+
+.userFollowerOneImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.userFollowerOneImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.userFollowerOneInfo {
+  margin-left: 15px;
+}
+
+.userFollowerOneFullname {
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.userFollowerOneUsername {
+  font-weight: 400;
+  color: gray;
+  font-size: 14px;
+}
+
+.userFollowerButton {
+  cursor: pointer;
+  height: 45px;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 10px 20px;
+  margin-right: 20px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+}

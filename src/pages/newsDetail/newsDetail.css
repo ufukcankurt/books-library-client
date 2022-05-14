@@ -1,0 +1,12 @@
+.newsDetailContainer {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .newsDetailFeedContainer{
+    width: 70%;
+    margin-top: 20px;
+    box-sizing: border-box;
+}

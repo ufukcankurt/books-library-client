@@ -19,14 +19,12 @@ const UserProfileInfo = () => {
         <img src="/assets/profile.jpg" alt="" className="profilePhoto" />
       </div>
       <div className="settingsContainer">
-        <div
-          className="settingsButton"
-          onClick={() => {
-            navigate("/login");
-          }}
+        <Link
+          to="/ufukcankurt/profile-settings"
+          style={{ color: "inherit", textDecoration: "none" }}
         >
-          PROFİLİ DÜZENLE
-        </div>
+          <div className="settingsButton">PROFİLİ DÜZENLE</div>
+        </Link>
       </div>
       <div className="descriptionContainer">
         <div className="usernameInfo">
@@ -68,21 +66,37 @@ const UserProfileInfo = () => {
           </div>
         </div>
         <div className="followersInfo">
-          <Link to="/ufukcankurt/shelf" style={{color:"inherit", textDecoration:"none"}}>
+          <Link
+            to="/ufukcankurt/shelf"
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
             <div className="bookNumbers">
               158 <span className="followersInfoSpan">Kitap</span>
             </div>
           </Link>
-          <div className="followingNumbers">
-            50 <span className="followersInfoSpan">Takip edilen</span>
-          </div>
-          <div className="followerNumbers">
-            780 <span className="followersInfoSpan">Takipçi</span>
-          </div>
-          <Link  to="/ufukcankurt/shelf" style={{color:"inherit", textDecoration:"none"}}>
-          <div className="followerNumbers">
-            <span className="followersInfoSpan">Kitaplık</span>
-          </div>
+          <Link
+            to="/ufukcankurt/followings"
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
+            <div className="followingNumbers">
+              50 <span className="followersInfoSpan">Takip edilen</span>
+            </div>
+          </Link>
+          <Link
+            to="/ufukcankurt/followers"
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
+            <div className="followerNumbers">
+              780 <span className="followersInfoSpan">Takipçi</span>
+            </div>
+          </Link>
+          <Link
+            to="/ufukcankurt/shelf"
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
+            <div className="followerNumbers">
+              <span className="followersInfoSpan">Kitaplık</span>
+            </div>
           </Link>
         </div>
       </div>

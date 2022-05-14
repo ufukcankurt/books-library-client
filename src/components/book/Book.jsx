@@ -1,7 +1,15 @@
 import "./book.css";
-import { Edit } from "@material-ui/icons";
+import { useState } from "react";
+import BookStatusModal from "../bookStatusModal/BookStatusModal";
 
 const Book = () => {
+
+  const [isClicked, setIsClicked] = useState(false)
+
+  const handleClick = () => {
+    setIsClicked(!isClicked)
+  }
+
   return (
     <div className="bookContainer">
       <div className="bookBookImg">
@@ -14,7 +22,7 @@ const Book = () => {
         <p className="bookBookDate">12.05.2022 / 20.05.2022</p>
       </div>
       <div className="bookBookSettings">
-        <div className="bookBookStatus">
+        <div className="bookBookStatus" onClick={handleClick} >
           Kitap Durumunu Güncelle
         </div>
         <div className="bookBookSettingsAddQuote">
@@ -22,6 +30,7 @@ const Book = () => {
 
         </div>
       </div>
+      {isClicked ? <BookStatusModal isClicked={isClicked} setIsClicked={setIsClicked} /> : <></>}
     </div>
   );
 };

@@ -5,6 +5,7 @@
     margin-top: 10px;
     border: 1px solid lightgray;
     border-radius: 15px;
+    position: relative;
 }
 
 .bookBookImg{
@@ -23,7 +24,7 @@
 }
 
 .bookBookInfo{
-    width: 35%;
+    width: 45%;
     display: flex;
     flex-direction: column;
     margin-left: 15px;
@@ -31,33 +32,44 @@
 }
 
 .bookBookName{
-    font-size: 18px;
+    display: -webkit-box;
+    max-width: 200px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-height: 40px;
+    font-size: 16px;
     font-weight: 700;
 }
 
 .bookBookAuthor{
-    font-size: 17px;
+    display: -webkit-box;
+    max-width: inherit;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 15px;
     font-weight: 500;
     margin-top: 5px;
     color: gray;
 }
 
 .bookBookPages{
-    font-size: 16px;
-    font-weight: 400;
-    margin-top: 5px;
-    color: gray;
-}
-
-.bookBookDate{
     font-size: 14px;
     font-weight: 400;
     margin-top: 5px;
     color: gray;
 }
 
+.bookBookDate{
+    font-size: 13px;
+    font-weight: 400;
+    margin-top: 5px;
+    color: gray;
+}
+
 .bookBookSettings{
-    width: 45%;
+    width: 35%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -66,10 +78,10 @@
 
 .bookBookStatus{
     cursor: pointer;
-    padding: 10px;
+    padding: 10px 12px;
     border-radius: 10px;
     border: 1px solid lightgray;
-    font-size: 15px;
+    font-size: 14px;
     text-align: center;
 }
 
@@ -78,10 +90,10 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 10px;
+    padding: 10px 12px;
     border-radius: 10px;
     border: 1px solid lightgray;
-    font-size: 15px;
+    font-size: 14px;
     text-align: center;
     margin-top: 10px;
 }

@@ -1,0 +1,111 @@
+.createNoteMainContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    padding-bottom: 50px;
+}
+
+.createNoteMainBookInfoContent{
+    display: flex;
+}
+
+.createNoteMainBookImg {
+    width: 175px;
+    height: 275px;
+}
+
+.createNoteMainBookImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.createNoteMainBookInfo{
+    display: flex;
+    flex-direction: column;
+    margin-left: 25px;
+}
+
+.createNoteMainBookName{
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.createNoteMainBookAuthor{
+    font-size: 19px;
+    font-weight: 500;
+    margin-top: 5px;
+    color: gray;
+}
+
+.createNoteMainBookPage{
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 5px;
+    color: gray;
+}
+
+.createNoteMainBookDate{
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 5px;
+    color: gray;
+}
+
+.createNoteMainContainer form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+.createNoteMainCharacters,
+.createNoteMainSummary,
+.createNoteMainQuotes,
+.createNoteMainPrivate{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+
+.createNoteMainContainer form textarea {
+    height: 150px;
+    min-height: 50px;
+    max-height: 300px;
+    resize: vertical;
+    padding: 15px 30px;
+    font-size: 15px;
+    border: 2px solid rgb(219, 219, 219);
+    border-radius: 10px;
+}
+
+.createNoteMainContainer form label{
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.createNoteMainPrivateInfoTextContent{
+    display: flex;
+    align-items: center;
+}
+
+.createNoteMainPrivateInfoText{
+margin-left: 10px;
+margin-bottom: 15px;
+font-size: 14px;
+color: gray;
+}
+
+.createNoteMainSubmitButton{
+    width: 150px;
+    cursor: pointer;
+    padding: 10px;
+    margin-left: auto;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+}

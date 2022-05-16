@@ -1,20 +1,28 @@
 import "./bookDetailOneBook.css";
 import BookStatusModal from "../bookStatusModal/BookStatusModal";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const BookDetailOneBook = () => {
-
-  const [isClicked, setIsClicked] = useState(false)
+  const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = () => {
-    setIsClicked(!isClicked)
-  } 
+    setIsClicked(!isClicked);
+  };
   return (
     <div className="bookDetailOneBookContainer">
       <div className="bookDetailOneBookButtons">
-        <div className="bookDetailOneBookAddQuoteBtn">Not Ekle</div>
-        <div className="bookDetailOneBookStatusBtn" onClick={handleClick}>Kitaplığıma Ekle</div>
-        {isClicked ? <BookStatusModal isClicked={isClicked} setIsClicked={setIsClicked} /> : <></> }
+        <Link to="/create-note" style={{textDecoration:"none", color:"inherit"}}>
+          <div className="bookDetailOneBookAddQuoteBtn">Not Ekle</div>
+        </Link>
+        <div className="bookDetailOneBookStatusBtn" onClick={handleClick}>
+          Kitaplığıma Ekle
+        </div>
+        {isClicked ? (
+          <BookStatusModal isClicked={isClicked} setIsClicked={setIsClicked} />
+        ) : (
+          <></>
+        )}
       </div>
       <div className="bookDetailOneBookTopside">
         <div className="bookDetailOneBookImage">
@@ -37,7 +45,7 @@ const BookDetailOneBook = () => {
         </div>
       </div>
       <div className="bookDetailOneBookBehindBook">
-          <h2 className="bookDetailOneBookBehindBookTitle">Tanıtım Bülteni:</h2>
+        <h2 className="bookDetailOneBookBehindBookTitle">Tanıtım Bülteni:</h2>
         <p className="bookDetailOneBookBehindBookText">
           1961 Pulitzer Edebiyat Ödülü <br />
           “İstediğin kadar saksağan vur vurabilirsen, ama unutma, bülbülü
@@ -64,7 +72,9 @@ const BookDetailOneBook = () => {
           –Truman Capote
         </p>
       </div>
-      <p className="bookDetailOneBookOthersQuote">Diğer kullanıcıların yazdığı notlar</p>
+      <p className="bookDetailOneBookOthersQuote">
+        Diğer kullanıcıların yazdığı notlar
+      </p>
     </div>
   );
 };

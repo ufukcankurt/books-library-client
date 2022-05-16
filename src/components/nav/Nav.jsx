@@ -2,10 +2,12 @@ import "./nav.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Search } from "@material-ui/icons";
+import { useRef, useEffect } from "react";
 
 const Nav = () => {
   const [isClicked, setIsClicked] = useState(false);
   const [search, setSearch] = useState("");
+  const navSearchRef = useRef()
 
   const handleSubmit = () => {};
 
@@ -13,8 +15,17 @@ const Nav = () => {
     setIsClicked(!isClicked);
   };
 
+  const handleFocus = () => {
+    navSearchRef.current.style.display = "flex"
+  };
+
+  const handleBlur = () => {
+    navSearchRef.current.style.display = "none"
+  }
+
   return (
     <div className="navContainer">
+      {/* <div className="overlay"></div> */}
       <div className="navContent">
         <Link to="/" style={{ textDecoration: "none" }}>
           <div className="navLogo">
@@ -29,10 +40,15 @@ const Nav = () => {
             placeholder="Uygulamada ara"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            onFocus= {handleFocus}
+            onBlur= {handleBlur}
           />
           <button className="searchIcon" onClick={handleSubmit}>
             <Search />
           </button>
+          <div ref={navSearchRef} className="navSearchModal">
+
+          </div>
         </div>
         <div className="navLinks">
           <ul>
@@ -83,7 +99,7 @@ const Nav = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/" style={{ textDecoration: "none" }}>
+                <Link to="/create-note" style={{ textDecoration: "none" }}>
                   <div className="modalDiv">
                     <img
                       className="modalImage"
@@ -95,7 +111,7 @@ const Nav = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/" style={{ textDecoration: "none" }}>
+                <Link to="/ufukcankurt/shelf/okuyacaklarım" style={{ textDecoration: "none" }}>
                   <div className="modalDiv">
                     <img
                       className="modalImage"
@@ -107,7 +123,7 @@ const Nav = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/" style={{ textDecoration: "none" }}>
+                <Link to="/ufukcankurt/shelf/okuyacaklarım" style={{ textDecoration: "none" }}>
                   <div className="modalDiv">
                     <img
                       className="modalImage"
@@ -119,7 +135,7 @@ const Nav = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/" style={{ textDecoration: "none" }}>
+                <Link to="/ufukcankurt/reading-goal" style={{ textDecoration: "none" }}>
                   <div className="modalDiv">
                     <img
                       className="modalImage"
@@ -132,7 +148,7 @@ const Nav = () => {
               </li>
               <hr className="hrLink"/>
               <li>
-                <Link to="/" style={{ textDecoration: "none" }}>
+                <Link to="/profile-settings" style={{ textDecoration: "none" }}>
                   <div className="modalDiv">
                     <img
                       className="modalImage"

@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(211, 211, 211, 0.5);
+  background-color: rgba(211, 211, 211, 1);
 }
 
 .navContainer .navContent {
@@ -13,9 +13,6 @@
   max-width: 1200px;
   width: 100%;
   height: 50px;
-}
-
-.navContainer .navContent .navLogo {
 }
 
 .navContainer .navContent .navSearch {
@@ -30,6 +27,20 @@
   font-size: 15px;
   border: 2px solid rgb(219, 219, 219);
   border-radius: 5px;
+}
+
+.navSearchModal {
+  display: none;
+  width: 375px;
+  height: 375px;
+  position: absolute;
+  z-index: 99;
+  left: 0;
+  top: 42px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  background-color: rgba(211, 211, 211, 1);
+  overflow-y: scroll;
 }
 
 .navContainer .navContent .navLinks {
@@ -52,11 +63,10 @@
   text-align: center;
 }
 
-.modalLink{
+.modalLink {
   padding: 10px 7px;
   color: black;
 }
-
 
 .navProfilePhoto {
   width: 40px;
@@ -81,8 +91,8 @@
   z-index: 5;
   top: 45px;
   right: 0;
-  border-top: 1px solid lightgray;
-  border-radius: 0 0px 5px 5px ;
+  border-top: 1px solid gray;
+  border-radius: 0 0px 5px 5px;
 }
 
 .navModal ul {
@@ -106,8 +116,12 @@
   right: 2px;
   top: 2px;
   border: none;
-  background-color: #fff;
-  padding: 5px;
+  background-color: transparent;
+  padding: 4px 10px;
+}
+
+.searchIcon svg {
+  margin-top: 5px;
 }
 
 .modalImage,
@@ -129,10 +143,20 @@
   color: black;
 }
 
-.hrLink{
+.hrLink {
   height: 1px;
-    width: 100%;
-    margin: 10px 0;
-    background-color: gray;
-    border: none;
+  width: 100%;
+  margin: 10px 0;
+  background-color: gray;
+  border: none;
+}
+
+.overlay {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  z-index: -999;
+  top: 0;
+  left: 0;
 }

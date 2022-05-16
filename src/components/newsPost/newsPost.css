@@ -39,10 +39,26 @@
   object-fit: cover;
 }
 
+.newsPostBottom {
+  padding: 10px 20px;
+}
+
 .newsPostText {
-    --bs-text-opacity: 1;
-    color: #6c757d !important;
-    line-height: 1.75;
-    margin-bottom: 1rem;
-    padding: 10px 20px;
+  --bs-text-opacity: 1;
+  color: #6c757d !important;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  max-width: 100%;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.newsPostSingleText {
+  --bs-text-opacity: 1;
+  color: #6c757d !important;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+  padding: 10px 20px;
 }

@@ -98,6 +98,14 @@ const UserProfileInfo = () => {
               <span className="followersInfoSpan">Kitaplık</span>
             </div>
           </Link>
+          <Link
+            to="/ufukcankurt/notes"
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
+            <div className="followerNumbers">
+              <span className="followersInfoSpan">Notlar</span>
+            </div>
+          </Link>
         </div>
       </div>
     </div>

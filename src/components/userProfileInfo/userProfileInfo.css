@@ -97,8 +97,7 @@
 .followersInfo .followingNumbers,
 .followersInfo .followerNumbers {
   cursor: pointer;
-  margin-right: 7px;
-  padding: 15px;
+  padding: 12px;
   font-weight: 700;
 }
 

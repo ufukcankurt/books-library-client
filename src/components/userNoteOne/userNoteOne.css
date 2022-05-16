@@ -1,0 +1,55 @@
+.userNoteOneContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid lightgray;
+  background-color: inherit;
+}
+
+.userNoteOneLeftside {
+  display: flex;
+}
+
+.userNoteOneImg {
+  width: 50px;
+  height: 80px;
+}
+
+.userNoteOneImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.userNoteOneInfo {
+  margin-left: 15px;
+}
+
+.userNoteOneBookName {
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.userNoteOneBookAuthor {
+  font-weight: 400;
+  color: gray;
+  font-size: 14px;
+}
+
+.userNoteOneBookPage {
+    font-weight: 400;
+    color: gray;
+    font-size: 13px;
+  }
+
+.userNoteOneButton {
+  cursor: pointer;
+  height: 45px;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 10px 20px;
+  margin-right: 20px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+}

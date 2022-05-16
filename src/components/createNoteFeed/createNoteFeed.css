@@ -1,0 +1,14 @@
+.createNoteFeedContainer{
+    width: 70%;
+    min-height: 100vh;
+    margin-top: 20px;
+    box-sizing: border-box;
+    padding: 0 50px;
+}
+
+.createNoteFeedTitle{
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}

@@ -1,0 +1,9 @@
+.myDatePickerOwnContainer select{
+    padding: 15px 10px;
+    margin: 10px 0;
+    font-size: 15px;
+    border: 2px solid rgb(219, 219, 219);
+    border-radius: 10px;
+    margin-right: 15px;
+    text-align: left;
+}

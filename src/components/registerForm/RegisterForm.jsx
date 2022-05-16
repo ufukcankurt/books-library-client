@@ -2,6 +2,7 @@ import "./registerForm.css";
 import { Link } from "react-router-dom";
 import { useState } from "react"
 import axios from "axios"
+import MyDatePickerOwn from "../myDatePickerOwn/MyDatePickerOwn";
 
 // "http://localhost:8000/api/auth/register"
 
@@ -95,7 +96,9 @@ const RegisterForm = () => {
 
         <label>Doğum Günü</label>
         <div className="multiple-input-container">
-          <input
+         
+          <MyDatePickerOwn formData={formData} setFormData={setFormData} />
+          {/* <input
             type="number"
             id="dob_day"
             name="dob_day"
@@ -122,7 +125,7 @@ const RegisterForm = () => {
             value={formData.dob_year}
             onChange={handleChange}
             maxLength={4}
-          />
+          /> */}
         </div>
 
         <label>Cinsiyet</label>
@@ -151,8 +154,8 @@ const RegisterForm = () => {
         <input className="registerFormButton" type="submit" />
         <div className="haveAccount">
           <p>Hesabın var mı?</p>
-          <Link to="/login">
-            <a>Giriş yap</a>
+          <Link to="/login" style={{textDecoration:"none"}}>
+            <p className="registerFormLinkP">Giriş yap</p>
           </Link>
         </div>
       </form>

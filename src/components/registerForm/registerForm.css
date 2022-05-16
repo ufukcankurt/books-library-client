@@ -88,7 +88,7 @@
     cursor: pointer;
 }
 
-.registerFormContainer form .haveAccount a{
+.registerFormContainer form .haveAccount .registerFormLinkP{
     margin-left: 5px;
     text-decoration: none;
     color: rgb(221, 39, 22);

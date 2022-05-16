@@ -1,0 +1,70 @@
+.userNoteDetailContentContainer {
+  width: 70%;
+  min-height: 100vh;
+  margin-top: 20px;
+  box-sizing: border-box;
+  padding: 0 50px;
+  padding-bottom: 100px;
+}
+
+.userNoteDetailContentBookDetail {
+  display: flex;
+  flex-direction: column;
+}
+
+.userNoteDetailContentBookInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.userNoteDetailContentBookTitles {
+  display: flex;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.userNoteDetailContentBookPage {
+  font-size: 17px;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.userNoteDetailContentBookDate {
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.userNoteDetailContentBookImg {
+  width: 200px;
+  height: 320px;
+  margin: 30px auto;
+}
+
+.userNoteDetailContentBookImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.userNoteDetailContentBookTextContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.userNoteDetailContentBookTitle {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.userNoteDetailContentBookCharacters,
+.userNoteDetailContentBookSummary,
+.userNoteDetailContentBookQuotes,
+.userNoteDetailContentBookPrivateNotes {
+  color: #6c757d !important;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+  padding: 10px 25px;
+  font-weight: 500;
+}

@@ -9,7 +9,7 @@ const RightBar = ({profile}) => {
       <div className="rightBarLinkContent">
         <ul>
           <li>
-            <Link to="/" style={{ textDecoration: "none" }}>
+            <Link to="/ufukcankurt/notes" style={{ textDecoration: "none" }}>
               <div className="rightBarLinksDiv">
                 <img
                   className="rightBarLinkImage"
@@ -21,7 +21,19 @@ const RightBar = ({profile}) => {
             </Link>
           </li>
           <li>
-            <Link to="/" style={{ textDecoration: "none" }}>
+            <Link to="/create-note" style={{ textDecoration: "none" }}>
+              <div className="rightBarLinksDiv">
+                <img
+                  className="rightBarLinkImage"
+                  src="/assets/writing.png"
+                  alt=""
+                />
+                <span className="rightbarLink">Özet & Alıntı Yaz</span>
+              </div>
+            </Link>
+          </li>
+          <li>
+            <Link to="/ufukcankurt/reading-goal" style={{ textDecoration: "none" }}>
               <div className="rightBarLinksDiv">
                 <img
                   className="rightBarLinkImage"
@@ -33,7 +45,7 @@ const RightBar = ({profile}) => {
             </Link>
           </li>
           <li>
-            <Link to="/" style={{ textDecoration: "none" }}>
+            <Link to="/ufukcankurt/shelf" style={{ textDecoration: "none" }}>
               <div className="rightBarLinksDiv">
                 <img
                   className="rightBarLinkImage"
@@ -45,7 +57,7 @@ const RightBar = ({profile}) => {
             </Link>
           </li>
           <li>
-            <Link to="/" style={{ textDecoration: "none" }}>
+            <Link to="/ufukcankurt/shelf/okuyacaklarım" style={{ textDecoration: "none" }}>
               <div className="rightBarLinksDiv">
                 <img
                   className="rightBarLinkImage"
@@ -57,7 +69,7 @@ const RightBar = ({profile}) => {
             </Link>
           </li>
           <li>
-            <Link to="/" style={{ textDecoration: "none" }}>
+            <Link to="/ufukcankurt/shelf/okuyacaklarım" style={{ textDecoration: "none" }}>
               <div className="rightBarLinksDiv">
                 <img
                   className="rightBarLinkImage"

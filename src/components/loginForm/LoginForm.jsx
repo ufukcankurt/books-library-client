@@ -1,9 +1,16 @@
 import "./loginForm.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {useState} from "react"
 import axios from "axios";
 
 const LoginForm = () => {
+
+  let navigate = useNavigate()
+
+  const INITAL = {
+    username:"testuser",
+    password:"12345"
+  }
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
@@ -11,19 +18,25 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const res = await fetch("http://localhost:8000/api/auth/login", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: {username}
-      })
-      console.log(res);
-      
-    } catch (error) {
-      console.log(error)
+    if( INITAL.username === username && INITAL.password === password){
+      navigate("/")
+    }else{
+      alert("Yanlış bilgi girdiniz.")
     }
+
+    // try {
+    //   const res = await fetch("http://localhost:8000/api/auth/login", {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body: {username}
+    //   })
+    //   console.log(res);
+      
+    // } catch (error) {
+    //   console.log(error)
+    // }
 
   };
 
@@ -59,12 +72,12 @@ const LoginForm = () => {
           onChange={(e)=> setPassword(e.target.value)}
         />
 
-    <button className="secondary-button" type="submit">Giriş Yap</button>
+    <button onSubmit={handleSubmit} className="secondary-button" type="submit">Giriş Yap</button>
 
     <div className="haveAccount">
           <p>Hesabın yok mu?</p>
-          <Link to="/register">
-            <a>Kayıt Ol</a>
+          <Link to="/register" style={{textDecoration:"none"}}>
+            <p className="loginFormLinkP">Kayıt Ol</p>
           </Link>
         </div>
         

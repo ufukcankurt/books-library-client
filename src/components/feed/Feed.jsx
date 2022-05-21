@@ -2,7 +2,7 @@ import Post from "../post/Post"
 import "./feed.css"
 
 
-const Feed = () => {
+const Feed = ({user}) => {
     return (
         <div className="FeedContainer">
             <Post/>

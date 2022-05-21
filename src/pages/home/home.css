@@ -1,0 +1,13 @@
+.homeContainer{
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.homeContainer .homeTimeline {
+    width: 46%;
+    border-right: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+  }
+  

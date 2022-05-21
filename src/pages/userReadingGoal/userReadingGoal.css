@@ -1,0 +1,88 @@
+.userReadingGoalContainer {
+  display: flex;
+  justify-content: flex-end;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.userReadingGoalTimeline {
+  width: 46%;
+  min-height: 100vh;
+  border-right: 1px solid lightgray;
+  border-left: 1px solid lightgray;
+}
+
+.userReadingGoalFeed {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  padding-bottom: 100px;
+}
+
+.userReadingGoalTitle {
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 20px 0 20px 15px;
+  border-bottom: 1px solid lightgray;
+}
+
+.userReadingGoalTimeLeft {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+  background-color: #fffaf080;
+}
+
+.userReadingGoalTimeLeft span {
+  font-weight: 700;
+}
+
+.userReadingGoalUpdateButton {
+  cursor: pointer;
+  width: 157px;
+  margin-left: auto;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+}
+
+.userReadingGoalNewGoalModal {
+  width: 100%;
+  flex-direction: column;
+  padding: 15px;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  background-color: #fffaf080;
+}
+
+.userReadingGoalNewGoalModal label {
+  margin: 10px 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.userReadingGoalNewGoalModal input {
+  padding: 15px 30px;
+  margin: 10px 0;
+  font-size: 15px;
+  border: 2px solid rgb(219, 219, 219);
+  border-radius: 10px;
+  background-color: #fffaf080;
+}
+
+.userReadingGoalNewGoalButton {
+  cursor: pointer;
+  padding: 10px;
+  margin-left: auto;
+  margin-top: 5px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  text-align: center;
+}

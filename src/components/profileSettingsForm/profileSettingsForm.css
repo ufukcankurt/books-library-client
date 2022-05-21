@@ -89,3 +89,7 @@
   border: 2px solid rgb(219, 219, 219);
   border-radius: 10px;
 }
+
+/* .profileSettingsFormContainer form .chakra-alert{
+  display: none !important;
+} */

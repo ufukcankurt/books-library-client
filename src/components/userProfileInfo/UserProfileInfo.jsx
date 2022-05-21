@@ -1,5 +1,5 @@
 import "./userProfileInfo.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   School,
   Work,
@@ -8,66 +8,151 @@ import {
   InsertLink,
   TrackChanges,
 } from "@material-ui/icons";
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
+import { AuthContext } from "../../context/authContext/AuthContext";
 
-const UserProfileInfo = () => {
-  let navigate = useNavigate();
+const UserProfileInfo = ({ user }) => {
+  const { user: currentUser, dispatch } = useContext(AuthContext);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER + "users/";
+
+  const [followed, setFollowed] = useState(
+    currentUser.followings.includes(user?.id)
+  );
+
+  // FOLLOWİNG - FOLLOWERS
+  useEffect(() => {
+    setFollowed(currentUser.followings.includes(user._id));
+  }, [currentUser, user._id]);
+
+  // FOLLOWİNG - FOLLOWERS
+  const handleClick = async () => {
+    try {
+      if (followed) {
+        await axios.put(`/users/${user._id}/unfollow`, {
+          userId: currentUser._id,
+        });
+        dispatch({ type: "UNFOLLOW", payload: user._id });
+      } else {
+        await axios.put(`/users/${user._id}/follow`, {
+          userId: currentUser._id,
+        });
+        dispatch({ type: "FOLLOW", payload: user._id });
+      }
+      setFollowed(!followed);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const SettingsProfileComp = () => {
+    return (
+      <Link
+        to={`/user/profile-settings`}
+        style={{ color: "inherit", textDecoration: "none" }}
+      >
+        <div className="settingsButton">PROFİLİ DÜZENLE</div>
+      </Link>
+    );
+  };
+
+  const FollowButtonComp = () => {
+    return (
+      <div className="settingsButton" onClick={handleClick} style={ followed ? {color:"white", backgroundColor:"rgb(210, 62, 48)"} : {color:"inherit", backgroundColor:"inherit"}} >
+        {followed ? "TAKİP EDİLİYOR" : "TAKİP ET"}
+      </div>
+    );
+  };
+
+  const EducationComp = () => {
+    return (
+      <div className="education">
+        <School /> {user.education}
+      </div>
+    );
+  };
+
+  const JobComp = () => {
+    return (
+      <div className="job">
+        <Work /> {user.job}
+      </div>
+    );
+  };
+
+  const CityComp = () => {
+    return (
+      <div className="city">
+        <LocationCity />
+        {user.city}
+      </div>
+    );
+  };
+
+  const WebsiteComp = () => {
+    return (
+      <div className="website">
+        <InsertLink />
+        <Link to={`${user.website}`}>{user.website}</Link>
+      </div>
+    );
+  };
+  const GoalComp = () => {
+    return (
+      <div className="goal">
+        <TrackChanges />
+        2022 okuma hedefi: 14/75
+      </div>
+    );
+  };
 
   return (
     <div className="UserProfileInfoContainer">
       <div className="coverPhotoContainer">
-        <img className="coverPhoto" src="/assets/cover.jpg" alt="" />
-        <img src="/assets/profile.jpg" alt="" className="profilePhoto" />
+        <img
+          className="coverPhoto"
+          src={user.coverPicture ? PF + user.coverPicture : PF + "noCover.jpg"}
+          alt=""
+        />
+        <img
+          src={
+            user.profilePicture ? PF + user.profilePicture : PF + "noAvatar.png"
+          }
+          alt=""
+          className="profilePhoto"
+        />
       </div>
       <div className="settingsContainer">
-        <Link
-          to="/ufukcankurt/profile-settings"
-          style={{ color: "inherit", textDecoration: "none" }}
-        >
-          <div className="settingsButton">PROFİLİ DÜZENLE</div>
-        </Link>
+        {user.username === currentUser.username ? (
+          <SettingsProfileComp />
+        ) : (
+          <FollowButtonComp />
+        )}
       </div>
       <div className="descriptionContainer">
         <div className="usernameInfo">
-          <p className="nameText">Ufuk Can Kurt</p>
-          <p className="usernameText">@ufukcankurt</p>
+          <p className="nameText">{user.fullname}</p>
+          <p className="usernameText">@{user.username}</p>
         </div>
         <div className="bioInfo">
-          <p className="bioText">
-            • <br />
-            `Okumayı bıraktığın gün sonbahardır, ertesi gün cehaletin kışı
-            başlar...
-            <br />•
-          </p>
+          <p className="bioText">{user.desc ? user.desc : ""}</p>
         </div>
         <div className="userProperty">
-          <div className="education">
-            {" "}
-            <School /> Pamukkale Üniversitesi
-          </div>
-          <div className="job">
-            <Work /> Software Engineer
-          </div>
-          <div className="city">
-            <LocationCity /> Denizli
-          </div>
+          {user.education ? <EducationComp /> : ""}
+          {user.job ? <JobComp /> : ""}
+          {user.city ? <CityComp /> : ""}
+
           <div className="birthday">
             <Cake />
-            10.05.2022
+            {`${user.dob_day}  ${user.dob_month}  ${user.dob_year}`}
           </div>
-          <div className="website">
-            <InsertLink />
-            <Link to="/www.instagram.com/ufuk.books">
-              instagram.com/ufuk.books
-            </Link>
-          </div>
-          <div className="goal">
-            <TrackChanges />
-            2022 okuma hedefi: 14/75
-          </div>
+
+          {user.website ? <WebsiteComp /> : ""}
+          {user.readingTarget ? <GoalComp /> : ""}
         </div>
         <div className="followersInfo">
           <Link
-            to="/ufukcankurt/shelf"
+            to={`/${user.username}/shelf`}
             style={{ color: "inherit", textDecoration: "none" }}
           >
             <div className="bookNumbers">
@@ -75,23 +160,25 @@ const UserProfileInfo = () => {
             </div>
           </Link>
           <Link
-            to="/ufukcankurt/followings"
+            to={`/${user.username}/followings`}
             style={{ color: "inherit", textDecoration: "none" }}
           >
             <div className="followingNumbers">
-              50 <span className="followersInfoSpan">Takip edilen</span>
+              {user.followings?.length}
+              <span className="followersInfoSpan"> Takip edilen</span>
             </div>
           </Link>
           <Link
-            to="/ufukcankurt/followers"
+            to={`/${user.username}/followers`}
             style={{ color: "inherit", textDecoration: "none" }}
           >
             <div className="followerNumbers">
-              780 <span className="followersInfoSpan">Takipçi</span>
+              {user.followers?.length}
+              <span className="followersInfoSpan"> Takipçi</span>
             </div>
           </Link>
           <Link
-            to="/ufukcankurt/shelf"
+            to={`/${user.username}/shelf`}
             style={{ color: "inherit", textDecoration: "none" }}
           >
             <div className="followerNumbers">
@@ -99,7 +186,7 @@ const UserProfileInfo = () => {
             </div>
           </Link>
           <Link
-            to="/ufukcankurt/notes"
+            to={`/${user.username}/notes`}
             style={{ color: "inherit", textDecoration: "none" }}
           >
             <div className="followerNumbers">

@@ -3,6 +3,10 @@
   background-color: #d3d3d333;
 }
 
+.UserProfileInfoContainer svg {
+  margin-right: 5px;
+}
+
 .coverPhotoContainer {
   width: 100%;
   max-height: 300px;
@@ -33,12 +37,18 @@
   padding: 15px 0;
 }
 
-.settingsContainer .settingsButton {
+.settingsContainer .settingsButton, 
+.settingsContainer .settingsFollowingButton {
   cursor: pointer;
   padding: 10px;
   margin-right: 20px;
   border-radius: 10px;
   border: 1px solid lightgray;
+}
+
+.settingsContainer .FollowingsettingsButton{
+  color: white;
+  background-color: rgb(210, 62, 48);
 }
 
 .descriptionContainer {
@@ -48,6 +58,7 @@
 }
 
 .descriptionContainer .usernameInfo .nameText {
+  text-transform: capitalize;
   font-size: 22px;
   font-stretch: 100%;
   font-weight: 700;
@@ -84,6 +95,11 @@
   margin-right: 10px;
   margin-bottom: 7px;
   font-size: 14px;
+  text-transform: capitalize;
+}
+
+.descriptionContainer .userProperty .website{
+  text-transform: lowercase;
 }
 
 .followersInfo {

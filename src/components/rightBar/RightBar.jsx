@@ -2,14 +2,17 @@ import "./rightBar.css";
 import { Link } from "react-router-dom";
 import ReadingGoal from "../readingGoal/ReadingGoal";
 import TodayInHistory from "../todayInHistory/TodayInHistory";
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext/AuthContext";
 
-const RightBar = ({profile}) => {
+const RightBar = ({profile, readingTarget, user}) => {
+  const {user:currentUser} = useContext(AuthContext);
   const ProfileRightBar = () => {
     return (
       <div className="rightBarLinkContent">
         <ul>
           <li>
-            <Link to="/ufukcankurt/notes" style={{ textDecoration: "none" }}>
+            <Link to={`/${currentUser.username}/notes`} style={{ textDecoration: "none" }}>
               <div className="rightBarLinksDiv">
                 <img
                   className="rightBarLinkImage"
@@ -33,7 +36,7 @@ const RightBar = ({profile}) => {
             </Link>
           </li>
           <li>
-            <Link to="/ufukcankurt/reading-goal" style={{ textDecoration: "none" }}>
+            <Link to={`/${currentUser.username}/reading-goal`} style={{ textDecoration: "none" }}>
               <div className="rightBarLinksDiv">
                 <img
                   className="rightBarLinkImage"
@@ -45,7 +48,7 @@ const RightBar = ({profile}) => {
             </Link>
           </li>
           <li>
-            <Link to="/ufukcankurt/shelf" style={{ textDecoration: "none" }}>
+            <Link to={`/${currentUser.username}/shelf`} style={{ textDecoration: "none" }}>
               <div className="rightBarLinksDiv">
                 <img
                   className="rightBarLinkImage"
@@ -57,7 +60,7 @@ const RightBar = ({profile}) => {
             </Link>
           </li>
           <li>
-            <Link to="/ufukcankurt/shelf/okuyacaklarım" style={{ textDecoration: "none" }}>
+            <Link to={`/${currentUser.username}/shelf/okuyacaklarım`} style={{ textDecoration: "none" }}>
               <div className="rightBarLinksDiv">
                 <img
                   className="rightBarLinkImage"
@@ -69,7 +72,7 @@ const RightBar = ({profile}) => {
             </Link>
           </li>
           <li>
-            <Link to="/ufukcankurt/shelf/okuyacaklarım" style={{ textDecoration: "none" }}>
+            <Link to={`/${currentUser.username}/shelf/okuyacaklarım`} style={{ textDecoration: "none" }}>
               <div className="rightBarLinksDiv">
                 <img
                   className="rightBarLinkImage"
@@ -99,7 +102,7 @@ const RightBar = ({profile}) => {
   return (
     <div className="rightBarContainer">
         
-      {profile ? <ReadingGoal/> : <></>}
+      {profile ? <ReadingGoal readingTarget={readingTarget} user={user} /> : <></>}
       {profile ? <ProfileRightBar /> : <HomeRightBar/>}
     </div>
   );

@@ -1,0 +1,14 @@
+.postDetailContainer {
+  display: flex;
+  justify-content: flex-end;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.postDetailTimeline {
+  width: 46%;
+  min-height: 100vh;
+  border-right: 1px solid lightgray;
+  border-left: 1px solid lightgray;
+}

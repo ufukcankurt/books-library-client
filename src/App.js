@@ -29,8 +29,6 @@ import { ChakraProvider } from "@chakra-ui/react"
 
 function App() {
   const user = useContext(AuthContext)
-  console.log("APPJS", user);
-  console.log("user.user", user.user);
   return (
     <ChakraProvider>
       <BrowserRouter>

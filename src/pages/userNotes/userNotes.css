@@ -1,0 +1,16 @@
+.userNotesContainer {
+    display: flex;
+    justify-content: flex-end;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .userNotesTimeline {
+    width: 46%;
+    min-height: 100vh;
+    border-right: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+  }
+  
+  

@@ -1,15 +1,24 @@
 import "./nav.css";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
 import { Search } from "@material-ui/icons";
 import { useRef, useEffect } from "react";
+import { AuthContext } from "../../context/authContext/AuthContext";
 
 const Nav = () => {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER+"users/";
   const [isClicked, setIsClicked] = useState(false);
   const [search, setSearch] = useState("");
   const navSearchRef = useRef()
+  const {user} = useContext(AuthContext)
+
+  const navigate = useNavigate()
 
   const handleSubmit = () => {};
+  const handleLogout = () => {
+    localStorage.setItem("user", null);
+    navigate("/login")
+  }
 
   const handleClick = (e) => {
     setIsClicked(!isClicked);
@@ -79,7 +88,7 @@ const Nav = () => {
               
           </ul>
           <div className="navProfilePhoto" onClick={handleClick}>
-            <img src="https://imgur.com/H07Fxdh.jpeg" alt="" />
+            <img src={user.profilePicture ? PF + user.profilePicture : PF + "noAvatar.png"} alt="" />
           </div>
           <div
             className="navModal"
@@ -87,14 +96,14 @@ const Nav = () => {
           >
             <ul>
               <li>
-                <Link to="/ufukcankurt" style={{ textDecoration: "none" }}>
+                <Link to={`/${user.username}`} style={{ textDecoration: "none" }}>
                   <div className="modalDiv">
                     <img
                       className="modalProfilImage"
-                      src="https://imgur.com/H07Fxdh.jpeg"
+                      src={user.profilePicture ? PF + user.profilePicture : PF + "noAvatar.png"}
                       alt=""
                     />
-                    <span className="modalPrivate">Ufuk Can Kurt</span>
+                    <span className="modalPrivate">{user.fullname}</span>
                   </div>
                 </Link>
               </li>
@@ -148,7 +157,7 @@ const Nav = () => {
               </li>
               <hr className="hrLink"/>
               <li>
-                <Link to="/profile-settings" style={{ textDecoration: "none" }}>
+                <Link to="/user/profile-settings" style={{ textDecoration: "none" }}>
                   <div className="modalDiv">
                     <img
                       className="modalImage"
@@ -160,8 +169,8 @@ const Nav = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/login" style={{ textDecoration: "none" }}>
-                  <div className="modalDiv">
+                {/* <Link  to="/login" style={{ textDecoration: "none" }}> */}
+                  <div onClick={handleLogout} className="modalDiv">
                     <img
                       className="modalImage"
                       src="/assets/logout.png"
@@ -169,7 +178,7 @@ const Nav = () => {
                     />
                     <span className="modalPrivate">Çıkış Yap</span>
                   </div>
-                </Link>
+                {/* </Link> */}
               </li>
             </ul>
           </div>

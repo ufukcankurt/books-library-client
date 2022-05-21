@@ -1,46 +1,105 @@
-import "./userFollowerOne.css"
-import { useEffect, useRef, useState } from "react";
+import "./userFollowerOne.css";
+import { useEffect, useRef, useState, useContext } from "react";
+import axios from "axios";
+import { AuthContext } from "../../context/authContext/AuthContext";
 
-const UserFollowerOne = () => {
+const UserFollowerOne = ({ id }) => {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER + "users/";
+  const { user: currentUser, dispatch } = useContext(AuthContext);
 
-    const [isFollow, setIsFollow] = useState(true);
+  const follow = useRef();
+  const [isFollow, setIsFollow] = useState(true);
+  const [user, setUser] = useState({});
 
-    const follow = useRef();
+  const [followed, setFollowed] = useState(
+    currentUser.followings.includes(user?.id)
+  );
 
-    useEffect(()=>{
-        console.log(follow);
-        console.log("Children:",follow.current.innerText);
-    })
+  // FOLLOWİNG - FOLLOWERS
+  useEffect(() => {
+    setFollowed(currentUser.followings.includes(user._id));
+  }, [currentUser, user._id]);
 
-    const onChangeButton = () => {
-        if(isFollow === false){
-            follow.current.innerText = "Takip Ediliyor"
-            follow.current.style.backgroundColor = "red"
-            follow.current.style.color = "white"
-            setIsFollow(true)
-        }else{
-            follow.current.innerText = "Takip Et"
-            follow.current.style.color = "inherit"
-            follow.current.style.backgroundColor = "inherit"
-            setIsFollow(false)
-        }
+  // FOLLOWİNG - FOLLOWERS
+  const handleClick = async () => {
+    try {
+      if (followed) {
+        await axios.put(`/users/${user._id}/unfollow`, {
+          userId: currentUser._id,
+        });
+        dispatch({ type: "UNFOLLOW", payload: user._id });
+      } else {
+        await axios.put(`/users/${user._id}/follow`, {
+          userId: currentUser._id,
+        });
+        dispatch({ type: "FOLLOW", payload: user._id });
+      }
+      setFollowed(!followed);
+    } catch (error) {
+      console.log(error);
     }
+  };
+
+  useEffect(() => {
+    const getUser = async () => {
+      const res = await axios.get(
+        `http://localhost:8000/api/users?userId=${id}`
+      );
+      setUser(res.data);
+    };
+    getUser();
+  }, [id]);
+
+  const onChangeButton = () => {
+    if (isFollow === false) {
+      follow.current.innerText = "Takip Ediliyor";
+      follow.current.style.backgroundColor = "red";
+      follow.current.style.color = "white";
+      setIsFollow(true);
+    } else {
+      follow.current.innerText = "Takip Et";
+      follow.current.style.color = "inherit";
+      follow.current.style.backgroundColor = "inherit";
+      setIsFollow(false);
+    }
+  };
+
+  const FollowersFollowingsButtonComp = () => {
+    return (
+      <div
+        ref={follow}
+        style={
+          followed
+            ? { color: "white", backgroundColor: "rgb(210, 62, 48)" }
+            : { color: "inherit", backgroundColor: "inherit" }
+        }
+        className="userFollowerButton"
+        onClick={handleClick}
+      >
+        {followed ? "TAKİP EDİLİYOR" : "TAKİP ET"}
+      </div>
+    );
+  };
 
   return (
     <div className="userFollowerOneContainer">
       <div className="userFollowerOneLeftside">
         <div className="userFollowerOneImg">
-          <img src="/assets/profile.jpg" alt="" />
+          <img
+            src={
+              user.profilePicture
+                ? PF + user.profilePicture
+                : PF + "noAvatar.png"
+            }
+            alt=""
+          />
         </div>
         <div className="userFollowerOneInfo">
-          <p className="userFollowerOneFullname">Ufuk Can Kurt</p>
-          <p className="userFollowerOneUsername">@ufukcankurt</p>
-          <p className="userFollowerOneUsername">{`${isFollow}`}</p>
+          <p className="userFollowerOneFullname">{user.fullname}</p>
+          <p className="userFollowerOneUsername">@{user.username}</p>
         </div>
       </div>
-      <div ref={follow} style={isFollow ? {color:"white", backgroundColor:"rgb(210, 62, 48)"} : {color:"inherit", backgroundColor:"inherit"} } className="userFollowerButton" onClick={onChangeButton}>
-         {isFollow ? "Takip Ediliyor" : "Takip Et" } 
-      </div>
+      {user.username !== currentUser.username ?<FollowersFollowingsButtonComp /> : ""}
     </div>
   );
 };

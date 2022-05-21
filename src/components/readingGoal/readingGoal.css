@@ -6,7 +6,13 @@
     box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
 }
 
-.readingGoalTitle{
+.readingGoalTitles{
+    display: flex;
+    justify-content: space-between;
+}
+
+.readingGoalTitle,
+.readingGoalCountTitle{
     font-size: 20px;
     font-weight: 700;
     text-transform: uppercase;

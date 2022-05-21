@@ -1,8 +1,12 @@
 import "./readingGoal.css";
 import { CircleProgress } from "react-gradient-progress";
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext/AuthContext";
 
-const ReadingGoal = ({user}) => {
 
+const ReadingGoal = ({users, user,readingTarget}) => {
+
+  const {user:currentUser} = useContext(AuthContext)
 
   const UserReadingGoalProgress = () => {
     return (
@@ -28,10 +32,13 @@ const ReadingGoal = ({user}) => {
  
   return (
     <div className="readingGoalContainer">
-      <h2 className="readingGoalTitle">2022 Okuma Hedefi</h2>
+      <div className="readingGoalTitles">
+      <h2 className="readingGoalTitle">2022 Okuma Hedefi </h2>
+      <h2 className="readingGoalCountTitle"> {users ? readingTarget : currentUser.readingTarget} / 5</h2>
+      </div>
       <div className="readingGoalProgress">
         <div>
-        {user ? <UserReadingGoalProgress/> : <LeftRightSides/>   }
+        {users ? <UserReadingGoalProgress/> : <LeftRightSides/>   }
         </div>
         <div className="readingGoalInfo">
             <p className="readingGoalReadedCount">5 kitap</p>

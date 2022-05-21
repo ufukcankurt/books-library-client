@@ -1,17 +1,28 @@
 import "./changeProfilePhoto.css";
 import { AddAPhoto } from "@material-ui/icons";
 
-const ChangeProfilePhoto = () => {
+const ChangeProfilePhoto = ({ user }) => {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER+"users/";
   return (
     <div className="changeProfilePhotoContainer">
-        <div className="changeProfilePhotoCoverBtn">
-          <AddAPhoto />
-        </div>
+      <div className="changeProfilePhotoCoverBtn">
+        <AddAPhoto />
+      </div>
       <div className="changeProfilePhotoCover">
-        <img src="/assets/cover.jpg" alt="" />
+        <img
+          src={
+            user.coverPicture ? PF + user.coverPicture : PF + "noCover.jpg"
+          }
+          alt=""
+        />
       </div>
       <div className="changeProfilePhotoMain">
-        <img src="/assets/profile.jpg" alt="" />
+        <img
+          src={
+            user.profilePicture ? PF + user.profilePicture : PF + "noAvatar.png"
+          }
+          alt=""
+        />
         <div className="changeProfilePhotoMainBtn">
           <AddAPhoto />
         </div>

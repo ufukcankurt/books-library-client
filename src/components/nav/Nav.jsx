@@ -17,7 +17,7 @@ const Nav = () => {
   const handleSubmit = () => {};
   const handleLogout = () => {
     localStorage.setItem("user", null);
-    navigate("/login")
+    window.location.reload();
   }
 
   const handleClick = (e) => {

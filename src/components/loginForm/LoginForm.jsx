@@ -23,7 +23,7 @@ const LoginForm = () => {
     dispatch(loginStart());
     try {
       const res = await axios.post(
-      "auth/login",
+      "http://localhost:8000/api/auth/login",
       {username,password}
       );
       console.log("resdata:",res.data);

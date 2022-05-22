@@ -100,38 +100,10 @@ const RegisterForm = () => {
           onChange={handleChange}
         />
 
-        <label>Doğum Günü</label>
+        {/* <label>Doğum Günü</label>
         <div className="multiple-input-container">
           <MyDatePickerOwn formData={formData} setFormData={setFormData} />
-          {/* <input
-            type="number"
-            id="dob_day"
-            name="dob_day"
-            placeholder="GG"
-            required={true}
-            value={formData.dob_day}
-            onChange={handleChange}
-          />
-          <input
-            type="number"
-            id="dob_month"
-            name="dob_month"
-            placeholder="AA"
-            required={true}
-            value={formData.dob_month}
-            onChange={handleChange}
-          />
-          <input
-            type="number"
-            id="dob_year"
-            name="dob_year"
-            placeholder="YYYY"
-            required={true}
-            value={formData.dob_year}
-            onChange={handleChange}
-            maxLength={4}
-          /> */}
-        </div>
+        </div> */}
 
         <label>Cinsiyet</label>
         <div className="multiple-input-container">

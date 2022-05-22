@@ -58,7 +58,15 @@ const UserProfileInfo = ({ user }) => {
 
   const FollowButtonComp = () => {
     return (
-      <div className="settingsButton" onClick={handleClick} style={ followed ? {color:"white", backgroundColor:"rgb(210, 62, 48)"} : {color:"inherit", backgroundColor:"inherit"}} >
+      <div
+        className="settingsButton"
+        onClick={handleClick}
+        style={
+          followed
+            ? { color: "white", backgroundColor: "rgb(210, 62, 48)" }
+            : { color: "inherit", backgroundColor: "inherit" }
+        }
+      >
         {followed ? "TAKİP EDİLİYOR" : "TAKİP ET"}
       </div>
     );
@@ -97,11 +105,21 @@ const UserProfileInfo = ({ user }) => {
       </div>
     );
   };
+
   const GoalComp = () => {
     return (
       <div className="goal">
         <TrackChanges />
         2022 okuma hedefi: 14/75
+      </div>
+    );
+  };
+
+  const BirthDayComp = () => {
+    return (
+      <div className="birthday">
+        <Cake />
+        {`${user.dob_day}  ${user.dob_month}  ${user.dob_year}`}
       </div>
     );
   };
@@ -142,10 +160,10 @@ const UserProfileInfo = ({ user }) => {
           {user.job ? <JobComp /> : ""}
           {user.city ? <CityComp /> : ""}
 
-          <div className="birthday">
-            <Cake />
-            {`${user.dob_day}  ${user.dob_month}  ${user.dob_year}`}
-          </div>
+        
+            
+            {user.dob_day && user.dob_month &&  user.dob_year ? <BirthDayComp/> : ""}
+          
 
           {user.website ? <WebsiteComp /> : ""}
           {user.readingTarget ? <GoalComp /> : ""}

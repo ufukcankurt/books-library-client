@@ -1,17 +1,17 @@
-import BookDetailOneBook from "../bookDetailOneBook/BookDetailOneBook"
-import OthersQuotes from "../othersQuotes/OthersQuotes"
-import "./bookDetailFeed.css"
+import BookDetailOneBook from "../bookDetailOneBook/BookDetailOneBook";
+import OthersQuotes from "../othersQuotes/OthersQuotes";
+import "./bookDetailFeed.css";
 
-const BookDetailFeed = () => {
+const BookDetailFeed = ({ book }) => {
   return (
-      <div className="bookDetailFeedContainer">
-          <BookDetailOneBook/>
-          <OthersQuotes/>
-          <OthersQuotes/>
-          <OthersQuotes/>
-          <OthersQuotes/>
-      </div>
-  )
-}
+    <div className="bookDetailFeedContainer">
+      <BookDetailOneBook book={book} />
+      <OthersQuotes />
+      <OthersQuotes />
+      <OthersQuotes />
+      <OthersQuotes />
+    </div>
+  );
+};
 
-export default BookDetailFeed
+export default BookDetailFeed;

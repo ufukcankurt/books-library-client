@@ -36,20 +36,20 @@ function App() {
           <Route path="/" element={user.user !== null ? <Home /> : <Navigate replace to="/login" />} />
           <Route path="/login" element={user.user === null ? <Login /> : <Navigate replace to="/" />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/user/profile-settings" element={<ProfileSettings />} />
-          <Route path="/:username" element={<Profile />} />
-          <Route path="/:username/reading-goal" element={<UserReadingGoal />} />
-          <Route path="/:username/followers" element={<UserFollowers />} />
-          <Route path="/:username/followings" element={<UserFollowings />} />
-          <Route path="/:username/shelf" element={<UserBooks />} />
-          <Route path="/:username/shelf/:shelfId" element={<UserShelf />} />
-          <Route path="/:username/notes" element={<UserNotes />} />
-          <Route path="/:username/notes/:noteId" element={<UserNoteDetail />} />
-          <Route path="/book/:bookId" element={<BookDetail />} />
-          <Route path="/post/:postId" element={<PostDetail />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/news/:newsId" element={<NewsDetail />} />
-          <Route path="/create-note" element={<CreateNote />} />
+          <Route path="/user/profile-settings" element={user.user !== null ? <ProfileSettings /> : <Navigate replace to="/login" />} />
+          <Route path="/:username" element={user.user !== null ? <Profile /> : <Navigate replace to="/login" />} />
+          <Route path="/:username/reading-goal" element={user.user !== null ? <UserReadingGoal /> : <Navigate replace to="/login" />} />
+          <Route path="/:username/followers" element={user.user !== null ? <UserFollowers /> : <Navigate replace to="/login" />} />
+          <Route path="/:username/followings" element={user.user !== null ? <UserFollowings /> : <Navigate replace to="/login" />} />
+          <Route path="/:username/shelf" element={user.user !== null ? <UserBooks /> : <Navigate replace to="/login" />} />
+          <Route path="/:username/shelf/:shelfId" element={user.user !== null ? <UserShelf /> : <Navigate replace to="/login" />} />
+          <Route path="/:username/notes" element={user.user !== null ? <UserNotes /> : <Navigate replace to="/login" />} />
+          <Route path="/:username/notes/:noteId" element={user.user !== null ? <UserNoteDetail /> : <Navigate replace to="/login" />} />
+          <Route path="/book/:bookId" element={user.user !== null ? <BookDetail /> : <Navigate replace to="/login" />} />
+          <Route path="/post/:postId" element={user.user !== null ? <PostDetail /> : <Navigate replace to="/login" />} />
+          <Route path="/news" element={user.user !== null ? <News /> : <Navigate replace to="/login" />} />
+          <Route path="/news/:newsId" element={user.user !== null ? <NewsDetail /> : <Navigate replace to="/login" />} />
+          <Route path="/create-note" element={user.user !== null ? <CreateNote /> : <Navigate replace to="/login" />} />
         </Routes>
       </BrowserRouter>
     </ChakraProvider>

@@ -2,7 +2,7 @@
   width: 100%;
   position: absolute;
   z-index: 99;
-  top: 6%;
+  top: 0;
   left: 0;
   background-color: lightgray;
   padding: 20px;
@@ -112,4 +112,45 @@
   text-transform: uppercase;
   padding-bottom: 15px;
   border-bottom: 1px solid gray;
+}
+
+.bookStatusModalUpdateButton {
+  cursor: pointer;
+  width: 26%;
+  font-weight: 500;
+  border: 2px solid rgb(144, 144, 144);
+  border-radius: 10px;
+  transition: all 0.3s;
+  padding: 10px;
+  margin-right: 10px;
+  text-align: center;
+  font-size: 15px;
+  margin-top: 25px;
+  margin-left: auto;
+}
+
+.bookStatusModalDates{
+  display: flex;
+  margin-top: 20px;
+}
+
+.bookStatusModalMultipleContainer{
+  display: flex;
+  flex-direction: column;
+  margin-right: 50px;
+}
+
+.bookStatusModalDates input {
+  padding: 15px 10px;
+  margin: 10px 0;
+  font-size: 15px;
+  border: 2px solid rgb(144, 144, 144);
+  border-radius: 10px;
+  margin-right: 15px;
+  text-align: left;
+  background-color: inherit;
+}
+
+.bookStatusModalDates label{
+  font-weight: 700;
 }

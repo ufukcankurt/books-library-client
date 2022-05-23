@@ -8,18 +8,19 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 const UserFollowers = () => {
-  const  {username}  = useParams();
+  const FETCH = process.env.REACT_APP_FETCH_PATH;
+  const { username } = useParams();
   const [user, setUser] = useState({});
 
   console.log("USEPARAMS:", username);
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`http://localhost:8000/api/users?username=${username}`);
+      const res = await axios.get(`${FETCH}users?username=${username}`);
       setUser(res.data);
     };
     fetchUser();
-  }, [username]);
+  }, [username, FETCH]);
 
   console.log("ELİMDEKİ USER", user);
   return (
@@ -27,9 +28,9 @@ const UserFollowers = () => {
       <Nav />
       <div className="userFollowersContainer">
         <div className="userFollowersTimeline">
-          <UserProfileInfo user={user}/>
-            
-          <UserFollowersFeed user={user}  />
+          <UserProfileInfo user={user} />
+
+          <UserFollowersFeed user={user} />
         </div>
         <RightBar profile />
       </div>

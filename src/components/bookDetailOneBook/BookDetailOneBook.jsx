@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 const BookDetailOneBook = ({ book, setIsOverlay }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER + "books/";
   const [isClicked, setIsClicked] = useState(false);
-  const {user:currentUser} = useContext(AuthContext)
+  const {user:currentUser, dispatch} = useContext(AuthContext)
   const [userBook, setUserBook] = useState({})
   const {bookId} = useParams();
   const [isAdded, setIsAdded] = useState(false)
@@ -39,7 +39,7 @@ const BookDetailOneBook = ({ book, setIsOverlay }) => {
           Kitaplığıma Ekle
         </div>
         {isClicked ? (
-          <BookStatusModal currentUser={currentUser} userBook={userBook} book= { book } setIsClicked={setIsClicked} />
+          <BookStatusModal dispatch={dispatch} currentUser={currentUser} userBook={userBook} book= { book } setIsClicked={setIsClicked} />
         ) : (
           <></>
         )}

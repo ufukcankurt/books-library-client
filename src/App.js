@@ -71,3 +71,4 @@ export default App;
 // export default Books
 
 // const PF = process.env.REACT_APP_PUBLIC_FOLDER
+// const fetchPath = process.env.REACT_APP_FETCH_PATH 

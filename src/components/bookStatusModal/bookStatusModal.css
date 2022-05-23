@@ -1,9 +1,9 @@
 .bookStatusModalContainer {
-  width: 100%;
-  position: absolute;
-  z-index: 99;
-  top: 0;
-  left: 0;
+  width: 525px;
+  position: fixed;
+  z-index: 9999;
+  top: 7%;
+  left: 36.3%;
   background-color: lightgray;
   padding: 20px;
   border-radius: 10px;
@@ -129,12 +129,12 @@
   margin-left: auto;
 }
 
-.bookStatusModalDates{
+.bookStatusModalDates {
   display: flex;
   margin-top: 20px;
 }
 
-.bookStatusModalMultipleContainer{
+.bookStatusModalMultipleContainer {
   display: flex;
   flex-direction: column;
   margin-right: 50px;
@@ -151,6 +151,34 @@
   background-color: inherit;
 }
 
-.bookStatusModalDates label{
+.bookStatusModalDates label {
   font-weight: 700;
+}
+
+.bookStatusModalAllShelfs {
+  height: 225px;
+  max-height: 225px;
+  overflow-y: scroll;
+}
+
+.bookStatusModalAllShelfsItem {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid gray;
+}
+
+.bookStatusModalAllShelfsItem input {
+  width: 20px;
+  height: 20px;
+}
+
+.bookStatusModalAllShelfsItem label {
+  width: 95%;
+  padding: 10px;
+}
+
+.bookStatusModalAllShelfsItem input[type="checkbox"]:checked {
+  border: solid 2px rgb(221, 39, 22);
+  background-color: rgb(210, 62, 48);
+  color: white;
 }

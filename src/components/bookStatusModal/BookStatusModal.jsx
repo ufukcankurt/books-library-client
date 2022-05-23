@@ -4,19 +4,21 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import moment from "moment";
 
-const BookStatusModal = ({ setIsClicked, book, userBook }) => {
+const BookStatusModal = ({ setIsClicked, book, userBook, currentUser }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER + "books/";
 
   const [formData, setFormData] = useState({
     bookStatus: userBook?.bookStatus,
     bookStart: "",
     bookEnd: "",
+    bookHasShelf: userBook?.bookHasShelf,
   });
 
   const handleChange = (e) => {
     const value =
       e.target.type === "checkbox" ? e.target.checked : e.target.value;
     const name = e.target.name;
+    console.log("HANDLECHANGE VALUE", value);
 
     setFormData((prevState) => ({
       ...prevState,
@@ -31,17 +33,54 @@ const BookStatusModal = ({ setIsClicked, book, userBook }) => {
   const onChangeDate = (e) => {
     const name = e.target.name;
     const newDate = moment(new Date(e.target.value)).format("YYYY-MM-DD");
-    // setValue(newDate);
-    console.log(newDate); //value picked from date picker
     setFormData((prevState) => ({
       ...prevState,
       [name]: newDate,
     }));
   };
 
-  console.log("userbook", userBook);
+  const onChangeShelfs = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    const checked = e.target.checked;
 
-  console.log("form", formData);
+    console.log("name", name);
+    console.log("ONCHANGESHELF VALUE", value);
+    console.log("checked", checked);
+
+    if (checked) {
+      // userBook.bookHasShelf.push(value)
+      // const item = userBook.bookHasShelf
+      // setFormData.bookHasShelf.push(value)
+      setFormData((prevState) => ({
+        ...prevState,
+        bookHasShelf: [...formData.bookHasShelf, value],
+      }));
+    } else {
+      const changeState = async () => {
+        console.log("giriyon mu buraya");
+        const index = await formData.bookHasShelf.indexOf(value);
+        console.log("index nedir", index);
+        const temp = await [...formData.bookHasShelf];
+        console.log("temp nedir", temp);
+        await temp.splice(index, 1);
+
+        setFormData((prevState) => ({
+          ...prevState,
+          bookHasShelf: temp,
+        }));
+        console.log("son halini yazalım", formData);
+      };
+      changeState();
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("SUBMİT", formData);
+  };
+
+  console.log("formData", formData);
 
   return (
     <div className="bookStatusModalContainer">
@@ -130,7 +169,59 @@ const BookStatusModal = ({ setIsClicked, book, userBook }) => {
       <div className="bookStatusModalShelf">
         <h2 className="bookStatusModalShelfTitle">BU KİTABI RAFLARINA EKLE</h2>
       </div>
-      <div className="bookStatusModalUpdateButton">Kaydet</div>
+      <div className="bookStatusModalAllShelfs">
+        {currentUser.allShelfs.map(
+          (shelf, i) => {
+            return (
+              <div key={i} className="bookStatusModalAllShelfsItem">
+                <input
+                  type="checkbox"
+                  name={`checkbox${i}`}
+                  id={`checkbox${i}`}
+                  value={shelf}
+                  onChange={onChangeShelfs}
+                  checked={formData.bookHasShelf.includes(shelf)}
+                />
+                <label htmlFor={`checkbox${i}`}>{shelf}</label>
+              </div>
+            );
+          }
+
+          // userBook.bookHasShelf.map((item,j) => {
+          //   if (item === shelf) {
+          // return (
+          //   <div key={i} className="bookStatusModalAllShelfsItem">
+          //   <input
+          //     type="checkbox"
+          //     name={`checkbox${i}`}
+          //     id={`checkbox${i}`}
+          //     value={shelf}
+          //     checked= {userBook.bookHasShelf.includes(shelf)}
+          //     onChange={onChangeShelfs}
+          //   />
+          //   <label htmlFor={`checkbox${i}`}>{shelf}</label>
+          // </div>
+          // )
+          //   } else {
+          //     return(
+          //       <div key={i} className="bookStatusModalAllShelfsItem">
+          //       <input
+          //         type="checkbox"
+          //         name={`checkbox${i}`}
+          //         id={`checkbox${i}`}
+          //         value={shelf}
+          //         onChange={onChangeShelfs}
+          //       />
+          //       <label htmlFor={`checkbox${i}`}>{shelf}</label>
+          //     </div>
+          //     )
+          //   }
+          // })
+        )}
+      </div>
+      <div onClick={handleSubmit} className="bookStatusModalUpdateButton">
+        Kaydet
+      </div>
     </div>
   );
 };

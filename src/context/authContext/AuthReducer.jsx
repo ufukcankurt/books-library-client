@@ -42,6 +42,14 @@ const AuthReducer = (state, action) => {
           readingTarget: action.payload
         }
       };
+      case "ADDNEWBOOK":
+      return {
+        ...state,
+        user:{
+          ...state.user,
+          bookShelf: action.payload
+        }
+      };
     default:
       return {...state};
   }

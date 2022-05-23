@@ -1,11 +1,27 @@
 import "./bookDetailOneBook.css";
 import BookStatusModal from "../bookStatusModal/BookStatusModal";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/authContext/AuthContext";
+import { useParams } from "react-router-dom";
 
-const BookDetailOneBook = ({ book }) => {
+const BookDetailOneBook = ({ book, setIsOverlay }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER + "books/";
   const [isClicked, setIsClicked] = useState(false);
+  const {user:currentUser} = useContext(AuthContext)
+  const [userBook, setUserBook] = useState({})
+  const {bookId} = useParams();
+  const [isAdded, setIsAdded] = useState(false)
+
+  useEffect(()=> {
+    const getBook = async () => {
+      await currentUser.bookShelf.map((item)=> {
+        setIsAdded(true)
+        return item.bookId === bookId && setUserBook(item) 
+      } )
+    }
+    getBook()
+  },[bookId, currentUser.bookShelf])
 
   const handleClick = () => {
     setIsClicked(!isClicked);
@@ -23,10 +39,11 @@ const BookDetailOneBook = ({ book }) => {
           Kitaplığıma Ekle
         </div>
         {isClicked ? (
-          <BookStatusModal isClicked={isClicked} setIsClicked={setIsClicked} />
+          <BookStatusModal currentUser={currentUser} userBook={userBook} book= { book } setIsClicked={setIsClicked} />
         ) : (
           <></>
         )}
+        {isClicked ? setIsOverlay(true) : setIsOverlay(false)}
       </div>
       <div className="bookDetailOneBookTopside">
         <div className="bookDetailOneBookImage">

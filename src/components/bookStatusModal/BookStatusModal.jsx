@@ -3,14 +3,28 @@ import { Close } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import moment from "moment";
+import axios from "axios";
 
-const BookStatusModal = ({ setIsClicked, book, userBook, currentUser }) => {
+const BookStatusModal = ({ setIsClicked, book, userBook, currentUser, dispatch }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER + "books/";
+  const FETCH = process.env.REACT_APP_FETCH_PATH 
+  const {bookId} = useParams();
+  // const allBooks = currentUser.bookShelf.map((item,i)=> console.log(i,item))
+  // const bookIndex = allBooks.findIndex((obj)=> obj.bookId === {bookId})
+  let allBook = []
+  
+  console.log(currentUser);
+// console.log("BOOKİNDEX", bookIndex);
+console.log("allbooks", typeof(allBooks));
+  console.log("fetchPath",FETCH);
+  console.log("PF", PF);
+  console.log("userBook",userBook);
 
   const [formData, setFormData] = useState({
+    bookId:bookId,
     bookStatus: userBook?.bookStatus,
-    bookStart: "",
-    bookEnd: "",
+    bookStart: userBook.bookStart,
+    bookEnd: userBook.bookEnd,
     bookHasShelf: userBook?.bookHasShelf,
   });
 
@@ -75,10 +89,34 @@ const BookStatusModal = ({ setIsClicked, book, userBook, currentUser }) => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("SUBMİT", formData);
+    currentUser.bookShelf.map((item,i)=> {
+      if(item.bookId !== bookId){
+        allBook.push(item)
+      }else{
+        allBook[i] = formData
+      }
+      return allBook;
+    })
+    console.log("ALL BOK", allBook);
+    try {
+      const res = await axios.put(`${FETCH}users/${currentUser._id}/book`, formData, {
+        headers: {
+          token: `Bearer ${currentUser.accessToken}`,
+        },
+      })
+      dispatch({ type: "ADDNEWBOOK", payload: allBook });
+      console.log("RESPONSE", res);
+      console.log("EN SON ALL BOOK",allBook);
+    } catch (error) {
+        console.log(error);
+    }
   };
+
+  // const setAllData = () => {
+  //   const 
+  // }
 
   console.log("formData", formData);
 

@@ -8,20 +8,20 @@ import { useParams } from "react-router-dom";
 const BookDetailOneBook = ({ book, setIsOverlay }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER + "books/";
   const [isClicked, setIsClicked] = useState(false);
-  const {user:currentUser, dispatch} = useContext(AuthContext)
-  const [userBook, setUserBook] = useState({})
-  const {bookId} = useParams();
-  const [isAdded, setIsAdded] = useState(false)
+  const { user: currentUser, dispatch } = useContext(AuthContext);
+  const [userBook, setUserBook] = useState({});
+  const { bookId } = useParams();
+  // const [isAdded, setIsAdded] = useState(false);
 
-  useEffect(()=> {
+  useEffect(() => {
     const getBook = async () => {
-      await currentUser.bookShelf.map((item)=> {
-        setIsAdded(true)
-        return item.bookId === bookId && setUserBook(item) 
-      } )
-    }
-    getBook()
-  },[bookId, currentUser.bookShelf])
+      await currentUser.bookShelf.map(
+        // setIsAdded(true);
+        (item) => item.bookId === bookId && setUserBook(item)
+      );
+    };
+    getBook();
+  }, [bookId, currentUser.bookShelf]);
 
   const handleClick = () => {
     setIsClicked(!isClicked);
@@ -39,7 +39,13 @@ const BookDetailOneBook = ({ book, setIsOverlay }) => {
           Kitaplığıma Ekle
         </div>
         {isClicked ? (
-          <BookStatusModal dispatch={dispatch} currentUser={currentUser} userBook={userBook} book= { book } setIsClicked={setIsClicked} />
+          <BookStatusModal
+            dispatch={dispatch}
+            currentUser={currentUser}
+            userBook={userBook}
+            book={book}
+            setIsClicked={setIsClicked}
+          />
         ) : (
           <></>
         )}

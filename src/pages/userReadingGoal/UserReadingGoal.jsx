@@ -15,6 +15,7 @@ const UserReadingGoal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [newGoal, setNewGoal] = useState("");
   const goalModal = useRef();
+  const inputRef = useRef()
   
   const { username } = useParams();
   const [user, setUser] = useState({});
@@ -84,6 +85,10 @@ const UserReadingGoal = () => {
       </div>
     );
   };
+
+  const handleWheel = () => {
+    inputRef.current.blur();
+  }
   return (
     <>
       <Nav />
@@ -107,6 +112,7 @@ const UserReadingGoal = () => {
             >
               <label htmlFor="new_goal">Başlık</label>
               <input
+                ref={inputRef}
                 type="number"
                 id="new_goal"
                 name="new_goal"
@@ -114,6 +120,7 @@ const UserReadingGoal = () => {
                 required={true}
                 value={newGoal}
                 onChange={handleChange}
+                onWheel={handleWheel}
               />
               <div
                 className="userReadingGoalNewGoalButton"

@@ -10,6 +10,7 @@ import { AuthContext } from "../../context/authContext/AuthContext";
 import moment from "moment";
 
 const UserReadingGoal = () => {
+  const FETCH = process.env.REACT_APP_FETCH_PATH 
   const [isOpen, setIsOpen] = useState(false);
   const [newGoal, setNewGoal] = useState("");
   const goalModal = useRef();
@@ -32,13 +33,13 @@ const UserReadingGoal = () => {
   useEffect(() => {
     const fetchUser = async () => {
       const res = await axios.get(
-        `http://localhost:8000/api/users?username=${username}`
+        `${FETCH}users?username=${username}`
       );
       setUser(res.data);
       setReadingTarget(res.data?.readingTarget)
     };
     fetchUser();
-  }, [username]);
+  }, [username, FETCH]);
 
   console.log("ELİMDEKİ USER", user);
 
@@ -62,7 +63,7 @@ const UserReadingGoal = () => {
     // fetch request
     try {
       await axios.put(
-        `http://localhost:8000/api/users/${currentUser._id}`,
+        `${FETCH}users/${currentUser._id}`,
         { readingTarget: newGoal },
         {
           headers: {

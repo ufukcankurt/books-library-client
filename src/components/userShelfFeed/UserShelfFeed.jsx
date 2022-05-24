@@ -3,14 +3,27 @@ import { useState } from "react";
 import Book from "../book/Book";
 import { Search } from "@material-ui/icons";
 
-const UserShelfFeed = () => {
+const UserShelfFeed = ({user, shelfName}) => {
   const [search, setSearch] = useState("");
+  let actualName = ""
+  if(shelfName === "Okuyacaklarım"){
+    actualName = "willread"
+ }else if(shelfName === "Yarım Bıraktıklarım"){
+    actualName = "unfinished"
+ }else if (shelfName === "Okuduklarım"){
+    actualName = "finished"
+ }else{
+    actualName = ""
+ }
 
   const handleSubmit = () => {};
 
+  console.log("bookSHELF USER",user);
+  console.log("shelfName",shelfName);
+
   return (
     <div className="userShelfFeedContainer">
-      <h2 className="userShelfFeedTitle">Yarım Bıraktıkları</h2>
+      <h2 className="userShelfFeedTitle">{shelfName}</h2>
       <div className="userShelfFeedSearch">
         <input
           type="text"
@@ -24,13 +37,12 @@ const UserShelfFeed = () => {
           <Search />
         </button>
       </div>
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-      <Book />
+      {
+        user.bookShelf?.map((book, i) => (
+          (book.bookHasShelf.includes(shelfName) || book.bookStatus === actualName ? <Book key={i} user= {user} bookId={book.bookId} /> :"")
+        ))
+      }
+
     </div>
   );
 };

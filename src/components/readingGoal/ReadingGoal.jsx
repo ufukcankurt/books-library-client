@@ -39,17 +39,6 @@ const ReadingGoal = ({ users, user, readingTarget}) => {
     getCount()
   },[currentUser.bookShelf])
 
-  console.log("readCount", readCount);
-  console.log("readLastYearCount", readLastYearCount);
-  console.log("readAllPages", readAllPages);
-  console.log("percent", percent);
-  console.log("soFar", soFar);
-  console.log("leftDays", leftDays);
-  console.log("haveToReadPerBook", haveToReadPerBook);
-  console.log("shouldHaveRead", shouldHaveRead);
-  console.log("result", result);
-  
-
   const UserReadingGoalProgress = () => {
     return (
       <CircleProgress

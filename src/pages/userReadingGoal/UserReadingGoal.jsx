@@ -8,6 +8,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import moment from "moment";
+import OtherUserReadingTarget from "../../components/otherUserReadingTarget/OtherUserReadingTarget";
 
 const UserReadingGoal = () => {
   const FETCH = process.env.REACT_APP_FETCH_PATH 
@@ -26,9 +27,9 @@ const UserReadingGoal = () => {
   const leftDays = moment.duration(given.diff(current)).asDays();
   const [readingTarget, setReadingTarget ] = useState(user?.readingTarget)
   
-  useEffect(()=> {
-    setReadingTarget()
-  },[])
+  // useEffect(()=> {
+  //   setReadingTarget()
+  // },[])
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -40,8 +41,6 @@ const UserReadingGoal = () => {
     };
     fetchUser();
   }, [username, FETCH]);
-
-  console.log("ELİMDEKİ USER", user);
 
   const handleChange = (e) => {
     setNewGoal(e.target.value);
@@ -124,7 +123,7 @@ const UserReadingGoal = () => {
               </div>
             </div>
 
-            <ReadingGoal readingTarget={readingTarget} users user={user} />
+            {user.username === currentUser.username ? <ReadingGoal readingTarget={readingTarget} users user={user} /> : <OtherUserReadingTarget users/>}
           </div>
         </div>
         <RightBar readingTarget={readingTarget} user={user} profile />

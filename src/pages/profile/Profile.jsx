@@ -8,6 +8,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 const Profile = () => {
+  const FETCH = process.env.REACT_APP_FETCH_PATH 
   const  {username}  = useParams();
   const [user, setUser] = useState({});
 
@@ -15,11 +16,11 @@ const Profile = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`http://localhost:8000/api/users?username=${username}`);
+      const res = await axios.get(`${FETCH}users?username=${username}`);
       setUser(res.data);
     };
     fetchUser();
-  }, [username]);
+  }, [username, FETCH]);
 
   console.log("ELİMDEKİ USER", user);
 

@@ -16,7 +16,6 @@ const BookShelf = ({shelf, user}) => {
      actualName = ""
   }
 
-  console.log("user",user);
   return (
     <div className="bookShelfContainer">
       <div className="bookShelfName">{shelf}</div>

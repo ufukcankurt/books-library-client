@@ -15,12 +15,14 @@ const BookShelf = ({shelf, user}) => {
   }else{
      actualName = ""
   }
+
+  console.log("user",user);
   return (
     <div className="bookShelfContainer">
       <div className="bookShelfName">{shelf}</div>
       <div className="bookShelfInfo">
         <p className="bookShelfBooksCount">{count} Kitap</p>
-        <Link to="/ufukcankurt/shelf/okuyacaklarım" style={{ textDecoration: "none" }}>
+        <Link to={`/${user.username}/shelf/${shelf}`} style={{ textDecoration: "none" }}>
           <p className="bookShelfMore">Hepsini gör</p>
         </Link>
       </div>

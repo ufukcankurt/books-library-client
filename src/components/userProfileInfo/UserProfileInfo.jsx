@@ -15,10 +15,19 @@ import { AuthContext } from "../../context/authContext/AuthContext";
 const UserProfileInfo = ({ user }) => {
   const { user: currentUser, dispatch } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER + "users/";
+  const [readLastYearCount, setReadLastYearCount] = useState(0);
 
   const [followed, setFollowed] = useState(
     currentUser.followings.includes(user?.id)
   );
+
+  useEffect(() => {
+    user.bookShelf?.map((book) =>
+      book.bookStatus === "finished" && book.bookEnd?.includes("2022")
+        ? setReadLastYearCount((prev) => prev + 1)
+        : ""
+    );
+  }, [user]);
 
   // FOLLOWİNG - FOLLOWERS
   useEffect(() => {
@@ -108,10 +117,14 @@ const UserProfileInfo = ({ user }) => {
 
   const GoalComp = () => {
     return (
-      <div className="goal">
-        <TrackChanges />
-        2022 okuma hedefi: 14/75
-      </div>
+      <>
+        <Link to={`/${user.username}/reading-goal`}>
+          <div className="goal">
+            <TrackChanges />
+            2022 okuma hedefi: {readLastYearCount}/{user.readingTarget}
+          </div>
+        </Link>
+      </>
     );
   };
 
@@ -160,10 +173,11 @@ const UserProfileInfo = ({ user }) => {
           {user.job ? <JobComp /> : ""}
           {user.city ? <CityComp /> : ""}
 
-        
-            
-            {user.dob_day && user.dob_month &&  user.dob_year ? <BirthDayComp/> : ""}
-          
+          {user.dob_day && user.dob_month && user.dob_year ? (
+            <BirthDayComp />
+          ) : (
+            ""
+          )}
 
           {user.website ? <WebsiteComp /> : ""}
           {user.readingTarget ? <GoalComp /> : ""}

@@ -24,6 +24,10 @@ const BookStatusModal = ({
     bookStart: userBook.bookStart,
     bookEnd: userBook.bookEnd,
     bookHasShelf: userBook?.bookHasShelf || [],
+    bookName: book.book_name,
+    bookPage: book.book_page,
+    bookImg: book.book_img,
+    bookAuthor: book.book_author,
   });
 
   const handleChange = (e) => {

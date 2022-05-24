@@ -5,21 +5,25 @@ import { useParams } from "react-router-dom";
 import moment from "moment";
 import axios from "axios";
 
-const BookStatusModal = ({ setIsClicked, book, userBook, currentUser, dispatch }) => {
+const BookStatusModal = ({
+  setIsClicked,
+  book,
+  userBook,
+  currentUser,
+  dispatch,
+}) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER + "books/";
-  const FETCH = process.env.REACT_APP_FETCH_PATH 
-  const {bookId} = useParams();
+  const FETCH = process.env.REACT_APP_FETCH_PATH;
+  const { bookId } = useParams();
 
-  let allBook = []
-  
-
+  let allBook = [];
 
   const [formData, setFormData] = useState({
-    bookId:bookId,
+    bookId: bookId,
     bookStatus: userBook?.bookStatus,
     bookStart: userBook.bookStart,
     bookEnd: userBook.bookEnd,
-    bookHasShelf: userBook?.bookHasShelf,
+    bookHasShelf: userBook?.bookHasShelf || [],
   });
 
   const handleChange = (e) => {
@@ -51,11 +55,7 @@ const BookStatusModal = ({ setIsClicked, book, userBook, currentUser, dispatch }
     const value = e.target.value;
     const checked = e.target.checked;
 
-
     if (checked) {
-      // userBook.bookHasShelf.push(value)
-      // const item = userBook.bookHasShelf
-      // setFormData.bookHasShelf.push(value)
       setFormData((prevState) => ({
         ...prevState,
         bookHasShelf: [...formData.bookHasShelf, value],
@@ -63,8 +63,8 @@ const BookStatusModal = ({ setIsClicked, book, userBook, currentUser, dispatch }
     } else {
       const changeState = async () => {
         const index = await formData.bookHasShelf.indexOf(value);
-        const temp = await [...formData.bookHasShelf];
-        await temp.splice(index, 1);
+        const temp = [...formData.bookHasShelf];
+        temp.splice(index, 1);
 
         setFormData((prevState) => ({
           ...prevState,
@@ -75,25 +75,33 @@ const BookStatusModal = ({ setIsClicked, book, userBook, currentUser, dispatch }
     }
   };
 
+  const setAllBooks = async () => {
+    if (currentUser.bookShelf?.length !== 0) {
+      await currentUser.bookShelf?.map((item, i) => {
+        if (item.bookId !== bookId) {
+          allBook.push(item);
+        } else {
+          allBook[i] = formData;
+        }
+        return allBook;
+      });
+    } else {
+      allBook.push(formData);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    currentUser.bookShelf.map((item,i)=> {
-      if(item.bookId !== bookId){
-        allBook.push(item)
-      }else{
-        allBook[i] = formData
-      }
-      return allBook;
-    })
+    await setAllBooks();
     try {
       await axios.put(`${FETCH}users/${currentUser._id}/book`, formData, {
         headers: {
           token: `Bearer ${currentUser.accessToken}`,
         },
-      })
+      });
       dispatch({ type: "ADDNEWBOOK", payload: allBook });
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
   };
 
@@ -184,23 +192,31 @@ const BookStatusModal = ({ setIsClicked, book, userBook, currentUser, dispatch }
         <h2 className="bookStatusModalShelfTitle">BU KİTABI RAFLARINA EKLE</h2>
       </div>
       <div className="bookStatusModalAllShelfs">
-        {currentUser.allShelfs.map(
-          (shelf, i) => {
-            return (
-              <div key={i} className="bookStatusModalAllShelfsItem">
-                <input
-                  type="checkbox"
-                  name={`checkbox${i}`}
-                  id={`checkbox${i}`}
-                  value={shelf}
-                  onChange={onChangeShelfs}
-                  checked={formData.bookHasShelf.includes(shelf)}
-                />
-                <label htmlFor={`checkbox${i}`}>{shelf}</label>
-              </div>
-            );
+        {currentUser.allShelfs.map((shelf, i) => {
+          if (
+            shelf === "Okuduklarım" ||
+            shelf === "Okuyacaklarım" ||
+            shelf === "Yarım Bıraktıklarım"
+          ) {
+            return <></>;
           }
-        )}
+          return (
+            <div key={i} className="bookStatusModalAllShelfsItem">
+              <input
+                type="checkbox"
+                name={`checkbox${i}`}
+                id={`checkbox${i}`}
+                value={shelf}
+                onChange={onChangeShelfs}
+                checked={formData.bookHasShelf?.includes(shelf)}
+              />
+              <label htmlFor={`checkbox${i}`}>{shelf}</label>
+            </div>
+          );
+        })}
+        <p className="bookStatusModalAllShelfWarning">
+          {currentUser.allShelfs?.length === 0 ? "Henüz hiç rafınız yok" : ""}
+        </p>
       </div>
       <div onClick={handleSubmit} className="bookStatusModalUpdateButton">
         Kaydet

@@ -156,9 +156,15 @@
 }
 
 .bookStatusModalAllShelfs {
-  height: 225px;
   max-height: 225px;
   overflow-y: scroll;
+}
+
+.bookStatusModalAllShelfWarning {
+  font-size: 17px;
+  font-weight: 500;
+  margin-top: 15px;
+  color: gray;
 }
 
 .bookStatusModalAllShelfsItem {

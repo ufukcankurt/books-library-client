@@ -50,6 +50,14 @@ const AuthReducer = (state, action) => {
           bookShelf: action.payload
         }
       };
+      case "ADDNEWSHELF":
+      return {
+        ...state,
+        user:{
+          ...state.user,
+          allShelfs: action.payload
+        }
+      };
     default:
       return {...state};
   }

@@ -27,6 +27,11 @@ export const ReadingTargetAct = (targetCount) => ({
   payload:targetCount,
 })
 
+export const AddNewShelf = (newShelf) => ({
+  type:"ADDNEWSHELF",
+  payload:newShelf,
+})
+
 export const AddNewBook = (bookShelf) => ({
   type:"ADDNEWBOOK",
   payload:bookShelf,

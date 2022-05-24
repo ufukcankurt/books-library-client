@@ -9,26 +9,34 @@ import { AuthContext } from "../../context/authContext/AuthContext";
 import Overlay from "../../components/overlay/Overlay";
 
 const BookDetail = () => {
+  const FETCH = process.env.REACT_APP_FETCH_PATH 
   const { user: currentUser } = useContext(AuthContext);
   const { bookId } = useParams();
   const [book, setBook] = useState({});
-  const [isOverlay, setIsOverlay] = useState(false)
+  const [isOverlay, setIsOverlay] = useState(false);
 
   useEffect(() => {
-    const getBook = async () => {
-      const res = await axios.get(`http://localhost:8000/api/books/${bookId}`, {
-        headers: {
-          token: `Bearer ${currentUser.accessToken}`,
-        },
-      });
-      setBook(res.data);
-    };
-    getBook();
+    try {
+      const getBook = async () => {
+        const res = await axios.get(
+          `${FETCH}books/${bookId}`,
+          {
+            headers: {
+              token: `Bearer ${currentUser.accessToken}`,
+            },
+          }
+        );
+        setBook(res.data);
+      };
+      getBook();
+    } catch (error) {
+      console.log(error);
+    }
   }, [bookId, currentUser.accessToken]);
 
   return (
     <>
-    {isOverlay ? <Overlay/> : ""}
+      {isOverlay ? <Overlay /> : ""}
       <Nav />
       <div className="bookDetailContainer">
         <div className="bookDetailTimeline">

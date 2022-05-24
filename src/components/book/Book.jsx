@@ -1,36 +1,67 @@
 import "./book.css";
-import { useState } from "react";
+import { useEffect, useContext, useState } from "react";
 import BookStatusModal from "../bookStatusModal/BookStatusModal";
+import { AuthContext } from "../../context/authContext/AuthContext";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
-const Book = () => {
-
-  const [isClicked, setIsClicked] = useState(false)
+const Book = ({ bookId, user }) => {
+  const FETCH = process.env.REACT_APP_FETCH_PATH;
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER + "books/";
+  const { user: currentUser } = useContext(AuthContext);
+  const [book, setBook] = useState({});
+  const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = () => {
-    setIsClicked(!isClicked)
-  }
+    setIsClicked(!isClicked);
+  };
+
+  useEffect(() => {
+    const getBook = async () => {
+      const res = await axios.get(`${FETCH}books/${bookId}`, {
+        headers: {
+          token: `Bearer ${currentUser.accessToken}`,
+        },
+      });
+      setBook(res.data);
+    };
+    getBook();
+  }, [bookId, FETCH, currentUser.accessToken]);
+
+  const AddQuoteComp = () => {
+    return (
+      <div className="bookBookSettingsAddQuote">
+        <p className="bookAddQuoteTitle">Not Ekle</p>
+      </div>
+    );
+  };
+
+  console.log("EN İÇBOOK", book);
 
   return (
     <div className="bookContainer">
       <div className="bookBookImg">
-        <img src="/assets/books/book_2.jpg" alt="" />
+        <img src={`${PF}${book.book_img}`} alt="" />
       </div>
       <div className="bookBookInfo">
-        <p className="bookBookName">Köpek Kalbi</p>
-        <p className="bookBookAuthor">Mihail Bulgakov</p>
-        <p className="bookBookPages">132 Sayfa</p>
-        <p className="bookBookDate">12.05.2022 / 20.05.2022</p>
+        <p className="bookBookName">{book.book_name}</p>
+        <p className="bookBookAuthor">{book.book_author}</p>
+        <p className="bookBookPages">{book.book_page} Sayfa</p>
+        {/* <p className="bookBookDate">12.05.2022 / 20.05.2022</p> */}
       </div>
       <div className="bookBookSettings">
-        <div className="bookBookStatus" onClick={handleClick} >
-          Kitap Durumunu Güncelle
-        </div>
-        <div className="bookBookSettingsAddQuote">
-          <p className="bookAddQuoteTitle">Not Ekle</p>
-
-        </div>
+        <Link to={`/book/${bookId}`}>
+          <div className="bookBookStatus" onClick={handleClick}>
+            Kitaba Git
+          </div>
+        </Link>
+        <AddQuoteComp />
       </div>
-      {isClicked ? <BookStatusModal isClicked={isClicked} setIsClicked={setIsClicked} /> : <></>}
+      {/* {isClicked ? (
+        <BookStatusModal isClicked={isClicked} setIsClicked={setIsClicked} />
+      ) : (
+        <></>
+      )} */}
     </div>
   );
 };

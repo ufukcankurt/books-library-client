@@ -76,7 +76,12 @@
     padding: 15px 20px;
 }
 
+.bookBookSettings a {
+    width: 100%;
+}
+
 .bookBookStatus{
+    width: 100%;
     cursor: pointer;
     padding: 10px 12px;
     border-radius: 10px;

@@ -1,9 +1,26 @@
 .readingGoalContainer{
     width: 100%;
+    position: relative;
     margin-top: 20px;
     padding: 15px;
     border-radius: 5px;
     box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+}
+
+.readingGoalSettings{
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.readingGoalSettings svg{
+    font-size: 30px;
 }
 
 .readingGoalTitles{
@@ -16,6 +33,10 @@
     font-size: 18px;
     font-weight: 700;
     text-transform: uppercase;
+}
+
+.readingGoalCountTitle{
+    font-size: 16px !important;
 }
 
 .readingGoalProgress{
@@ -40,4 +61,11 @@
     font-weight: 400;
     color: gray;
     margin-top: 8px;
+}
+
+.readingGoalNoTargetMessage{
+    font-size: 17px;
+    font-weight: 500;
+    margin-top: 5px;
+    color: gray;
 }

@@ -26,7 +26,7 @@ const UserReadingGoal = () => {
   const current = moment().startOf("day");
   //Difference in number of days
   const leftDays = moment.duration(given.diff(current)).asDays();
-  const [readingTarget, setReadingTarget ] = useState(user?.readingTarget)
+  const [readingTarget, setReadingTarget ] = useState()
   
   // useEffect(()=> {
   //   setReadingTarget()

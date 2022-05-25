@@ -1,13 +1,34 @@
-import CurrentBook from "../currentBook/CurrentBook"
-import "./currentlyReadings.css"
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../context/authContext/AuthContext";
+import CurrentBook from "../currentBook/CurrentBook";
+import "./currentlyReadings.css";
 
 const CurrentlyReadings = () => {
-    return (
-        <div className="currentlyReadingsContainer">
-            <h2 className="currentlyReadingsTitle">Şu anda okuyor</h2>
-            <CurrentBook/>
-        </div>
-    )
-}
+  const { user: currentUser } = useContext(AuthContext);
+  const [readingCount, setReadingCount] = useState(0);
 
-export default CurrentlyReadings
+  useEffect(() => {}, []);
+
+  const NoReadingComp = () => {
+    return (
+      <div className="noReadingBooksMessageDiv">
+        <p className="noReadingBooksMessage">Şu anda okuduğunuz kitap yok</p>
+      </div>
+    );
+  };
+
+  return (
+    <div className="currentlyReadingsContainer">
+      <h2 className="currentlyReadingsTitle">Şu anda okuyor</h2>
+      {currentUser.bookShelf?.map(
+        (book) =>
+          book.bookStatus === "reading" && (
+            <CurrentBook book={book} setReadingCount={setReadingCount} />
+          )
+      )}
+      {readingCount === 0 ? <NoReadingComp /> : ""}
+    </div>
+  );
+};
+
+export default CurrentlyReadings;

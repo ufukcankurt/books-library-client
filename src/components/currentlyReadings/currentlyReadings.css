@@ -10,3 +10,19 @@
     font-weight: 700;
     text-transform: uppercase;
 }
+
+.noReadingBooksMessageDiv{
+    width: 100%;
+    position: relative;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+}
+
+.noReadingBooksMessage{
+    font-size: 17px;
+    font-weight: 500;
+    margin-top: 5px;
+    color: gray;
+}

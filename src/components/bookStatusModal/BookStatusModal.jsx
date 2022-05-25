@@ -15,8 +15,9 @@ const BookStatusModal = ({
   const PF = process.env.REACT_APP_PUBLIC_FOLDER + "books/";
   const FETCH = process.env.REACT_APP_FETCH_PATH;
   const { bookId } = useParams();
+  let allBook = [...currentUser.bookShelf];
 
-  let allBook = [];
+  let bookIndex = allBook.findIndex(o => o.bookId === bookId);
 
   const [formData, setFormData] = useState({
     bookId: bookId,
@@ -80,18 +81,7 @@ const BookStatusModal = ({
   };
 
   const setAllBooks = async () => {
-    if (currentUser.bookShelf?.length !== 0) {
-      await currentUser.bookShelf?.map((item, i) => {
-        if (item.bookId !== bookId) {
-          allBook.push(item);
-        } else {
-          allBook[i] = formData;
-        }
-        return allBook;
-      });
-    } else {
-      allBook.push(formData);
-    }
+    bookIndex === -1 ? allBook.push(formData) : allBook[bookIndex] = formData 
   };
 
   const handleSubmit = async (e) => {

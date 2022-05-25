@@ -11,7 +11,7 @@ const ReadingGoal = ({ users, user, readingTarget}) => {
   const [readCount, setReadCount] = useState(0);
   const [readLastYearCount, setReadLastYearCount] = useState(0);
   const [readAllPages, setReadAllPages] = useState(0);
-  const percent = Math.floor((readCount / currentUser.readingTarget ) * 100)
+  const percent = Math.floor((readLastYearCount / currentUser.readingTarget ) * 100)
   const given = moment("2023-01-01", "YYYY-MM-DD");
   const current = moment().startOf("day");
   const leftDays = moment.duration(given.diff(current)).asDays();
@@ -20,6 +20,9 @@ const ReadingGoal = ({ users, user, readingTarget}) => {
   const shouldHaveRead = Math.round((soFar / haveToReadPerBook))
   const result = (readLastYearCount - shouldHaveRead)
   
+console.log("percent", percent);
+console.log("readCount", readCount);
+console.log("currentUser.readingTarget", currentUser.readingTarget);
 
   useEffect(()=> {
     const getCount = () => {
@@ -37,7 +40,7 @@ const ReadingGoal = ({ users, user, readingTarget}) => {
       // currentUser.bookShelf?.map((book)=> book.bookStatus === "finished" && book.bookEnd?.includes("2022")? setReadLastYearCount((prev) => prev + 1):"")
     }
     getCount()
-  },[currentUser.bookShelf])
+  },[])
 
   const UserReadingGoalProgress = () => {
     return (
@@ -83,7 +86,7 @@ const ReadingGoal = ({ users, user, readingTarget}) => {
           <h2 className="readingGoalTitle">2022 Okuma Hedefi </h2>
           <h2 className="readingGoalCountTitle">
             {" "}
-            {users ? readingTarget : currentUser.readingTarget} / {readLastYearCount}
+            {currentUser.readingTarget} / {readLastYearCount}
           </h2>
         </div>
         <div className="readingGoalProgress">

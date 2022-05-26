@@ -30,9 +30,13 @@ const Book = ({ bookId, user }) => {
 
   const AddQuoteComp = () => {
     return (
+      <>
+      <Link to={`/create-note/${book._id}`}>
       <div className="bookBookSettingsAddQuote">
         <p className="bookAddQuoteTitle">Not Ekle</p>
       </div>
+      </Link>
+      </>
     );
   };
 
@@ -57,11 +61,6 @@ const Book = ({ bookId, user }) => {
         </Link>
         <AddQuoteComp />
       </div>
-      {/* {isClicked ? (
-        <BookStatusModal isClicked={isClicked} setIsClicked={setIsClicked} />
-      ) : (
-        <></>
-      )} */}
     </div>
   );
 };

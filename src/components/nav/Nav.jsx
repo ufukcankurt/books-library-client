@@ -168,7 +168,6 @@ const Nav = () => {
                 </Link>
               </li>
               <li>
-                {/* <Link  to="/login" style={{ textDecoration: "none" }}> */}
                   <div onClick={handleLogout} className="modalDiv">
                     <img
                       className="modalImage"
@@ -177,7 +176,6 @@ const Nav = () => {
                     />
                     <span className="modalPrivate">Çıkış Yap</span>
                   </div>
-                {/* </Link> */}
               </li>
             </ul>
           </div>

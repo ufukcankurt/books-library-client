@@ -6,6 +6,11 @@
   background-color: rgba(211, 211, 211, 1);
 }
 
+.navLogo{
+  width: 100%;
+  max-width: 175px;
+}
+
 .navContainer .navContent {
   display: flex;
   justify-content: space-between;
@@ -17,7 +22,7 @@
 
 .navContainer .navContent .navSearch {
   position: relative;
-  margin-left: -35px;
+  margin-left: -45px;
 }
 
 .navContainer .navContent .navSearch input {

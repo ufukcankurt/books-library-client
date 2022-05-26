@@ -34,11 +34,10 @@ const Nav = () => {
 
   return (
     <div className="navContainer">
-      {/* <div className="overlay"></div> */}
       <div className="navContent">
         <Link to="/" style={{ textDecoration: "none" }}>
           <div className="navLogo">
-            <img src="/assets/logo.png" alt="" />
+            <img src="/assets/logouck.png" alt="" />
           </div>
         </Link>
         <div className="navSearch">
@@ -120,7 +119,7 @@ const Nav = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/ufukcankurt/shelf/okuyacaklarım" style={{ textDecoration: "none" }}>
+                <Link to={`/${user.username}/shelf/Okuduklarım`} style={{ textDecoration: "none" }}>
                   <div className="modalDiv">
                     <img
                       className="modalImage"
@@ -132,7 +131,7 @@ const Nav = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/ufukcankurt/shelf/okuyacaklarım" style={{ textDecoration: "none" }}>
+                <Link to={`/${user.username}/shelf/Okuyacaklarım`} style={{ textDecoration: "none" }}>
                   <div className="modalDiv">
                     <img
                       className="modalImage"
@@ -144,7 +143,7 @@ const Nav = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/ufukcankurt/reading-goal" style={{ textDecoration: "none" }}>
+                <Link to={`/${user.username}/reading-goal`} style={{ textDecoration: "none" }}>
                   <div className="modalDiv">
                     <img
                       className="modalImage"

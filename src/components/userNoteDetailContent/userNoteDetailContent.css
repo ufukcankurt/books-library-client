@@ -10,6 +10,19 @@
 .userNoteDetailContentBookDetail {
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.userNoteDetailContentUpdateButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 10px;
+  margin-right: 20px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
 }
 
 .userNoteDetailContentBookInfo {
@@ -18,12 +31,14 @@
 }
 
 .userNoteDetailContentBookTitles {
+  max-width: 73%;
   display: flex;
   font-size: 18px;
   font-weight: 700;
 }
 
 .userNoteDetailContentBookPage {
+  max-width: 73%;
   font-size: 17px;
   font-weight: 500;
   margin-top: 5px;
@@ -53,9 +68,15 @@
 }
 
 .userNoteDetailContentBookTitle {
-  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
   font-size: 18px;
   font-weight: 700;
+}
+
+.userNoteDetailContentBookTitle svg {
+  margin-left: 10px;
 }
 
 .userNoteDetailContentBookCharacters,
@@ -67,4 +88,9 @@
   margin-bottom: 1rem;
   padding: 10px 25px;
   font-weight: 500;
+  width: 100%;
+  position: relative;
+  margin-top: 20px;
+  border-radius: 5px;
+  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
 }

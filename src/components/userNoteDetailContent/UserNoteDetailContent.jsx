@@ -1,89 +1,93 @@
 import "./userNoteDetailContent.css";
 import React from "react";
+import { Link, useParams } from "react-router-dom";
+import { Lock } from "@material-ui/icons";
 
-function UserNoteDetailContent() {
-  const author = "Köpek Kalbi";
-  const bookTitle = "Mihail Bulgakov";
+function UserNoteDetailContent({ note, book, currentUser }) {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER + "books/";
+  const author = book.book_author;
+  const bookTitle = book.book_name;
+  const { username } = useParams();
+
+  const PrivateNoteComp = () => {
+    return (
+      <>
+        <p className="userNoteDetailContentBookTitle">
+          Özel Notlar <Lock />{" "}
+        </p>
+        <div className="userNoteDetailContentBookPrivateNotes">
+          {note.private ? (
+            note.private
+          ) : (
+            <p style={{ color: "red" }}>Henüz özel not eklenmedi.</p>
+          )}
+        </div>
+      </>
+    );
+  };
+
+  const UpdateNoteButtonComp = () => {
+    return (
+      <>
+        <Link to={`/create-note/${book._id}`}>
+          <div className="userNoteDetailContentUpdateButton">Notu Güncelle</div>
+        </Link>
+      </>
+    );
+  };
 
   return (
     <div className="userNoteDetailContentContainer">
       <div className="userNoteDetailContentBookDetail">
+        {currentUser.username === username ? <UpdateNoteButtonComp /> : ""}
         <div className="userNoteDetailContentBookInfo">
           <div className="userNoteDetailContentBookTitles">
             <p className="userNoteDetailContentBookName">
               {bookTitle} - {author}{" "}
             </p>
           </div>
-          <p className="userNoteDetailContentBookPage">150 Sayfa</p>
-          <p className="userNoteDetailContentBookDate">20.02.2000</p>
+          <p className="userNoteDetailContentBookPage">
+            {book.book_page} Sayfa
+          </p>
+          {/* <p className="userNoteDetailContentBookDate">20.02.2000</p> */}
         </div>
-        <div className="userNoteDetailContentBookImg">
-          <img src="/assets/books/book_2.jpg" alt="" />
-        </div>
+        <Link to={`/book/${book._id}`}>
+          <div className="userNoteDetailContentBookImg">
+            <img src={`${PF}${book.book_img}`} alt="" />
+          </div>
+        </Link>
       </div>
       <div className="userNoteDetailContentBookTextContent">
         <p className="userNoteDetailContentBookTitle">Karakterler</p>
         <div className="userNoteDetailContentBookCharacters">
-          Tüm zamanların en sevilen hikâyelerinden biri olan, kırktan fazla dile
-          çevrilen, Oscar ödüllü bir sinema filmi için temel oluşturan ve
-          yirminci yüzyılın en iyi romanlardan biri seçilen Pulitzer ödüllü
-          Bülbülü Öldürmek, Amerika'nın acımasız bir önyargı ile zehirlenmiş
-          güneyinde geçen, sürükleyici, yürek burkan ve dikkat çekici bir büyüme
-          hikâyesi. 
+          {note.character ? (
+            note.character
+          ) : (
+            <p style={{ color: "red" }}>Henüz özet & not eklenmedi.</p>
+          )}
         </div>
 
         <p className="userNoteDetailContentBookTitle">
           Kitabın Özeti & Notları
         </p>
         <div className="userNoteDetailContentBookSummary">
-          Tüm zamanların en sevilen hikâyelerinden biri olan, kırktan fazla dile
-          çevrilen, Oscar ödüllü bir sinema filmi için temel oluşturan ve
-          yirminci yüzyılın en iyi romanlardan biri seçilen Pulitzer ödüllü
-          Bülbülü Öldürmek, Amerika'nın acımasız bir önyargı ile zehirlenmiş
-          güneyinde geçen, sürükleyici, yürek burkan ve dikkat çekici bir büyüme
-          hikâyesi. Büyüleyici güzellikler ve vahşi eşitsizlikler dünyasında
-          haksız yere korkunç bir suçla suçlanan bir “zenci”yi savunmak için her
-          şeyi riske atan bir adamın hikâyesi çocuk kahramanın gözünden
-          anlatılıyor. Şefkat dolu, dramatik ve düşündürücü Bülbülü Öldürmek
-          okurları insan doğasının köklerine; masumiyet ve deneyime, nezaket ve
-          zulme, sevgi ve nefrete, mizah ve pathosa götürüyor. Harper Lee'nin
-          her zaman basit bir aşk hikâyesi olarak gördüğü romanı bugün Amerikan
-          edebiyatının bir şaheseri olarak kabul ediliyor.
+          {note.summary ? (
+            note.summary
+          ) : (
+            <p style={{ color: "red" }}>Henüz özet & not eklenmedi.</p>
+          )}
         </div>
 
         <p className="userNoteDetailContentBookTitle">Kitaptan Alıntılar</p>
         <div className="userNoteDetailContentBookQuotes">
-          Tüm zamanların en sevilen hikâyelerinden biri olan, kırktan fazla dile
-          çevrilen, Oscar ödüllü bir sinema filmi için temel oluşturan ve
-          yirminci yüzyılın en iyi romanlardan biri seçilen Pulitzer ödüllü
-          Bülbülü Öldürmek, Amerika'nın acımasız bir önyargı ile zehirlenmiş
-          güneyinde geçen, sürükleyici, yürek burkan ve dikkat çekici bir büyüme
-          hikâyesi. Büyüleyici güzellikler ve vahşi eşitsizlikler dünyasında
-          haksız yere korkunç bir suçla suçlanan bir “zenci”yi savunmak için her
-          şeyi riske atan bir adamın hikâyesi çocuk kahramanın gözünden
-          anlatılıyor. Şefkat dolu, dramatik ve düşündürücü Bülbülü Öldürmek
-          okurları insan doğasının köklerine; masumiyet ve deneyime, nezaket ve
-          zulme, sevgi ve nefrete, mizah ve pathosa götürüyor. Harper Lee'nin
-          her zaman basit bir aşk hikâyesi olarak gördüğü romanı bugün Amerikan
-          edebiyatının bir şaheseri olarak kabul ediliyor.
+          {note.quote ? (
+            note.quote
+          ) : (
+            <p style={{ color: "red" }}>Henüz alıntı eklenmedi.</p>
+          )}
         </div>
 
-        <p className="userNoteDetailContentBookTitle">Özel Notlar</p>
-        <div className="userNoteDetailContentBookPrivateNotes">
-          Tüm zamanların en sevilen hikâyelerinden biri olan, kırktan fazla dile
-          çevrilen, Oscar ödüllü bir sinema filmi için temel oluşturan ve
-          yirminci yüzyılın en iyi romanlardan biri seçilen Pulitzer ödüllü
-          Bülbülü Öldürmek, Amerika'nın acımasız bir önyargı ile zehirlenmiş
-          güneyinde geçen, sürükleyici, yürek burkan ve dikkat çekici bir büyüme
-          hikâyesi. Büyüleyici güzellikler ve vahşi eşitsizlikler dünyasında
-          haksız yere korkunç bir suçla suçlanan bir “zenci”yi savunmak için her
-          şeyi riske atan bir adamın hikâyesi çocuk kahramanın gözünden
-          anlatılıyor. Şefkat dolu, dramatik ve düşündürücü Bülbülü Öldürmek
-          okurları insan doğasının köklerine; masumiyet ve deneyime, nezaket ve
-          zulme, sevgi ve nefrete, mizah ve pathosa götürüyor. Harper Lee'nin
-          her zaman basit bir aşk hikâyesi olarak gördüğü romanı bugün Amerikan
-          edebiyatının bir şaheseri olarak kabul ediliyor.
-        </div>
+        {username === currentUser.username ? <PrivateNoteComp /> : ""}
       </div>
     </div>
   );

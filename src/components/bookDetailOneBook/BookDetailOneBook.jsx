@@ -30,7 +30,7 @@ const BookDetailOneBook = ({ book, setIsOverlay }) => {
     <div className="bookDetailOneBookContainer">
       <div className="bookDetailOneBookButtons">
         <Link
-          to="/create-note"
+          to={`/create-note/${bookId}`}
           style={{ textDecoration: "none", color: "inherit" }}
         >
           <div className="bookDetailOneBookAddQuoteBtn">Not Ekle</div>

@@ -110,7 +110,8 @@ const UserProfileInfo = ({ user }) => {
     return (
       <div className="website">
         <InsertLink />
-        <Link to={`${user.website}`}>{user.website}</Link>
+        <a href={`${user.website}`}>{user.website}</a>
+        {/* <Link to={`${user.website}`}>{user.website}</Link> */}
       </div>
     );
   };

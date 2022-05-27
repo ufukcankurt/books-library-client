@@ -2,17 +2,49 @@ import "./rightBar.css";
 import { Link } from "react-router-dom";
 import ReadingGoal from "../readingGoal/ReadingGoal";
 import TodayInHistory from "../todayInHistory/TodayInHistory";
-import { useContext } from "react";
 import { AuthContext } from "../../context/authContext/AuthContext";
+import moment from "moment";
+import { useEffect, useState, useContext } from "react";
+import axios from "axios";
 
-const RightBar = ({profile, readingTarget, user}) => {
-  const {user:currentUser} = useContext(AuthContext);
+const RightBar = ({ profile, readingTarget, user }) => {
+  const { user: currentUser } = useContext(AuthContext);
+  const FETCH = process.env.REACT_APP_FETCH_PATH;
+
+  const [quotes, setQuotes] = useState([]);
+
+  // console.log("todayDate", todayDate);
+  // console.log("todayDay", todayDay);
+  // console.log("todayMonth", todayMonth);
+  console.log("date", typeof date);
+
+  useEffect(() => {
+    const todayDate = moment().format()?.split("T")[0];
+    const todayDay = todayDate.split("-")[2];
+    const todayMonth = todayDate.split("-")[1];
+    const date = `${todayMonth}-${todayDay}`;
+    const getQuotes = async () => {
+      const res = await axios.get(`${FETCH}todayInHistory/all/${date}`, {
+        headers: {
+          token: `Bearer ${currentUser.accessToken}`,
+        },
+      });
+      setQuotes(res.data);
+    };
+    getQuotes();
+  }, []);
+
+  console.log("ELİMDEKİ quotes", quotes);
+
   const ProfileRightBar = () => {
     return (
       <div className="rightBarLinkContent">
         <ul>
           <li>
-            <Link to={`/${currentUser.username}/notes`} style={{ textDecoration: "none" }}>
+            <Link
+              to={`/${currentUser.username}/notes`}
+              style={{ textDecoration: "none" }}
+            >
               <div className="rightBarLinksDiv">
                 <img
                   className="rightBarLinkImage"
@@ -36,7 +68,10 @@ const RightBar = ({profile, readingTarget, user}) => {
             </Link>
           </li>
           <li>
-            <Link to={`/${currentUser.username}/reading-goal`} style={{ textDecoration: "none" }}>
+            <Link
+              to={`/${currentUser.username}/reading-goal`}
+              style={{ textDecoration: "none" }}
+            >
               <div className="rightBarLinksDiv">
                 <img
                   className="rightBarLinkImage"
@@ -48,7 +83,10 @@ const RightBar = ({profile, readingTarget, user}) => {
             </Link>
           </li>
           <li>
-            <Link to={`/${currentUser.username}/shelf`} style={{ textDecoration: "none" }}>
+            <Link
+              to={`/${currentUser.username}/shelf`}
+              style={{ textDecoration: "none" }}
+            >
               <div className="rightBarLinksDiv">
                 <img
                   className="rightBarLinkImage"
@@ -60,7 +98,10 @@ const RightBar = ({profile, readingTarget, user}) => {
             </Link>
           </li>
           <li>
-            <Link to={`/${currentUser.username}/shelf/okuyacaklarım`} style={{ textDecoration: "none" }}>
+            <Link
+              to={`/${currentUser.username}/shelf/okuyacaklarım`}
+              style={{ textDecoration: "none" }}
+            >
               <div className="rightBarLinksDiv">
                 <img
                   className="rightBarLinkImage"
@@ -72,7 +113,10 @@ const RightBar = ({profile, readingTarget, user}) => {
             </Link>
           </li>
           <li>
-            <Link to={`/${currentUser.username}/shelf/okuyacaklarım`} style={{ textDecoration: "none" }}>
+            <Link
+              to={`/${currentUser.username}/shelf/okuyacaklarım`}
+              style={{ textDecoration: "none" }}
+            >
               <div className="rightBarLinksDiv">
                 <img
                   className="rightBarLinkImage"
@@ -83,27 +127,31 @@ const RightBar = ({profile, readingTarget, user}) => {
               </div>
             </Link>
           </li>
-          
         </ul>
       </div>
     );
   };
 
   const HomeRightBar = () => {
-      return (
-          <div className="homeRightBarContent">
-              <h2 className="homeRightBarTitle">Tarihte Bugün</h2>
-              <TodayInHistory/>
-              <TodayInHistory/>
-          </div>
-      )
-  }
+    return (
+      <div className="homeRightBarContent">
+        <h2 className="homeRightBarTitle">Tarihte Bugün</h2>
+        {quotes?.map((quote) => (
+          <TodayInHistory quote={quote} />
+        ))}
+
+      </div>
+    );
+  };
 
   return (
     <div className="rightBarContainer">
-        
-      {profile ? <ReadingGoal readingTarget={readingTarget} user={user} /> : <></>}
-      {profile ? <ProfileRightBar /> : <HomeRightBar/>}
+      {profile ? (
+        <ReadingGoal readingTarget={readingTarget} user={user} />
+      ) : (
+        <></>
+      )}
+      {profile ? <ProfileRightBar /> : <HomeRightBar />}
     </div>
   );
 };

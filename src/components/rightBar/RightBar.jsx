@@ -13,11 +13,6 @@ const RightBar = ({ profile, readingTarget, user }) => {
 
   const [quotes, setQuotes] = useState([]);
 
-  // console.log("todayDate", todayDate);
-  // console.log("todayDay", todayDay);
-  // console.log("todayMonth", todayMonth);
-  console.log("date", typeof date);
-
   useEffect(() => {
     const todayDate = moment().format()?.split("T")[0];
     const todayDay = todayDate.split("-")[2];
@@ -33,8 +28,6 @@ const RightBar = ({ profile, readingTarget, user }) => {
     };
     getQuotes();
   }, []);
-
-  console.log("ELİMDEKİ quotes", quotes);
 
   const ProfileRightBar = () => {
     return (

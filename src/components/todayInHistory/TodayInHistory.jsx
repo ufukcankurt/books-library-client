@@ -1,20 +1,33 @@
 import "./todayInHistory.css";
 
-const TodayInHistory = () => {
+const TodayInHistory = ({ quote }) => {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER + "authors/";
+
+  const TodayInHistoryComp = () => {
+    return (
+      <>
+        <div className="todayInHistoryStatus">
+          {quote?.type === "death" ? "Ölüm Yıl Dönümü" : "Doğum Günü"}
+        </div>
+      </>
+    );
+  };
+
   return (
     <div className="todayInHistoryContainer">
-      <div className="todayInHistoryStatus">Ölüm Yıl Dönümü</div>
+      {quote?.type === "quote" ? (
+        <div className="todayInHistoryStatus">Günün Sözü</div>
+      ) : (
+        <TodayInHistoryComp />
+      )}
       <div className="todayInHistoryContent">
         <div className="todayInHistoryImg">
-          <img src="./assets/authors/dostoyevski.jpg" alt="" />
+          <img src={`${PF}${quote.authorImg}`} alt="" />
         </div>
-          <p className="todayInHistoryAuthorName">Fyodor Dostoyevski</p>
+        <p className="todayInHistoryAuthorName">{quote.authorName}</p>
       </div>
 
-      <div className="todayInHistoryQuote">
-        "Oysa nerede o sözünü ettiğiniz mutluluk? Kim kendisinin mutlu olduğunu
-        söyleyebilir?"
-      </div>
+      <div className="todayInHistoryQuote">"{quote.quote}"</div>
     </div>
   );
 };

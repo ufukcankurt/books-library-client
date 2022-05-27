@@ -20,12 +20,14 @@ const BookDetailFeed = ({ book, setIsOverlay }) => {
     getDatas();
   }, [bookId]);
 
+  console.log(notes);
+
   return (
     <div className="bookDetailFeedContainer">
       <BookDetailOneBook setIsOverlay={setIsOverlay} book={book} />
 
       {notes?.map((note) => (
-        <OthersQuotes note={note} />
+        note?.summary ? <OthersQuotes note={note} /> :""
       ))}
     </div>
   );

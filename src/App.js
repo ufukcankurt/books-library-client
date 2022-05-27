@@ -27,6 +27,7 @@ import { useContext } from "react";
 import { AuthContext } from "./context/authContext/AuthContext";
 import { ChakraProvider } from "@chakra-ui/react"
 import CreateNoteDetail from "./pages/createNoteDetail/CreateNoteDetail";
+import NewsCategory from "./pages/newsCategory/NewsCategory";
 
 function App() {
   const user = useContext(AuthContext)
@@ -50,6 +51,7 @@ function App() {
           <Route path="/post/:postId" element={user.user !== null ? <PostDetail /> : <Navigate replace to="/login" />} />
           <Route path="/news" element={user.user !== null ? <News /> : <Navigate replace to="/login" />} />
           <Route path="/news/:newsId" element={user.user !== null ? <NewsDetail /> : <Navigate replace to="/login" />} />
+          <Route path="/news/category/:categoryName" element={user.user !== null ? <NewsCategory /> : <Navigate replace to="/login" />} />
           <Route path="/create-note" element={user.user !== null ? <CreateNote /> : <Navigate replace to="/login" />} />
           <Route path="/create-note/:bookId" element={user.user !== null ? <CreateNoteDetail /> : <Navigate replace to="/login" />} />
         </Routes>

@@ -1,16 +1,15 @@
-import NewsPost from "../newsPost/NewsPost"
-import "./newsFeed.css"
+import NewsPost from "../newsPost/NewsPost";
+import "./newsFeed.css";
 
-const NewsFeed = () => {
-    return (
-        <div className="newsFeedContainer">
-            <h1 className="newsFeedTitle">Haberler</h1>
-            <NewsPost/>
-            <NewsPost/>
-            <NewsPost/>
-            <NewsPost/>
-        </div>
-    )
-}
+const NewsFeed = ({ news }) => {
+  return (
+    <div className="newsFeedContainer">
+      <h1 className="newsFeedTitle">Haberler</h1>
+      {news.map((item) => (
+        <NewsPost news={item} />
+      ))}
+    </div>
+  );
+};
 
-export default NewsFeed
+export default NewsFeed;

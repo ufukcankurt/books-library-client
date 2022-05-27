@@ -28,3 +28,8 @@ body {
 :focus {
   outline: 0;
 }
+
+::selection {
+  background: #DB1F1F;
+  color: #fff;
+}

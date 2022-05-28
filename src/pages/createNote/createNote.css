@@ -8,5 +8,9 @@
 
 .createNoteContent {
   width: 73%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   padding-top: 25px;
+  position: relative;
 }

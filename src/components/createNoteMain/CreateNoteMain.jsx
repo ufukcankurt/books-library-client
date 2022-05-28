@@ -55,16 +55,19 @@ const CreateNoteMain = ({ book, currentBook, currentNote, isExist }) => {
             },
           }
         );
-        res.status === 200 &&
-          navigate(`/${currentUser.username}/notes/${currentNote._id}`);
+        const resUser = await axios.post(`${FETCH}posts`, {userId:currentUser._id, bookId:bookId, type:"quote", desc:noteForm.summary});
+      console.log("resUser",resUser);
+        res.status === 200 && resUser.status === 200 ? navigate(`/${currentUser.username}/notes/${currentNote._id}`) : console.log("error");
+          
       } else {
         const res = await axios.post(`${FETCH}notes/`, noteForm, {
           headers: {
             token: `Bearer ${currentUser.accessToken}`,
           },
         });
-        res.status === 200 &&
-          navigate(`/${currentUser.username}/notes/${res.data._id}`);
+        const resUser = await axios.post(`${FETCH}posts`, {userId:currentUser._id, bookId:bookId, type:"quote", desc:noteForm.summary});
+      console.log("resUser",resUser);
+      res.status === 200 && resUser.status === 200 ? navigate(`/${currentUser.username}/notes/${currentNote._id}`) : console.log("error");
       }
     } catch (error) {
       console.log(error);

@@ -1,6 +1,6 @@
 import "./bookStatusModal.css";
 import { Close } from "@material-ui/icons";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import moment from "moment";
 import axios from "axios";
@@ -18,6 +18,8 @@ const BookStatusModal = ({
   let allBook = [...currentUser.bookShelf];
 
   let bookIndex = allBook.findIndex(o => o.bookId === bookId);
+
+  const textareaRef = useRef()
 
   const [formData, setFormData] = useState({
     bookId: bookId,
@@ -94,6 +96,9 @@ const BookStatusModal = ({
         },
       });
       dispatch({ type: "ADDNEWBOOK", payload: allBook });
+      
+      const res = await axios.post(`${FETCH}posts`, {userId:currentUser._id, bookId:bookId, type:"book", desc:textareaRef.current.value, bookStatus:formData.bookStatus});
+      console.log("res",res);
     } catch (error) {
       console.log(error);
     }
@@ -106,6 +111,9 @@ const BookStatusModal = ({
         <div className="bookStatusModalClose" onClick={handleClick}>
           <Close />
         </div>
+      </div>
+      <div className="bookStatusModalPost">
+        <textarea ref={textareaRef} maxLength="160" name="" id="" placeholder="Düşüncelerini arkadaşlarınla paylaş"></textarea>
       </div>
       <div className="bookStatusModalTopside">
         <div className="bookStatusModalImg">
@@ -209,7 +217,7 @@ const BookStatusModal = ({
           );
         })}
         <p className="bookStatusModalAllShelfWarning">
-          {currentUser.allShelfs?.length === 0 ? "Henüz hiç rafınız yok" : ""}
+          {currentUser.allShelfs?.length === 3 ? "Henüz hiç rafınız yok" : ""}
         </p>
       </div>
       <div onClick={handleSubmit} className="bookStatusModalUpdateButton">

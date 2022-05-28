@@ -4,7 +4,7 @@
   flex-direction: column;
   padding: 15px;
   border-bottom: 1px solid lightgray;
-  background-color: #FFFCF7;
+  background-color: #fffcf7;
 }
 
 .shareTextContent {
@@ -55,4 +55,9 @@
   text-align: center;
   margin-left: auto;
   margin-top: 5px;
+  transition: .2s ease-in-out;
+}
+
+.shareButton:hover {
+  background-color: #f1f1ef
 }

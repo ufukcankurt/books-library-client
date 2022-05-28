@@ -11,6 +11,9 @@ const Home = () => {
       <div className="homeContainer">
         <LeftBar />
         <div className="homeTimeline">
+          <div className="homeTimelineTitle">
+            <h2>Anasayfa</h2>
+          </div>
           <Feed />
         </div>
         <RightBar />

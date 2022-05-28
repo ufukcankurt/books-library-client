@@ -157,6 +157,7 @@ const Post = ({ postDetail, post }) => {
             post.type === "post"
               ? { backgroundColor: "rgba(240, 248, 255, 0.4)" }
               : { backgroundColor: "inherit" }
+              
           }
         >
           <PostTopsideComp />

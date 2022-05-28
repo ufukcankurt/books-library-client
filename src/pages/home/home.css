@@ -1,13 +1,22 @@
-.homeContainer{
-    display: flex;
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
+.homeContainer {
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .homeContainer .homeTimeline {
-    width: 46%;
-    border-right: 1px solid lightgray;
-    border-left: 1px solid lightgray;
-  }
-  
+  width: 46%;
+  border-right: 1px solid lightgray;
+  border-left: 1px solid lightgray;
+}
+
+.homeTimelineTitle {
+  padding: 15px;
+}
+
+.homeTimelineTitle h2 {
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+}

@@ -1,36 +1,22 @@
 import "./nav.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
-import { Search } from "@material-ui/icons";
-import { useRef, useEffect } from "react";
 import { AuthContext } from "../../context/authContext/AuthContext";
+import SearchComp from "../searchComp/SearchComp";
 
 const Nav = () => {
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER+"users/";
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER + "users/";
   const [isClicked, setIsClicked] = useState(false);
-  const [search, setSearch] = useState("");
-  const navSearchRef = useRef()
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
 
-  const navigate = useNavigate()
-
-  const handleSubmit = () => {};
   const handleLogout = () => {
     localStorage.setItem("user", null);
     window.location.reload();
-  }
+  };
 
   const handleClick = (e) => {
     setIsClicked(!isClicked);
   };
-
-  const handleFocus = () => {
-    navSearchRef.current.style.display = "flex"
-  };
-
-  const handleBlur = () => {
-    navSearchRef.current.style.display = "none"
-  }
 
   return (
     <div className="navContainer">
@@ -40,54 +26,37 @@ const Nav = () => {
             <img src="/assets/logouck.png" alt="" />
           </div>
         </Link>
-        <div className="navSearch">
-          <input
-            type="text"
-            id="search_button"
-            name="search_button"
-            placeholder="Uygulamada ara"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            onFocus= {handleFocus}
-            onBlur= {handleBlur}
-          />
-          <button className="searchIcon" onClick={handleSubmit}>
-            <Search />
-          </button>
-          <div ref={navSearchRef} className="navSearchModal">
 
-          </div>
-        </div>
+        <SearchComp message={"Kişi veya kitap ara"} />
+
         <div className="navLinks">
           <ul>
-          <li>
-                <Link to="/" style={{ textDecoration: "none" }}>
-                  <div className="modalDiv">
-                    <img
-                      className="modalImage"
-                      src="/assets/home.png"
-                      alt=""
-                    />
-                    <span className="modalLink">Anasayfa</span>
-                  </div>
-                </Link>
-              </li>
-              <li>
-                <Link to="/news" style={{ textDecoration: "none" }}>
-                  <div className="modalDiv">
-                    <img
-                      className="modalImage"
-                      src="/assets/news_1.png"
-                      alt=""
-                    />
-                    <span className="modalLink">Haberler</span>
-                  </div>
-                </Link>
-              </li>
-              
+            <li>
+              <Link to="/" style={{ textDecoration: "none" }}>
+                <div className="modalDiv">
+                  <img className="modalImage" src="/assets/home.png" alt="" />
+                  <span className="modalLink">Anasayfa</span>
+                </div>
+              </Link>
+            </li>
+            <li>
+              <Link to="/news" style={{ textDecoration: "none" }}>
+                <div className="modalDiv">
+                  <img className="modalImage" src="/assets/news_1.png" alt="" />
+                  <span className="modalLink">Haberler</span>
+                </div>
+              </Link>
+            </li>
           </ul>
           <div className="navProfilePhoto" onClick={handleClick}>
-            <img src={user.profilePicture ? PF + user.profilePicture : PF + "noAvatar.png"} alt="" />
+            <img
+              src={
+                user.profilePicture
+                  ? PF + user.profilePicture
+                  : PF + "noAvatar.png"
+              }
+              alt=""
+            />
           </div>
           <div
             className="navModal"
@@ -95,11 +64,18 @@ const Nav = () => {
           >
             <ul>
               <li>
-                <Link to={`/${user.username}`} style={{ textDecoration: "none" }}>
+                <Link
+                  to={`/${user.username}`}
+                  style={{ textDecoration: "none" }}
+                >
                   <div className="modalDiv">
                     <img
                       className="modalProfilImage"
-                      src={user.profilePicture ? PF + user.profilePicture : PF + "noAvatar.png"}
+                      src={
+                        user.profilePicture
+                          ? PF + user.profilePicture
+                          : PF + "noAvatar.png"
+                      }
                       alt=""
                     />
                     <span className="modalPrivate">{user.fullname}</span>
@@ -119,7 +95,10 @@ const Nav = () => {
                 </Link>
               </li>
               <li>
-                <Link to={`/${user.username}/shelf/Okuduklarım`} style={{ textDecoration: "none" }}>
+                <Link
+                  to={`/${user.username}/shelf/Okuduklarım`}
+                  style={{ textDecoration: "none" }}
+                >
                   <div className="modalDiv">
                     <img
                       className="modalImage"
@@ -131,7 +110,10 @@ const Nav = () => {
                 </Link>
               </li>
               <li>
-                <Link to={`/${user.username}/shelf/Okuyacaklarım`} style={{ textDecoration: "none" }}>
+                <Link
+                  to={`/${user.username}/shelf/Okuyacaklarım`}
+                  style={{ textDecoration: "none" }}
+                >
                   <div className="modalDiv">
                     <img
                       className="modalImage"
@@ -143,7 +125,10 @@ const Nav = () => {
                 </Link>
               </li>
               <li>
-                <Link to={`/${user.username}/reading-goal`} style={{ textDecoration: "none" }}>
+                <Link
+                  to={`/${user.username}/reading-goal`}
+                  style={{ textDecoration: "none" }}
+                >
                   <div className="modalDiv">
                     <img
                       className="modalImage"
@@ -154,9 +139,12 @@ const Nav = () => {
                   </div>
                 </Link>
               </li>
-              <hr className="hrLink"/>
+              <hr className="hrLink" />
               <li>
-                <Link to="/user/profile-settings" style={{ textDecoration: "none" }}>
+                <Link
+                  to="/user/profile-settings"
+                  style={{ textDecoration: "none" }}
+                >
                   <div className="modalDiv">
                     <img
                       className="modalImage"
@@ -168,14 +156,10 @@ const Nav = () => {
                 </Link>
               </li>
               <li>
-                  <div onClick={handleLogout} className="modalDiv">
-                    <img
-                      className="modalImage"
-                      src="/assets/logout.png"
-                      alt=""
-                    />
-                    <span className="modalPrivate">Çıkış Yap</span>
-                  </div>
+                <div onClick={handleLogout} className="modalDiv">
+                  <img className="modalImage" src="/assets/logout.png" alt="" />
+                  <span className="modalPrivate">Çıkış Yap</span>
+                </div>
               </li>
             </ul>
           </div>

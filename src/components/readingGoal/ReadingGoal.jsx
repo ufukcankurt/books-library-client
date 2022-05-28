@@ -20,10 +20,6 @@ const ReadingGoal = ({ users, user, readingTarget}) => {
   const shouldHaveRead = Math.round((soFar / haveToReadPerBook))
   const result = (readLastYearCount - shouldHaveRead)
   
-console.log("percent", percent);
-console.log("readCount", readCount);
-console.log("currentUser.readingTarget", currentUser.readingTarget);
-
   useEffect(()=> {
     const getCount = () => {
       currentUser.bookShelf?.map((book)=> {

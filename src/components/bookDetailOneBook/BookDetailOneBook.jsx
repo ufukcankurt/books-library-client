@@ -70,12 +70,12 @@ const BookDetailOneBook = ({ book, setIsOverlay }) => {
               );
             })}
             <p className="bookDetailOneBookDetailEdition">
-              {book.book_published} - {book.book_publishingHouse} - ({" "}
+              {book.book_published} - {book.book_publishingHouse} - 
               {book.book_firstPublished
-                ? `İlk
-              yayınlanma: ${book.book_firstPublished}`
+                ? `(İlk
+              yayınlanma: ${book.book_firstPublished})-`
                 : ""}
-              ) - {book.book_isbn}
+                {book.book_isbn}
             </p>
           </div>
         </div>

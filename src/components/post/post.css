@@ -46,7 +46,7 @@
   font-size: 15px;
   color: gray;
   margin-left: 15px;
-  margin-top: 5px;
+  margin-top: 7px;
   font-weight: 500;
 }
 
@@ -122,4 +122,12 @@
   font-size: 14px;
   font-weight: 400;
   margin-bottom: 20px;
+}
+
+.singlePostDetailSeeAll{
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  color: red;
+  font-weight: 500;
 }

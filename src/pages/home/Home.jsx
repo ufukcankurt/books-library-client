@@ -4,8 +4,6 @@ import LeftBar from "../../components/leftBar/LeftBar";
 import RightBar from "../../components/rightBar/RightBar";
 import Feed from "../../components/feed/Feed";
 
-
-
 const Home = () => {
   return (
     <div>
@@ -13,7 +11,7 @@ const Home = () => {
       <div className="homeContainer">
         <LeftBar />
         <div className="homeTimeline">
-            <Feed/>
+          <Feed />
         </div>
         <RightBar />
       </div>

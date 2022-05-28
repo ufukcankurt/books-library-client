@@ -11,9 +11,7 @@ const Profile = () => {
   const FETCH = process.env.REACT_APP_FETCH_PATH 
   const  {username}  = useParams();
   const [user, setUser] = useState({});
-
-  console.log("USEPARAMS:", username);
-
+  
   useEffect(() => {
     const fetchUser = async () => {
       const res = await axios.get(`${FETCH}users?username=${username}`);
@@ -21,8 +19,6 @@ const Profile = () => {
     };
     fetchUser();
   }, [username, FETCH]);
-
-  console.log("ELİMDEKİ USER", user);
 
   return (
     <div>

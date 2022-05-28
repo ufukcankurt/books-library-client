@@ -21,11 +21,13 @@ const BookDetailFeed = ({ book, setIsOverlay }) => {
   }, [bookId]);
 
   console.log(notes);
+  console.log(typeof(notes));
 
   return (
     <div className="bookDetailFeedContainer">
       <BookDetailOneBook setIsOverlay={setIsOverlay} book={book} />
-
+      
+    
       {notes?.map((note) => (
         note?.summary ? <OthersQuotes note={note} /> :""
       ))}

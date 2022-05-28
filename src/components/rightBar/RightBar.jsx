@@ -130,7 +130,7 @@ const RightBar = ({ profile, readingTarget, user }) => {
       <div className="homeRightBarContent">
         <h2 className="homeRightBarTitle">Tarihte Bugün</h2>
         {quotes?.map((quote) => (
-          <TodayInHistory quote={quote} />
+          <TodayInHistory key={quote._id} quote={quote} />
         ))}
 
       </div>

@@ -23,7 +23,7 @@ const CurrentlyReadings = () => {
       {currentUser.bookShelf?.map(
         (book) =>
           book.bookStatus === "reading" && (
-            <CurrentBook book={book} setReadingCount={setReadingCount} />
+            <CurrentBook key={book._id} book={book} setReadingCount={setReadingCount} />
           )
       )}
       {readingCount === 0 ? <NoReadingComp /> : ""}

@@ -1,0 +1,18 @@
+.myAlertCompContainer {
+  width: 500px;
+  height: 55px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  background-color: #c6f6d5;
+  padding: 15px;
+}
+
+.myAlertMessage {
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 15px;
+}

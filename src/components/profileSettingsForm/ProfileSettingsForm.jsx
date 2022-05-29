@@ -1,27 +1,164 @@
 import "./profileSettingsForm.css";
+import { ref, uploadBytes, getDownloadURL } from "@firebase/storage";
+import { storage } from "../../firebase";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import MyDatePickerOwn from "../myDatePickerOwn/MyDatePickerOwn";
-import {
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
-} from "@chakra-ui/react";
+import MyAlertComp from "../myAlertComp/MyAlertComp";
 
-const ProfileSettingsForm = ({ user }) => {
-  console.log("JSON:", user);
-  console.log("id:", user._id);
+const ProfileSettingsForm = ({
+  user,
+  image,
+  setImage,
+  coverImage,
+  setCoverImage,
+}) => {
+  const [url, setUrl] = useState(null);
+  const [coverUrl, setCoverUrl] = useState(null);
   const [isSuccess, setIsSuccess] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isImageUpload, setIsImageUpload] = useState(false);
+  const [isCoverImageUpload, setIsCoverImageUpload] = useState(false);
 
   useEffect(() => {});
+
+  const [formData, setFormData] = useState({
+    full_name: user.fullname,
+    education: user.education,
+    job: user.job,
+    city: user.city,
+    website: user.website,
+    bio: user.desc,
+    dob_day: user.dob_day,
+    dob_month: user.dob_month,
+    dob_year: user.dob_year,
+    gender_identity: user.gender,
+    profilePicture: "",
+    coverPicture: "",
+  });
+
+  // UPLOAD THE PROFILE PHOTO TO FIREBASE
+  useEffect(() => {
+    const sendData = async () => {
+      try {
+        if (image) {
+          const imageRef = ref(storage, `/images/${image.name}`);
+          await uploadBytes(imageRef, image)
+            .then(() => {
+              getDownloadURL(imageRef)
+                .then((url) => {
+                  setUrl(url);
+                  setIsImageUpload(true);
+                })
+                .catch((error) => {
+                  console.log("error:", error);
+                });
+            })
+            .catch((error) => {
+              console.log("error:", error);
+            });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    sendData();
+  }, [image]);
+
+  // UPLOAD THE COVER PHOTO TO FIREBASE
+  useEffect(() => {
+    const sendData = async () => {
+      try {
+        if (coverImage) {
+          const imageRef = ref(storage, `/images/${coverImage.name}`);
+          await uploadBytes(imageRef, coverImage)
+            .then(() => {
+              getDownloadURL(imageRef)
+                .then((url) => {
+                  setCoverUrl(url);
+                  setIsCoverImageUpload(true);
+                })
+                .catch((error) => {
+                  console.log("error:", error);
+                });
+            })
+            .catch((error) => {
+              console.log("error:", error);
+            });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    sendData();
+  }, [coverImage]);
+
+  // UPDATE DATABASE ACCORDING TO USER PROFILE PHOTO
+  useEffect(() => {
+    const updateUser = async () => {
+      if (isImageUpload && url) {
+        try {
+          const res = await axios.put(
+            `http://localhost:8000/api/users/${user._id}`,
+            { profilePicture: url },
+            {
+              headers: {
+                token: `Bearer ${user.accessToken}`,
+              },
+            }
+          );
+          console.log("res:", res);
+          setIsSuccess(true);
+          setIsVisible(true);
+          setIsImageUpload(false);
+          setUrl(null);
+          user.profilePicture = url;
+          localStorage.setItem("user", JSON.stringify(user));
+          window.location.reload();
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    };
+    updateUser();
+  }, [isImageUpload]);
+
+  // UPDATE DATABASE ACCORDING TO USER COVER PHOTO
+  useEffect(() => {
+    const updateUser = async () => {
+      if (isCoverImageUpload && coverUrl) {
+        try {
+          const res = await axios.put(
+            `http://localhost:8000/api/users/${user._id}`,
+            { coverPicture: coverUrl },
+            {
+              headers: {
+                token: `Bearer ${user.accessToken}`,
+              },
+            }
+          );
+          console.log("res:", res);
+          setIsSuccess(true);
+          setIsVisible(true);
+          setIsCoverImageUpload(false);
+          setUrl(null);
+          user.coverPicture = coverUrl;
+          localStorage.setItem("user", JSON.stringify(user));
+          window.location.reload();
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    };
+    updateUser();
+  }, [isCoverImageUpload]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const res = await axios.put(
         `http://localhost:8000/api/users/${user._id}`,
-        formData,
+        { formData, profilePicture: url, coverPicture: coverUrl },
         {
           headers: {
             token: `Bearer ${user.accessToken}`,
@@ -39,9 +176,11 @@ const ProfileSettingsForm = ({ user }) => {
       user.dob_month = formData.dob_month;
       user.dob_year = formData.dob_year;
       user.gender = formData.gender_identity;
-      console.log("PLEASE:", user);
       localStorage.setItem("user", JSON.stringify(user));
       res.status === 200 ? setIsSuccess(true) : setIsSuccess(false);
+      res.status === 200 ? setIsVisible(true) : setIsSuccess(false);
+      setImage(null);
+      setCoverImage(null);
     } catch (error) {
       console.log(error);
     }
@@ -58,40 +197,11 @@ const ProfileSettingsForm = ({ user }) => {
     }));
   };
 
-  const [formData, setFormData] = useState({
-    full_name: user.fullname,
-    education: user.education,
-    job: user.job,
-    city: user.city,
-    website: user.website,
-    bio: user.desc,
-    dob_day: user.dob_day,
-    dob_month: user.dob_month,
-    dob_year: user.dob_year,
-    gender_identity: user.gender,
-  });
-
-  console.log("Form:", formData);
-
-  const AlertComponent = ({ danger }) => {
-    return (
-      <>
-        <Alert status={danger ? danger : "success"}>
-          <AlertIcon />
-          <AlertTitle></AlertTitle>
-          <AlertDescription>
-          {danger ? "Bir hata ile karşılaştık!" : "Bilgileriniz Başarıyla Güncellendi!"}
-           
-          </AlertDescription>
-        </Alert>
-      </>
-    );
-  };
-
   return (
     <div className="profileSettingsFormContainer">
       <h2 className="profileSettingsFormTitle">Profili Düzenle</h2>
       <form onSubmit={handleSubmit}>
+        <input type="file" />
         <label htmlFor="full_name">İsim ve Soyisim</label>
         <input
           type="text"
@@ -177,8 +287,14 @@ const ProfileSettingsForm = ({ user }) => {
           />
           <label htmlFor="woman-gender-identity">Kadın</label>
         </div>
-        {isSuccess === true ? <AlertComponent /> : ""}
-        {isSuccess === false ? <AlertComponent danger={"error"} /> : ""}
+        {isVisible === true ? (
+          <MyAlertComp
+            message={"Bilgileriniz Başarıyla Güncellendi!"}
+            setIsVisible={setIsVisible}
+          />
+        ) : (
+          ""
+        )}
         <input
           className="profileSettingsFormButton"
           type="submit"

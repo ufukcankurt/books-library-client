@@ -1,6 +1,7 @@
 .searchContainer {
   max-width: 375px;
   position: relative;
+  z-index: 9999;
   margin-left: -40px;
 }
 

@@ -6,6 +6,7 @@ import { Close } from "@material-ui/icons";
 import { useRef, useEffect } from "react";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import axios from "axios";
+import Overlay from "../overlay/Overlay";
 
 const SearchComp = ({ message, book }) => {
   const FETCH = process.env.REACT_APP_FETCH_PATH;
@@ -13,6 +14,7 @@ const SearchComp = ({ message, book }) => {
   const [search, setSearch] = useState("");
   const [data, setData] = useState([]);
   const searchRef = useRef();
+  const [show, setShow] = useState(false);
 
   const handleClick = (e) => {
     setIsClicked(!isClicked);
@@ -20,6 +22,7 @@ const SearchComp = ({ message, book }) => {
 
   const clearText = () => {
     setSearch("");
+    setShow(false);
   };
 
   const handleFocus = () => {
@@ -28,6 +31,10 @@ const SearchComp = ({ message, book }) => {
 
   const handleBlur = () => {
     searchRef.current.style.display = "none";
+  };
+
+  const overlayClick = () => {
+    setShow(false);
   };
 
   useEffect(() => {
@@ -81,30 +88,45 @@ const SearchComp = ({ message, book }) => {
   console.log("ARAMADAN GELEN search", search);
 
   return (
-    <div className="searchContainer">
-      <input
-        type="text"
-        id="search_button"
-        name="search_button"
-        placeholder={message}
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-      />
-      <button onClick={clearText} className="searchIcon">
-        <Close />
-      </button>
-      <div ref={searchRef} className="searchCompModal">
-        {data.map((item, index) => {
-          if (item.username) {
-            return <ItemUserComp item={item} key={index} />;
-          } else {
-            return <ItemBookComp item={item} key={index} />;
-          }
-        })}
+    <>
+      <div
+        className="overlayContainer"
+        style={{ display: show ? "flex" : "none" }}
+        onClick={overlayClick}
+      >
+        {" "}
       </div>
-    </div>
+      <div className="searchContainer">
+        <input
+          type="text"
+          id="search_button"
+          name="search_button"
+          placeholder={message}
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          // onFocus={handleFocus}
+          onClick={(e) => setShow(true)}
+        />
+        <button onClick={clearText} className="searchIcon">
+          <Close />
+        </button>
+        <div>
+          <div
+            ref={searchRef}
+            className="searchCompModal"
+            style={{ display: show ? "flex" : "none" }}
+          >
+            {data.map((item, index) => {
+              if (item.username) {
+                return <ItemUserComp item={item} key={index} />;
+              } else {
+                return <ItemBookComp item={item} key={index} />;
+              }
+            })}
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

@@ -26,7 +26,7 @@ const Share = ({setIsShare, isShare }) => {
     <div className="shareContainer">
       <div className="shareTextContent">
         <div className="shareUserImg">
-          <img src={`${PF}${currentUser.profilePicture}`} alt="" />
+          <img src={currentUser.profilePicture} alt="" />
         </div>
         <textarea
           ref={shareRef}

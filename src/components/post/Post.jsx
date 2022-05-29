@@ -89,7 +89,7 @@ const Post = ({ postDetail, post }) => {
             style={{ color: "inherit", textDecoration: "none" }}
           >
             <img
-              src={`${PF}users/${user.profilePicture}`}
+              src={user.profilePicture}
               alt=""
               className="postUserImg"
             />

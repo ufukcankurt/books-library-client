@@ -7,7 +7,6 @@ import { AuthContext } from "../../context/authContext/AuthContext";
 const OthersQuotes = ({ note }) => {
   const FETCH = process.env.REACT_APP_FETCH_PATH;
   const PF = process.env.REACT_APP_PUBLIC_FOLDER + "books/";
-  const PFPP = process.env.REACT_APP_PUBLIC_FOLDER + "users/";
   const { user: currentUser } = useContext(AuthContext);
   const { bookId } = useParams();
 
@@ -41,7 +40,7 @@ const OthersQuotes = ({ note }) => {
     <div className="othersQuotesContainer">
       <div className="othersQuotesTopside">
         <div className="othersQuotesUserImg">
-          <img src={`${PFPP}${user.profilePicture}`} alt="" />
+          <img src={user.profilePicture} alt="" />
         </div>
         <div className="othersQuotesUserInfo">
           <div className="othersQuotesNamesContainer">

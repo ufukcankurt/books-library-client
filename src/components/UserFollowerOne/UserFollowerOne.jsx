@@ -4,7 +4,6 @@ import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
 
 const UserFollowerOne = ({ id }) => {
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER + "users/";
   const { user: currentUser, dispatch } = useContext(AuthContext);
 
   const follow = useRef();
@@ -85,21 +84,18 @@ const UserFollowerOne = ({ id }) => {
     <div className="userFollowerOneContainer">
       <div className="userFollowerOneLeftside">
         <div className="userFollowerOneImg">
-          <img
-            src={
-              user.profilePicture
-                ? PF + user.profilePicture
-                : PF + "noAvatar.png"
-            }
-            alt=""
-          />
+          <img src={user.profilePicture} alt="" />
         </div>
         <div className="userFollowerOneInfo">
           <p className="userFollowerOneFullname">{user.fullname}</p>
           <p className="userFollowerOneUsername">@{user.username}</p>
         </div>
       </div>
-      {user.username !== currentUser.username ?<FollowersFollowingsButtonComp /> : ""}
+      {user.username !== currentUser.username ? (
+        <FollowersFollowingsButtonComp />
+      ) : (
+        ""
+      )}
     </div>
   );
 };

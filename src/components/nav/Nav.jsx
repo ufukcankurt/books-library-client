@@ -49,14 +49,7 @@ const Nav = () => {
             </li>
           </ul>
           <div className="navProfilePhoto" onClick={handleClick}>
-            <img
-              src={
-                user.profilePicture
-                  ? PF + user.profilePicture
-                  : PF + "noAvatar.png"
-              }
-              alt=""
-            />
+            <img src={user.profilePicture} alt="" />
           </div>
           <div
             className="navModal"
@@ -71,11 +64,7 @@ const Nav = () => {
                   <div className="modalDiv">
                     <img
                       className="modalProfilImage"
-                      src={
-                        user.profilePicture
-                          ? PF + user.profilePicture
-                          : PF + "noAvatar.png"
-                      }
+                      src={user.profilePicture}
                       alt=""
                     />
                     <span className="modalPrivate">{user.fullname}</span>

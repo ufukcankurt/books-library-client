@@ -9,6 +9,7 @@ import axios from "axios";
 import Overlay from "../overlay/Overlay";
 
 const SearchComp = ({ message, book }) => {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER + "books/";
   const FETCH = process.env.REACT_APP_FETCH_PATH;
   const [isClicked, setIsClicked] = useState(false);
   const [search, setSearch] = useState("");
@@ -54,7 +55,7 @@ const SearchComp = ({ message, book }) => {
         <Link to={`/${item.username}`}>
           <div className="itemUserComp">
             <div className="itemUserImg">
-              <img src="/assets/users/ufukcankurt.jpg" alt="" />
+              <img src={item.profilePicture} alt="" />
             </div>
             <div className="itemUserInfo">
               <div className="itemUserName">{item.fullname}</div>
@@ -72,7 +73,7 @@ const SearchComp = ({ message, book }) => {
         <Link to={book ? `/create-note/${item._id}` : `/book/${item._id}`}>
           <div className="itemBookComp">
             <div className="itemBookImg">
-              <img src="/assets/books/ermis.jpg" alt="" />
+              <img src={`${PF}${item.book_img}`} alt="" />
             </div>
             <div className="itemBookInfo">
               <div className="itemBookName">{item.book_name}</div>

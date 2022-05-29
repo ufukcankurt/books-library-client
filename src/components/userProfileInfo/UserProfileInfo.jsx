@@ -141,18 +141,8 @@ const UserProfileInfo = ({ user }) => {
   return (
     <div className="UserProfileInfoContainer">
       <div className="coverPhotoContainer">
-        <img
-          className="coverPhoto"
-          src={user.coverPicture ? PF + user.coverPicture : PF + "noCover.jpg"}
-          alt=""
-        />
-        <img
-          src={
-            user.profilePicture ? PF + user.profilePicture : PF + "noAvatar.png"
-          }
-          alt=""
-          className="profilePhoto"
-        />
+        <img className="coverPhoto" src={user.coverPicture} alt="" />
+        <img src={user.profilePicture} alt="" className="profilePhoto" />
       </div>
       <div className="settingsContainer">
         {user.username === currentUser.username ? (

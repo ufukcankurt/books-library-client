@@ -9,7 +9,7 @@ import { AuthContext } from "../../context/authContext/AuthContext";
 import Overlay from "../../components/overlay/Overlay";
 
 const BookDetail = () => {
-  const FETCH = process.env.REACT_APP_FETCH_PATH 
+  const FETCH = process.env.REACT_APP_FETCH_PATH;
   const { user: currentUser } = useContext(AuthContext);
   const { bookId } = useParams();
   const [book, setBook] = useState({});
@@ -18,14 +18,11 @@ const BookDetail = () => {
   useEffect(() => {
     try {
       const getBook = async () => {
-        const res = await axios.get(
-          `${FETCH}books/${bookId}`,
-          {
-            headers: {
-              token: `Bearer ${currentUser.accessToken}`,
-            },
-          }
-        );
+        const res = await axios.get(`${FETCH}books/${bookId}`, {
+          headers: {
+            token: `Bearer ${currentUser.accessToken}`,
+          },
+        });
         setBook(res.data);
       };
       getBook();

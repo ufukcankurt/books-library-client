@@ -3,7 +3,7 @@ import BookShelf from "../bookShelf/BookShelf";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
-import AlertComp from "../alertComp/AlertComp";
+import MyAlertComp from "../myAlertComp/MyAlertComp";
 
 const BooksFeed = ({ user }) => {
   const FETCH = process.env.REACT_APP_FETCH_PATH;
@@ -65,7 +65,7 @@ const BooksFeed = ({ user }) => {
   return (
     <div className="booksFeedContainer">
       {status === 200 ? (
-        <AlertComp status="success" message={successMessage} />
+        <MyAlertComp message={successMessage}/>
       ) : (
         ""
       )}

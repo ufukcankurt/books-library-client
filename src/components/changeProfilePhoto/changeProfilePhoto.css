@@ -34,37 +34,53 @@
   border-radius: 50%;
 }
 
-.changeProfilePhotoCoverBtn{
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    z-index: 99;
-    top: 42%;
-    left: 45%;
-    padding: 13px;
-    background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 50%;
+.changeProfilePhotoCoverBtn {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 99;
+  top: 42%;
+  left: 45%;
+  /* padding: 13px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%; */
 }
 
 .changeProfilePhotoMainBtn{
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    z-index: 99;
-    left: 40px;
-    bottom: 40px;   
-    padding: 13px;
-    background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 99;
+  left: 40px;
+  bottom: 40px;
+  /* padding: 13px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%; */
 }
 
 .changeProfilePhotoCoverBtn svg,
-.changeProfilePhotoMainBtn svg{
-    width: 20px;
-    height: 20px;
-    color: white;
+.changeProfilePhotoMainBtn svg {
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+
+.changeProfilePhotoMainBtn {
+}
+
+.changeProfilePhotoMainBtn label,
+.changeProfilePhotoCoverBtn label {
+  cursor: pointer;
+  padding: 13px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+}
+
+.changeProfilePhotoMainBtn input,
+.changeProfilePhotoCoverBtn input {
+  display: none;
 }

@@ -20,6 +20,10 @@ const Profile = () => {
     fetchUser();
   }, [username, FETCH]);
 
+  useEffect(()=> {
+    document.title = `${user.fullname}'s Profile`
+  }, [user])
+
   return (
     <div>
       <Nav />

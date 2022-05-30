@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import MyAlertComp from "../../components/myAlertComp/MyAlertComp";
+import RegisterSchema from "../../validations";
 
 const RegisterForm = () => {
   const FETCH = process.env.REACT_APP_FETCH_PATH;
@@ -10,10 +11,14 @@ const RegisterForm = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isError, setIsError] = useState(false);
   const [message, setMessage] = useState("");
+  const [formError, setFormError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const isValid = await RegisterSchema.validate(formData).catch((err) => {setFormError(err.errors[0].message)});
+    console.log("IS VALID", formError);
+    console.log("IS VALID EK", formError.errors);
     try {
       await axios
         .post(`${FETCH}auth/register`, { formData })

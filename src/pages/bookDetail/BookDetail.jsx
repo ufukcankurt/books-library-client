@@ -25,7 +25,9 @@ const BookDetail = () => {
       },
     });
     setBook(res.data);
-    setIsLoading(false);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   };
 
   useEffect(() => {

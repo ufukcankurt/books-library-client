@@ -18,7 +18,9 @@ const UserBooks = () => {
     setIsLoading(true);
     const res = await axios.get(`${FETCH}users?username=${username}`);
     setUser(res.data);
-    setIsLoading(false);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   };
 
   useEffect(() => {

@@ -18,7 +18,9 @@ const UserShelf = () => {
     setIsLoading(true);
     const res = await axios.get(`${FETCH}users?username=${username}`);
     setUser(res.data);
-    setIsLoading(false);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   };
 
   useEffect(() => {
@@ -31,11 +33,9 @@ const UserShelf = () => {
       <div className="userShelfContainer">
         <div className="userShelfTimeline">
           {isLoading ? <LoadingComp /> : <UserProfileInfo user={user} />}
-          {isLoading ? (
-            <LoadingComp />
-          ) : (
+         
             <UserShelfFeed user={user} shelfName={shelfId} />
-          )}
+     
         </div>
         <RightBar profile />
       </div>

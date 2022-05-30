@@ -21,7 +21,9 @@ const UserFollowings = () => {
       `http://localhost:8000/api/users?username=${username}`
     );
     setUser(res.data);
-    setIsLoading(false);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   };
 
   useEffect(() => {

@@ -18,26 +18,34 @@ const Profile = () => {
     setIsLoading(true);
     const res = await axios.get(`${FETCH}users?username=${username}`);
     setUser(res.data);
-    setIsLoading(false);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   };
 
   useEffect(() => {
     fetchUser();
-    
   }, [username, FETCH]);
 
   useEffect(() => {
     document.title = `${user.fullname}'s Profile`;
   }, [user]);
 
+  const MainComp = () => {
+    return (
+      <>
+        <UserProfileInfo user={user} />
+        <Feed user={user} />
+      </>
+    );
+  };
+
   return (
     <div>
       <Nav />
       <div className="profileContainer">
         <div className="profileTimeline">
-          {/* <LoadingComp/> */}
-          {isLoading ? <LoadingComp /> : <UserProfileInfo user={user} />}
-          {isLoading ? <LoadingComp /> : <Feed user={user} />}
+          {isLoading ? <LoadingComp /> : <MainComp />}
         </div>
         <RightBar profile />
       </div>

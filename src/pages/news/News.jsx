@@ -15,7 +15,9 @@ const News = () => {
     setIsLoading(true);
     const res = await axios.get(`${FETCH}news/all/news`);
     setNews(res.data);
-    setIsLoading(false);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   };
 
   useEffect(() => {

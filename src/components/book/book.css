@@ -40,6 +40,7 @@
     max-height: 40px;
     font-size: 16px;
     font-weight: 700;
+    text-transform: capitalize;
 }
 
 .bookBookAuthor{
@@ -52,6 +53,7 @@
     font-weight: 500;
     margin-top: 5px;
     color: gray;
+    text-transform: capitalize;
 }
 
 .bookBookPages{

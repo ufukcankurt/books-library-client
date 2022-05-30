@@ -20,7 +20,9 @@ const PostDetail = () => {
     setIsLoading(true);
     const res = await axios.get(`${FETCH}posts/${postId}`);
     setPost(res.data);
-    setIsLoading(false);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   };
 
   useEffect(() => {

@@ -7,13 +7,15 @@ import { useEffect, useState } from "react";
 import LoadingComp from "../../components/loadingComp/LoadingComp";
 
 const Home = () => {
-   const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(()=> {
-    setIsLoading(true)
-    document.title = `Anasayfa - Uck Books`
-    setIsLoading(false)
-  }, [])
+  useEffect(() => {
+    setIsLoading(true);
+    document.title = `Anasayfa - Uck Books`;
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  }, []);
 
   return (
     <div>
@@ -24,7 +26,7 @@ const Home = () => {
           <div className="homeTimelineTitle">
             <h2>Anasayfa</h2>
           </div>
-          {isLoading ? <LoadingComp/> :  <Feed />}
+          {isLoading ? <LoadingComp /> : <Feed />}
         </div>
         <RightBar />
       </div>

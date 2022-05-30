@@ -96,7 +96,7 @@ const RightBar = ({ profile, readingTarget, user }) => {
           </li>
           <li>
             <Link
-              to={`/${currentUser.username}/shelf/okuyacaklarım`}
+              to={`/${currentUser.username}/shelf/Okuduklarım`}
               style={{ textDecoration: "none" }}
             >
               <div className="rightBarLinksDiv">
@@ -111,7 +111,7 @@ const RightBar = ({ profile, readingTarget, user }) => {
           </li>
           <li>
             <Link
-              to={`/${currentUser.username}/shelf/okuyacaklarım`}
+              to={`/${currentUser.username}/shelf/Okuyacaklarım`}
               style={{ textDecoration: "none" }}
             >
               <div className="rightBarLinksDiv">

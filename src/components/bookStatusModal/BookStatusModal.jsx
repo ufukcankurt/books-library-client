@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import moment from "moment";
 import axios from "axios";
+import MyAlertComp from "../myAlertComp/MyAlertComp";
+import LoadingComp from "../loadingComp/LoadingComp";
 
 const BookStatusModal = ({
   setIsClicked,
@@ -16,6 +18,8 @@ const BookStatusModal = ({
   const FETCH = process.env.REACT_APP_FETCH_PATH;
   const { bookId } = useParams();
   let allBook = [...currentUser.bookShelf];
+  const [isVisible, setIsVisible] = useState(false);
+  const [isFetching, setIsFetching] = useState(false);
 
   let bookIndex = allBook.findIndex((o) => o.bookId === bookId);
 
@@ -89,6 +93,7 @@ const BookStatusModal = ({
   const handleSubmit = async (e) => {
     e.preventDefault();
     await setAllBooks();
+    setIsFetching(true);
     try {
       await axios.put(`${FETCH}users/${currentUser._id}/book`, formData, {
         headers: {
@@ -100,19 +105,15 @@ const BookStatusModal = ({
       if (formData.bookStatus !== "" || textareaRef.current.value !== "") {
         await axios.post(`${FETCH}posts`, {
           userId: currentUser._id,
-          userImg: currentUser.profilePicture,
-          userUsername: currentUser.username,
-          userFullname: currentUser.fullname,
           bookId: bookId,
-          bookImg: book.book_img,
-          bookName: book.book_name,
-          bookAuthor: book.book_author,
           bookPage: book.book_page,
           type: "book",
           desc: textareaRef.current.value,
           bookStatus: formData.bookStatus,
         });
       }
+      setIsFetching(false);
+      setIsVisible(true);
     } catch (error) {
       console.log(error);
     }
@@ -120,6 +121,14 @@ const BookStatusModal = ({
 
   return (
     <div className="bookStatusModalContainer">
+      {isVisible === true ? (
+        <MyAlertComp
+          message={"Başarıyla güncellendi!"}
+          setIsVisible={setIsVisible}
+        />
+      ) : (
+        ""
+      )}
       <div className="bookStatusTopContainer">
         <h2 className="bookStatusModalTitle">KİTAP DURUMUNU GÜNCELLE</h2>
         <div className="bookStatusModalClose" onClick={handleClick}>
@@ -240,8 +249,10 @@ const BookStatusModal = ({
           {currentUser.allShelfs?.length === 3 ? "Henüz hiç rafınız yok" : ""}
         </p>
       </div>
-      <div onClick={handleSubmit} className="bookStatusModalUpdateButton">
-        Kaydet
+      <div className="bookStatusModalSubmitButtonContainer">
+        <button onClick={handleSubmit} className="bookStatusModalUpdateButton">
+          {isFetching ? <LoadingComp button /> : "Kaydet"}
+        </button>
       </div>
     </div>
   );

@@ -23,6 +23,8 @@ const ProfileSettingsForm = ({
 
   useEffect(() => {});
 
+  console.log("USER", user);
+
   const [formData, setFormData] = useState({
     full_name: user.fullname,
     education: user.education,
@@ -34,8 +36,8 @@ const ProfileSettingsForm = ({
     dob_month: user.dob_month,
     dob_year: user.dob_year,
     gender_identity: user.gender,
-    profilePicture: "",
-    coverPicture: "",
+    profilePicture:user.profilePicture,
+    coverPicture: user.coverPicture,
   });
 
   // UPLOAD THE PROFILE PHOTO TO FIREBASE
@@ -160,7 +162,18 @@ const ProfileSettingsForm = ({
     try {
       const res = await axios.put(
         `${FETCH}users/${user._id}`,
-        { formData },
+        { 
+          fullname: formData.full_name,
+          education: formData.education,
+          job: formData.job,
+          city: formData.city,
+          website: formData.website,
+          desc: formData.bio,
+          dob_day: formData.dob_day,
+          dob_month: formData.dob_month,
+          dob_year: formData.dob_year,
+          gender: formData.gender_identity
+         },
         {
           headers: {
             token: `Bearer ${user.accessToken}`,

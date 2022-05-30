@@ -15,6 +15,8 @@ const Post = ({ postDetail, post }) => {
   const [book, setBook] = useState({});
   timeago.register("tr", tr);
 
+  console.log("BOOK",book);
+
   useEffect(() => {
     const getDatas = async () => {
       if (post.type === "post") {
@@ -73,11 +75,11 @@ const Post = ({ postDetail, post }) => {
       <div className="postTopside">
         <div className="postUserInfo">
           <Link
-            to={`/${post.userUsername}`}
+            to={`/${user.username}`}
             style={{ color: "inherit", textDecoration: "none" }}
           >
             <img
-              src={post.userImg}
+              src={user.profilePicture}
               alt=""
               className="postUserImg"
             />
@@ -87,8 +89,8 @@ const Post = ({ postDetail, post }) => {
               to="/ufukcankurt"
               style={{ color: "inherit", textDecoration: "none" }}
             >
-              <p className="postUserFullname">{post.userFullname}</p>
-              <p className="postUserUsername">@{post.userUsername}</p>
+              <p className="postUserFullname">{user.fullname}</p>
+              <p className="postUserUsername">@{user.username}</p>
             </Link>
           </div>
           <p className="postTimeago">
@@ -110,22 +112,22 @@ const Post = ({ postDetail, post }) => {
     return (
       <>
         <Link
-          to={`/book/${post.bookId}`}
+          to={`/book/${book._id}`}
           style={{ color: "inherit", textDecoration: "none" }}
         >
           <div className="postBookContainer">
             <div className="postBookImgDiv">
               <img
-                src={`${PF}books/${post.bookImg}`}
+                src={`${PF}books/${book.book_img}`}
                 alt=""
                 className="postBookImg"
               />
             </div>
 
             <div className="postBookInfo">
-              <p className="postBookName">{post.bookName}</p>
-              <p className="postBookAuthor">{post.bookAuthor}</p>
-              <p className="postBookPages">{post.bookPage} Sayfa</p>
+              <p className="postBookName">{book.book_name}</p>
+              <p className="postBookAuthor">{book.book_author}</p>
+              <p className="postBookPages">{book.book_page} Sayfa</p>
             </div>
           </div>
         </Link>

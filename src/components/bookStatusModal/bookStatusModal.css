@@ -3,7 +3,7 @@
   position: fixed;
   z-index: 9999;
   top: 6%;
-  left: 37.7%;
+  left: 36.3%;
   background-color: lightgray;
   padding: 20px;
   border-radius: 10px;
@@ -211,4 +211,9 @@
   border: solid 2px rgb(221, 39, 22);
   background-color: rgb(210, 62, 48);
   color: white;
+}
+
+.bookStatusModalSubmitButtonContainer{
+  display: flex;
+  justify-content: flex-end;
 }

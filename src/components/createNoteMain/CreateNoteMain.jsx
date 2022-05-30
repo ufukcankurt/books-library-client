@@ -75,14 +75,7 @@ const CreateNoteMain = ({ book, currentBook, currentNote, isExist }) => {
         });
         const resUser = await axios.post(`${FETCH}posts`, {
           userId: currentUser._id,
-          userImg: currentUser.profilePicture,
-          userUsername: currentUser.username,
-          userFullname: currentUser.fullname,
           bookId: bookId,
-          bookImg: book.book_img,
-          bookName: book.book_name,
-          bookAuthor: book.book_author,
-          bookPage: book.book_page,
           type: "quote",
           desc: noteForm.summary,
         });

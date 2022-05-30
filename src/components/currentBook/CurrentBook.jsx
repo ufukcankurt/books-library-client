@@ -7,6 +7,7 @@ const CurrentBook = ({book, setReadingCount}) => {
     useEffect(()=> {
         setReadingCount((prev) => prev + 1)
     },[])
+    console.log("BOOK",book);
     return (
         <div className="CurrentBookContainer">
             <Link to={`/book/${book.bookId}`}>

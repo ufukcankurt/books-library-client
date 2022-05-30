@@ -42,7 +42,7 @@ const ProfileSettingsForm = ({
     const sendData = async () => {
       try {
         if (image) {
-          const imageRef = ref(storage, `/images/${image.name}`);
+          const imageRef = ref(storage, `/images/${Date.now()}_${image.name}`);
           await uploadBytes(imageRef, image)
             .then(() => {
               getDownloadURL(imageRef)
@@ -70,7 +70,7 @@ const ProfileSettingsForm = ({
     const sendData = async () => {
       try {
         if (coverImage) {
-          const imageRef = ref(storage, `/images/${coverImage.name}`);
+          const imageRef = ref(storage, `/images/${Date.now()}_${coverImage.name}`);
           await uploadBytes(imageRef, coverImage)
             .then(() => {
               getDownloadURL(imageRef)
@@ -158,7 +158,7 @@ const ProfileSettingsForm = ({
     try {
       const res = await axios.put(
         `http://localhost:8000/api/users/${user._id}`,
-        { formData, profilePicture: url, coverPicture: coverUrl },
+        { formData },
         {
           headers: {
             token: `Bearer ${user.accessToken}`,
@@ -201,7 +201,6 @@ const ProfileSettingsForm = ({
     <div className="profileSettingsFormContainer">
       <h2 className="profileSettingsFormTitle">Profili Düzenle</h2>
       <form onSubmit={handleSubmit}>
-        <input type="file" />
         <label htmlFor="full_name">İsim ve Soyisim</label>
         <input
           type="text"

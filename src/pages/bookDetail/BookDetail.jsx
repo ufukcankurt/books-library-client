@@ -7,6 +7,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import Overlay from "../../components/overlay/Overlay";
+import LoadingComp from "../../components/loadingComp/LoadingComp";
 
 const BookDetail = () => {
   const FETCH = process.env.REACT_APP_FETCH_PATH;
@@ -14,17 +15,21 @@ const BookDetail = () => {
   const { bookId } = useParams();
   const [book, setBook] = useState({});
   const [isOverlay, setIsOverlay] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const getBook = async () => {
+    setIsLoading(true);
+    const res = await axios.get(`${FETCH}books/${bookId}`, {
+      headers: {
+        token: `Bearer ${currentUser.accessToken}`,
+      },
+    });
+    setBook(res.data);
+    setIsLoading(false);
+  };
 
   useEffect(() => {
     try {
-      const getBook = async () => {
-        const res = await axios.get(`${FETCH}books/${bookId}`, {
-          headers: {
-            token: `Bearer ${currentUser.accessToken}`,
-          },
-        });
-        setBook(res.data);
-      };
       getBook();
     } catch (error) {
       console.log(error);
@@ -37,7 +42,11 @@ const BookDetail = () => {
       <Nav />
       <div className="bookDetailContainer">
         <div className="bookDetailTimeline">
-          <BookDetailFeed setIsOverlay={setIsOverlay} book={book} />
+          {isLoading ? (
+            <LoadingComp />
+          ) : (
+            <BookDetailFeed setIsOverlay={setIsOverlay} book={book} />
+          )}
         </div>
         <RightBar profile />
       </div>

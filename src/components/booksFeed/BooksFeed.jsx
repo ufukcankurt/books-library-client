@@ -35,7 +35,7 @@ const BooksFeed = ({ user }) => {
     }
 
     if (allShelf.includes(newShelf)) {
-      setMessage("Zaten bu raf mevcut");
+      setMessage("Bu raf zaten mevcut!");
       setIsError(true);
       return setIsVisible(true);
     }

@@ -3,12 +3,16 @@ import Nav from "../../components/nav/Nav";
 import LeftBar from "../../components/leftBar/LeftBar";
 import RightBar from "../../components/rightBar/RightBar";
 import Feed from "../../components/feed/Feed";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import LoadingComp from "../../components/loadingComp/LoadingComp";
 
 const Home = () => {
+   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(()=> {
+    setIsLoading(true)
     document.title = `Anasayfa - Uck Books`
+    setIsLoading(false)
   }, [])
 
   return (
@@ -20,7 +24,7 @@ const Home = () => {
           <div className="homeTimelineTitle">
             <h2>Anasayfa</h2>
           </div>
-          <Feed />
+          {isLoading ? <LoadingComp/> :  <Feed />}
         </div>
         <RightBar />
       </div>

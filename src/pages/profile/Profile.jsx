@@ -6,31 +6,38 @@ import Feed from "../../components/feed/Feed";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import LoadingComp from "../../components/loadingComp/LoadingComp";
 
 const Profile = () => {
-  const FETCH = process.env.REACT_APP_FETCH_PATH 
-  const  {username}  = useParams();
+  const FETCH = process.env.REACT_APP_FETCH_PATH;
+  const { username } = useParams();
   const [user, setUser] = useState({});
-  
+  const [isLoading, setIsLoading] = useState(false);
+
+  const fetchUser = async () => {
+    setIsLoading(true);
+    const res = await axios.get(`${FETCH}users?username=${username}`);
+    setUser(res.data);
+    setIsLoading(false);
+  };
+
   useEffect(() => {
-    const fetchUser = async () => {
-      const res = await axios.get(`${FETCH}users?username=${username}`);
-      setUser(res.data);
-    };
     fetchUser();
+    
   }, [username, FETCH]);
 
-  useEffect(()=> {
-    document.title = `${user.fullname}'s Profile`
-  }, [user])
+  useEffect(() => {
+    document.title = `${user.fullname}'s Profile`;
+  }, [user]);
 
   return (
     <div>
       <Nav />
       <div className="profileContainer">
         <div className="profileTimeline">
-          <UserProfileInfo user={user} />
-          <Feed user={user} />
+          {/* <LoadingComp/> */}
+          {isLoading ? <LoadingComp /> : <UserProfileInfo user={user} />}
+          {isLoading ? <LoadingComp /> : <Feed user={user} />}
         </div>
         <RightBar profile />
       </div>

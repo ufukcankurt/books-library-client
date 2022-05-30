@@ -6,17 +6,22 @@ import BooksFeed from "../../components/booksFeed/BooksFeed";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import LoadingComp from "../../components/loadingComp/LoadingComp";
 
 const UserBooks = () => {
   const { username } = useParams();
   const [user, setUser] = useState({});
   const FETCH = process.env.REACT_APP_FETCH_PATH;
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchUser = async () => {
+    setIsLoading(true);
+    const res = await axios.get(`${FETCH}users?username=${username}`);
+    setUser(res.data);
+    setIsLoading(false);
+  };
 
   useEffect(() => {
-    const fetchUser = async () => {
-      const res = await axios.get(`${FETCH}users?username=${username}`);
-      setUser(res.data);
-    };
     fetchUser();
   }, [username, FETCH]);
 
@@ -25,8 +30,8 @@ const UserBooks = () => {
       <Nav />
       <div className="userBooksContainer">
         <div className="userBooksTimeline">
-          <UserProfileInfo user={user} />
-          <BooksFeed user={user} />
+          {isLoading ? <LoadingComp /> : <UserProfileInfo user={user} />}
+          {isLoading ? <LoadingComp /> : <BooksFeed user={user} />}
         </div>
         <RightBar profile />
       </div>

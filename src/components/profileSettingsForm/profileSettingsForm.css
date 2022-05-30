@@ -72,6 +72,7 @@
 }
 
 .profileSettingsFormContainer form input[type="submit"]:hover {
+  cursor: pointer;
   background-color: rgb(235, 235, 235);
 }
 

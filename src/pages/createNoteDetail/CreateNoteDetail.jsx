@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
+import LoadingComp from "../../components/loadingComp/LoadingComp";
 
 const CreateNoteDetail = () => {
   const FETCH = process.env.REACT_APP_FETCH_PATH;
@@ -17,19 +18,23 @@ const CreateNoteDetail = () => {
   const [allNotes, setAllNotes] = useState([]);
   const [isExist, setIsExist] = useState(false);
   const [currentNote, setCurrentNote] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  const getAllNotes = async () => {
+    setIsLoading(true);
+    const res = await axios.get(
+      `${FETCH}notes/profile/${currentUser.username}`,
+      {
+        headers: {
+          token: `Bearer ${currentUser.accessToken}`,
+        },
+      }
+    );
+    setAllNotes(res.data);
+    setIsLoading(false);
+  };
 
   useEffect(() => {
-    const getAllNotes = async () => {
-      const res = await axios.get(
-        `${FETCH}notes/profile/${currentUser.username}`,
-        {
-          headers: {
-            token: `Bearer ${currentUser.accessToken}`,
-          },
-        }
-      );
-      setAllNotes(res.data);
-    };
     getAllNotes();
   }, [bookId]);
 
@@ -65,12 +70,17 @@ const CreateNoteDetail = () => {
     <>
       <Nav />
       <div className="createNoteDetailContainer">
-        <CreateNoteFeed
-          currentNote={currentNote}
-          isExist={isExist}
-          book={book}
-          currentBook={currentBook}
-        />
+        {isLoading ? (
+          <LoadingComp />
+        ) : (
+          <CreateNoteFeed
+            currentNote={currentNote}
+            isExist={isExist}
+            book={book}
+            currentBook={currentBook}
+          />
+        )}
+
         <RightBar profile />
       </div>
     </>

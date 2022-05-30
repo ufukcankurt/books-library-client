@@ -6,14 +6,17 @@ import { AuthContext } from "../../context/authContext/AuthContext";
 import moment from "moment";
 import { useEffect, useState, useContext } from "react";
 import axios from "axios";
+import LoadingComp from "../loadingComp/LoadingComp";
 
 const RightBar = ({ profile, readingTarget, user }) => {
   const { user: currentUser } = useContext(AuthContext);
   const FETCH = process.env.REACT_APP_FETCH_PATH;
 
   const [quotes, setQuotes] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     const todayDate = moment().format()?.split("T")[0];
     const todayDay = todayDate.split("-")[2];
     const todayMonth = todayDate.split("-")[1];
@@ -27,6 +30,7 @@ const RightBar = ({ profile, readingTarget, user }) => {
       setQuotes(res.data);
     };
     getQuotes();
+    setIsLoading(false);
   }, []);
 
   const ProfileRightBar = () => {
@@ -132,13 +136,13 @@ const RightBar = ({ profile, readingTarget, user }) => {
         {quotes?.map((quote) => (
           <TodayInHistory key={quote._id} quote={quote} />
         ))}
-
       </div>
     );
   };
 
   return (
     <div className="rightBarContainer">
+      {isLoading ? <LoadingComp /> : <></>}
       {profile ? (
         <ReadingGoal readingTarget={readingTarget} user={user} />
       ) : (

@@ -89,9 +89,11 @@
 .postBookName {
   font-size: 18px;
   font-weight: 700;
+  text-transform: capitalize;
 }
 
 .postBookAuthor {
+  text-transform: capitalize;
   font-size: 17px;
   font-weight: 500;
   margin-top: 5px;

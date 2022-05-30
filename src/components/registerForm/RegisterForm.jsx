@@ -1,27 +1,36 @@
 import "./registerForm.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import MyDatePickerOwn from "../myDatePickerOwn/MyDatePickerOwn";
-
-// "http://localhost:8000/api/auth/register"
+import MyAlertComp from "../../components/myAlertComp/MyAlertComp";
 
 const RegisterForm = () => {
+  const FETCH = process.env.REACT_APP_FETCH_PATH;
   const [status, setStatus] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // const res = await axios.post("http://localhost:8000/api/auth/register",  formData )
-
       await axios
-        .post("http://localhost:8000/api/auth/register", { formData })
+        .post(`${FETCH}auth/register`, { formData })
         .then((response) => setStatus(response.status));
+      setMessage("Başarıyla kayıt oldunuz.");
+      setIsVisible(true);
+
+      setTimeout(() => {
+        navigate("/login");
+      }, 1500);
     } catch (error) {
+      setMessage(error.response.data.message);
+      setIsVisible(true);
+      setIsError(true);
       console.log(error);
     }
   };
-  console.log("state'deki status:", typeof(status) );
 
   const handleChange = (e) => {
     const value =
@@ -52,12 +61,16 @@ const RegisterForm = () => {
       <form onSubmit={handleSubmit}>
         <div className="registerFormTitle">
           <h3>Kayıt Ol</h3>
-          {status === 200 ? (
-            <h4 style={{ color: "red" }}>Başarılı bir şekilde kayıt olundu.</h4>
+          {isVisible === true ? (
+            <MyAlertComp
+              danger={isError ? "danger" : ""}
+              message={message}
+              setIsError={setIsError}
+              setIsVisible={setIsVisible}
+            />
           ) : (
-            <></>
+            ""
           )}
-          <img src="/assets/sign-up.png" alt="" />
         </div>
         <label htmlFor="full_name">İsim ve Soyisim</label>
         <input
@@ -99,11 +112,6 @@ const RegisterForm = () => {
           value={formData.password}
           onChange={handleChange}
         />
-
-        {/* <label>Doğum Günü</label>
-        <div className="multiple-input-container">
-          <MyDatePickerOwn formData={formData} setFormData={setFormData} />
-        </div> */}
 
         <label>Cinsiyet</label>
         <div className="multiple-input-container">

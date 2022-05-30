@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
+import LoadingComp from "../../components/loadingComp/LoadingComp";
 
 const NewsDetail = () => {
   const { user: currentUser } = useContext(AuthContext);
@@ -14,16 +15,20 @@ const NewsDetail = () => {
 
   const FETCH = process.env.REACT_APP_FETCH_PATH;
   const [news, setNews] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchNews = async () => {
+    setIsLoading(true);
+    const res = await axios.get(`${FETCH}news/${newsId}`, {
+      headers: {
+        token: `Bearer ${currentUser.accessToken}`,
+      },
+    });
+    setNews(res.data);
+    setIsLoading(false);
+  };
 
   useEffect(() => {
-    const fetchNews = async () => {
-      const res = await axios.get(`${FETCH}news/${newsId}`, {
-        headers: {
-          token: `Bearer ${currentUser.accessToken}`,
-        },
-      });
-      setNews(res.data);
-    };
     fetchNews();
   }, [newsId]);
 
@@ -33,7 +38,7 @@ const NewsDetail = () => {
       <div className="newsDetailContainer">
         <div className="newsDetailContainer">
           <div className="newsDetailFeedContainer">
-            <NewsPost news={news} single />
+            {isLoading ? <LoadingComp /> : <NewsPost news={news} single />}
           </div>
           <NewsRightBar />
         </div>

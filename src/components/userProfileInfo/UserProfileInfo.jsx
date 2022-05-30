@@ -16,17 +16,23 @@ const UserProfileInfo = ({ user }) => {
   const { user: currentUser, dispatch } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER + "users/";
   const [readLastYearCount, setReadLastYearCount] = useState(0);
+  const [readTotalCount, setReadTotalCount] = useState(0);
 
   const [followed, setFollowed] = useState(
     currentUser.followings.includes(user?.id)
   );
 
   useEffect(() => {
-    user.bookShelf?.map((book) =>
-      book.bookStatus === "finished" && book.bookEnd?.includes("2022")
-        ? setReadLastYearCount((prev) => prev + 1)
-        : ""
-    );
+    user.bookShelf?.map((book) => {
+      if (book.bookStatus === "finished" && book.bookEnd?.includes("2022")) {
+        setReadLastYearCount((prev) => prev + 1);
+      }
+      if (book.bookStatus === "finished") {
+        setReadTotalCount((prev) => prev + 1);
+      }
+
+      return book;
+    });
   }, [user]);
 
   // FOLLOWİNG - FOLLOWERS
@@ -179,7 +185,7 @@ const UserProfileInfo = ({ user }) => {
             style={{ color: "inherit", textDecoration: "none" }}
           >
             <div className="bookNumbers">
-              158 <span className="followersInfoSpan">Kitap</span>
+              {readTotalCount} <span className="followersInfoSpan">Kitap</span>
             </div>
           </Link>
           <Link

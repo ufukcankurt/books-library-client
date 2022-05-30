@@ -7,6 +7,7 @@
   
   .newsDetailFeedContainer{
     width: 70%;
+    min-height: 100vh;
     margin-top: 20px;
     box-sizing: border-box;
 }

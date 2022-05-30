@@ -61,3 +61,7 @@
 .shareButton:hover {
   background-color: #f1f1ef
 }
+
+.shareButton:disabled{
+  cursor: not-allowed;
+}

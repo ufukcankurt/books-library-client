@@ -11,6 +11,7 @@ const BookDetailFeed = ({ book, setIsOverlay }) => {
   const { user: currentUser } = useContext(AuthContext);
   const { bookId } = useParams();
   const [notes, setNotes] = useState([]);
+  const [isRender, setIsRender] = useState(false);
 
   useEffect(() => {
     const getDatas = async () => {
@@ -23,11 +24,16 @@ const BookDetailFeed = ({ book, setIsOverlay }) => {
   console.log(notes);
   console.log(typeof(notes));
 
+  window.addEventListener('load', (event) => {
+    setIsRender(true);
+  });
+
+
   return (
     <div className="bookDetailFeedContainer">
       <BookDetailOneBook setIsOverlay={setIsOverlay} book={book} />
       
-    
+    {notes?.length === 0 && isRender === true ? <p className="bookDetailFeedWarning">Henüz bu kitap için bir not yazılmamış!</p> : ""}
       {notes?.map((note) => (
         note?.summary ? <OthersQuotes note={note} /> :""
       ))}

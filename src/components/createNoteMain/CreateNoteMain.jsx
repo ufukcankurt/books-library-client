@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
+import LoadingComp from "../loadingComp/LoadingComp";
 
 const CreateNoteMain = ({ book, currentBook, currentNote, isExist }) => {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ const CreateNoteMain = ({ book, currentBook, currentNote, isExist }) => {
   const FETCH = process.env.REACT_APP_FETCH_PATH;
   const { user: currentUser } = useContext(AuthContext);
   const { bookId } = useParams();
+  const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
     if (isExist) {
@@ -45,6 +47,7 @@ const CreateNoteMain = ({ book, currentBook, currentNote, isExist }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setIsFetching(true);
       if (isExist) {
         const res = await axios.put(
           `${FETCH}notes/${currentNote._id}`,
@@ -55,20 +58,34 @@ const CreateNoteMain = ({ book, currentBook, currentNote, isExist }) => {
             },
           }
         );
-        const resUser = await axios.post(`${FETCH}posts`, {userId:currentUser._id, bookId:bookId, type:"quote", desc:noteForm.summary});
-      console.log("resUser",resUser);
-        res.status === 200 && resUser.status === 200 ? navigate(`/${currentUser.username}/notes/${currentNote._id}`) : console.log("error");
-          
+        const resUser = await axios.post(`${FETCH}posts`, {
+          userId: currentUser._id,
+          bookId: bookId,
+          type: "quote",
+          desc: noteForm.summary,
+        });
+        console.log("resUser", resUser);
+        res.status === 200 && resUser.status === 200
+          ? navigate(`/${currentUser.username}/notes/${currentNote._id}`)
+          : console.log("error");
       } else {
         const res = await axios.post(`${FETCH}notes/`, noteForm, {
           headers: {
             token: `Bearer ${currentUser.accessToken}`,
           },
         });
-        const resUser = await axios.post(`${FETCH}posts`, {userId:currentUser._id, bookId:bookId, type:"quote", desc:noteForm.summary});
-      console.log("resUser",resUser);
-      res.status === 200 && resUser.status === 200 ? navigate(`/${currentUser.username}/notes/${currentNote._id}`) : console.log("error");
+        const resUser = await axios.post(`${FETCH}posts`, {
+          userId: currentUser._id,
+          bookId: bookId,
+          type: "quote",
+          desc: noteForm.summary,
+        });
+        console.log("resUser", resUser);
+        res.status === 200 && resUser.status === 200
+          ? navigate(`/${currentUser.username}/notes/${currentNote._id}`)
+          : console.log("error");
       }
+      setIsFetching(false);
     } catch (error) {
       console.log(error);
     }
@@ -144,12 +161,15 @@ const CreateNoteMain = ({ book, currentBook, currentNote, isExist }) => {
             onChange={handleChange}
           ></textarea>
         </div>
-        <input
+        <button
           className="createNoteMainSubmitButton"
           type="submit"
-          value="Kaydet"
           onClick={handleSubmit}
-        />
+          disabled={isFetching}
+        >
+          {" "}
+          {isFetching ? <LoadingComp button /> : "Kaydet"}
+        </button>
       </form>
     </div>
   );

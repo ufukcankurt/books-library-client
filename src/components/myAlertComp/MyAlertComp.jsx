@@ -2,13 +2,14 @@ import "./myAlertComp.css";
 import React, { useEffect, useRef } from "react";
 import { CheckCircle, Error } from "@material-ui/icons";
 
-const MyAlertComp = ({ message, danger, setIsVisible }) => {
+const MyAlertComp = ({ message, danger, setIsVisible, setIsError }) => {
   const alertRef = useRef();
 
   useEffect(() => {
     setTimeout(() => {
         setIsVisible(false)
-    }, 3000);
+        setIsError(false)
+    }, 5000);
   }, []);
 
   const MyComponent = () => {
@@ -16,12 +17,12 @@ const MyAlertComp = ({ message, danger, setIsVisible }) => {
       <div
         className="myAlertCompContainer"
         ref={alertRef}
-        style={{ color: danger ? "#FED7D7" : "c6f6d5" }}
+        style={{ backgroundColor: danger ==="danger" ? "#FED7D7" : "c6f6d5" }}
       >
         {danger ? (
-          <Error htmlColor={danger ? "#E53E3E" : "#38A169"} />
+          <Error htmlColor={danger ==="danger" ? "#E53E3E" : "#38A169"} />
         ) : (
-          <CheckCircle htmlColor={danger ? "#E53E3E" : "#38A169"} />
+          <CheckCircle htmlColor={danger ==="danger" ? "#E53E3E" : "#38A169"} />
         )}
         <p className="myAlertMessage">{message}</p>
       </div>

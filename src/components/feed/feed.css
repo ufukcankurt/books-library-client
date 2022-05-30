@@ -3,3 +3,12 @@
     width: 100%;
     background-color: #fffaf080;
 }
+
+.feedWarning{
+    margin-top: 15px;
+    margin-left: 15px;
+    font-size: 16px;
+    font-weight: 500;
+    color: red;
+    background-color: #FFFCF7;
+}

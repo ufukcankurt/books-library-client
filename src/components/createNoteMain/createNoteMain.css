@@ -108,4 +108,13 @@ color: gray;
     text-align: center;
     font-size: 18px;
     font-weight: 500;
+    transition: .2s ease-in-out;
+}
+
+.createNoteMainSubmitButton:disabled{
+    cursor: not-allowed;
+}
+
+.createNoteMainSubmitButton:hover {
+    background-color: #f1f1ef;
 }

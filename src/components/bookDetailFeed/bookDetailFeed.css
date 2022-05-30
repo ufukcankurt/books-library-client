@@ -2,3 +2,10 @@
     width: 100%;
     padding: 15px;
 }
+
+.bookDetailFeedWarning{
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 500;
+    color: red;
+}

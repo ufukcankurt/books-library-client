@@ -4,16 +4,21 @@ import NewsRightBar from "../../components/newsRightBar/NewsRightBar";
 import "./news.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import LoadingComp from "../../components/loadingComp/LoadingComp";
 
 const News = () => {
   const FETCH = process.env.REACT_APP_FETCH_PATH;
   const [news, setNews] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchNews = async () => {
+    setIsLoading(true);
+    const res = await axios.get(`${FETCH}news/all/news`);
+    setNews(res.data);
+    setIsLoading(false);
+  };
 
   useEffect(() => {
-    const fetchNews = async () => {
-      const res = await axios.get(`${FETCH}news/all/news`);
-      setNews(res.data);
-    };
     fetchNews();
   }, []);
 
@@ -21,7 +26,8 @@ const News = () => {
     <>
       <Nav />
       <div className="newsContainer">
-        <NewsFeed news={news} />
+        {isLoading ? <LoadingComp /> : <NewsFeed news={news} />}
+
         <NewsRightBar />
       </div>
     </>

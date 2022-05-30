@@ -92,6 +92,10 @@
     border-radius: 10px;
   }
 
+  .secondary-button:disabled{
+    cursor: not-allowed;
+  }
+
   .secondary-button:hover{
     background-color: rgb(235, 235, 235);
   }

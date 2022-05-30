@@ -1,56 +1,68 @@
 import "./loginForm.css";
 import { Link, useNavigate } from "react-router-dom";
-import {useContext, useState} from "react"
+import { useContext, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { LoginCall } from "../../context/authContext/apiCalls";
-import { loginFailure, loginStart, loginSuccess } from "../../context/authContext/AuthActions";
+import {
+  loginFailure,
+  loginStart,
+  loginSuccess,
+} from "../../context/authContext/AuthActions";
+import MyAlertComp from "../../components/myAlertComp/MyAlertComp";
+import LoadingComp from "../loadingComp/LoadingComp";
 
 const LoginForm = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
+  const [isVisible, setIsVisible] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  let navigate = useNavigate()
+  let navigate = useNavigate();
 
-  const {isFetching, error, dispatch} = useContext(AuthContext)
+  const { isFetching, error, dispatch } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // LoginCall({username, password}, dispatch)
-    
-    dispatch(loginStart());
+
+    // dispatch(loginStart());
+    setIsLoading(true);
     try {
-      const res = await axios.post(
-      "http://localhost:8000/api/auth/login",
-      {username,password}
-      );
-      console.log("resdata:",res.data);
+      const res = await axios.post("http://localhost:8000/api/auth/login", {
+        username,
+        password,
+      });
+      console.log("resdata:", res.data);
       dispatch(loginSuccess(res.data));
-    navigate("/")
-  } catch (error) {
-    dispatch(loginFailure());
-  }
-
-    // try {
-    //   await axios.post("http://localhost:8000/api/auth/login", {username,password})
-    //   .then(response => response.status === 200 && navigate("/") )
-    // } catch (error) {
-    //   console.log(error);
-    // }
-   
-
+      setIsLoading(false);
+      navigate("/");
+    } catch (error) {
+      setIsVisible(true);
+      setIsError(true);
+      setIsLoading(false);
+      // dispatch(loginFailure());
+    }
   };
-
-  console.log("user:", username);
-  console.log("pass:", password);
 
   return (
     <div className="loginFormContainer">
       <form onSubmit={handleSubmit}>
         <div className="registerFormTitle">
           <h3>Giriş yap</h3>
+          {/* <LoadingComp w={"25px"} h={"25px"}/> */}
+          {isVisible === true ? (
+            <MyAlertComp
+              danger={isError ? "danger" : ""}
+              message={"Kullanıcı ismi ya da şifreniz hatalı!"}
+              setIsError={setIsError}
+              setIsVisible={setIsVisible}
+            />
+          ) : (
+            ""
+          )}
           <h2>{error && error.message}</h2>
           <img src="/assets/sign-up.png" alt="" />
         </div>
@@ -63,7 +75,7 @@ const LoginForm = () => {
           placeholder="Kullanıcı İsminizi Girin."
           required={true}
           value={username}
-          onChange={(e)=> setUsername(e.target.value)}
+          onChange={(e) => setUsername(e.target.value)}
         />
         <label htmlFor="password">Şifre</label>
         <input
@@ -73,18 +85,24 @@ const LoginForm = () => {
           placeholder="Şifrenizi Girin."
           required={true}
           value={password}
-          onChange={(e)=> setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
         />
 
-    <button onSubmit={handleSubmit} className="secondary-button" type="submit" disabled={isFetching}>Giriş Yap</button>
+        <button
+          onSubmit={handleSubmit}
+          className="secondary-button"
+          type="submit"
+          disabled={isLoading}
+        >
+          {isLoading ? <LoadingComp button /> :"Giriş Yap"}
+        </button>
 
-    <div className="haveAccount">
+        <div className="haveAccount">
           <p>Hesabın yok mu?</p>
-          <Link to="/register" style={{textDecoration:"none"}}>
+          <Link to="/register" style={{ textDecoration: "none" }}>
             <p className="loginFormLinkP">Kayıt Ol</p>
           </Link>
         </div>
-        
       </form>
     </div>
   );

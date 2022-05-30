@@ -17,15 +17,15 @@ const BookStatusModal = ({
   const { bookId } = useParams();
   let allBook = [...currentUser.bookShelf];
 
-  let bookIndex = allBook.findIndex(o => o.bookId === bookId);
+  let bookIndex = allBook.findIndex((o) => o.bookId === bookId);
 
-  const textareaRef = useRef()
+  const textareaRef = useRef();
 
   const [formData, setFormData] = useState({
     bookId: bookId,
-    bookStatus: userBook?.bookStatus,
-    bookStart: userBook.bookStart,
-    bookEnd: userBook.bookEnd,
+    bookStatus: userBook?.bookStatus || "",
+    bookStart: userBook.bookStart || "",
+    bookEnd: userBook.bookEnd || "",
     bookHasShelf: userBook?.bookHasShelf || [],
     bookName: book.book_name,
     bookPage: book.book_page,
@@ -83,7 +83,7 @@ const BookStatusModal = ({
   };
 
   const setAllBooks = async () => {
-    bookIndex === -1 ? allBook.push(formData) : allBook[bookIndex] = formData 
+    bookIndex === -1 ? allBook.push(formData) : (allBook[bookIndex] = formData);
   };
 
   const handleSubmit = async (e) => {
@@ -96,13 +96,22 @@ const BookStatusModal = ({
         },
       });
       dispatch({ type: "ADDNEWBOOK", payload: allBook });
-      
-      const res = await axios.post(`${FETCH}posts`, {userId:currentUser._id, bookId:bookId, type:"book", desc:textareaRef.current.value, bookStatus:formData.bookStatus});
-      console.log("res",res);
+
+      if (formData.bookStatus !== "" || textareaRef.current.value !== "") {
+        const res = await axios.post(`${FETCH}posts`, {
+          userId: currentUser._id,
+          bookId: bookId,
+          type: "book",
+          desc: textareaRef.current.value,
+          bookStatus: formData.bookStatus,
+        });
+        console.log("res", res);
+      }
     } catch (error) {
       console.log(error);
     }
   };
+  console.log("FORM DATA", formData);
 
   return (
     <div className="bookStatusModalContainer">
@@ -113,7 +122,13 @@ const BookStatusModal = ({
         </div>
       </div>
       <div className="bookStatusModalPost">
-        <textarea ref={textareaRef} maxLength="160" name="" id="" placeholder="Düşüncelerini arkadaşlarınla paylaş"></textarea>
+        <textarea
+          ref={textareaRef}
+          maxLength="160"
+          name=""
+          id=""
+          placeholder="Düşüncelerini arkadaşlarınla paylaş"
+        ></textarea>
       </div>
       <div className="bookStatusModalTopside">
         <div className="bookStatusModalImg">

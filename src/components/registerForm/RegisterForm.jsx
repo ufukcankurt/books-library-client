@@ -16,9 +16,9 @@ const RegisterForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const isValid = await RegisterSchema.validate(formData).catch((err) => {setFormError(err.errors[0].message)});
-    console.log("IS VALID", formError);
-    console.log("IS VALID EK", formError.errors);
+    const isValid = await RegisterSchema.validate(formData).catch((err) => {
+      setFormError(err.errors[0].message);
+    });
     try {
       await axios
         .post(`${FETCH}auth/register`, { formData })
@@ -58,8 +58,6 @@ const RegisterForm = () => {
     dob_year: "",
     gender_identity: "",
   });
-
-  console.log("Form:", formData);
 
   return (
     <div className="registerFormContainer">

@@ -13,6 +13,7 @@ const ProfileSettingsForm = ({
   coverImage,
   setCoverImage,
 }) => {
+  const FETCH = process.env.REACT_APP_FETCH_PATH;
   const [url, setUrl] = useState(null);
   const [coverUrl, setCoverUrl] = useState(null);
   const [isSuccess, setIsSuccess] = useState(null);
@@ -70,7 +71,10 @@ const ProfileSettingsForm = ({
     const sendData = async () => {
       try {
         if (coverImage) {
-          const imageRef = ref(storage, `/images/${Date.now()}_${coverImage.name}`);
+          const imageRef = ref(
+            storage,
+            `/images/${Date.now()}_${coverImage.name}`
+          );
           await uploadBytes(imageRef, coverImage)
             .then(() => {
               getDownloadURL(imageRef)
@@ -99,7 +103,7 @@ const ProfileSettingsForm = ({
       if (isImageUpload && url) {
         try {
           const res = await axios.put(
-            `http://localhost:8000/api/users/${user._id}`,
+            `${FETCH}users/${user._id}`,
             { profilePicture: url },
             {
               headers: {
@@ -107,7 +111,6 @@ const ProfileSettingsForm = ({
               },
             }
           );
-          console.log("res:", res);
           setIsSuccess(true);
           setIsVisible(true);
           setIsImageUpload(false);
@@ -129,7 +132,7 @@ const ProfileSettingsForm = ({
       if (isCoverImageUpload && coverUrl) {
         try {
           const res = await axios.put(
-            `http://localhost:8000/api/users/${user._id}`,
+            `${FETCH}users/${user._id}`,
             { coverPicture: coverUrl },
             {
               headers: {
@@ -137,7 +140,6 @@ const ProfileSettingsForm = ({
               },
             }
           );
-          console.log("res:", res);
           setIsSuccess(true);
           setIsVisible(true);
           setIsCoverImageUpload(false);
@@ -157,7 +159,7 @@ const ProfileSettingsForm = ({
     e.preventDefault();
     try {
       const res = await axios.put(
-        `http://localhost:8000/api/users/${user._id}`,
+        `${FETCH}users/${user._id}`,
         { formData },
         {
           headers: {
@@ -165,7 +167,6 @@ const ProfileSettingsForm = ({
           },
         }
       );
-      console.log("RESPONSE", res);
       user.fullname = formData.full_name;
       user.education = formData.education;
       user.job = formData.job;

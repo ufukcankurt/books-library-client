@@ -18,9 +18,6 @@ const UserShelfFeed = ({user, shelfName}) => {
 
   const handleSubmit = () => {};
 
-  console.log("bookSHELF USER",user);
-  console.log("shelfName",shelfName);
-
   return (
     <div className="userShelfFeedContainer">
       <h2 className="userShelfFeedTitle">{shelfName}</h2>

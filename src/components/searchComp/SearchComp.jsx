@@ -85,9 +85,6 @@ const SearchComp = ({ message, book }) => {
     );
   };
 
-  console.log("ARAMADAN GELEN DATA", data);
-  console.log("ARAMADAN GELEN search", search);
-
   return (
     <>
       <div

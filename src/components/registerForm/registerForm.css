@@ -55,6 +55,7 @@
 }
 
 .registerFormContainer form .multiple-input-container label {
+  cursor: pointer;
   padding: 10px;
   border: 2px solid rgb(144, 144, 144);
   border-radius: 10px;

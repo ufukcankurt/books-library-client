@@ -13,6 +13,7 @@ import MyAlertComp from "../../components/myAlertComp/MyAlertComp";
 import LoadingComp from "../loadingComp/LoadingComp";
 
 const LoginForm = () => {
+  const FETCH = process.env.REACT_APP_FETCH_PATH 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -31,11 +32,10 @@ const LoginForm = () => {
     // dispatch(loginStart());
     setIsLoading(true);
     try {
-      const res = await axios.post("http://localhost:8000/api/auth/login", {
+      const res = await axios.post(`${FETCH}auth/login`, {
         username,
         password,
       });
-      console.log("resdata:", res.data);
       dispatch(loginSuccess(res.data));
       setIsLoading(false);
       navigate("/");

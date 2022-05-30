@@ -3,9 +3,9 @@ import React, { useContext, useRef, useState } from "react";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import axios from "axios";
 import LoadingComp from "../loadingComp/LoadingComp";
-import  MyAlertComp from "../myAlertComp/MyAlertComp";
+import MyAlertComp from "../myAlertComp/MyAlertComp";
 
-const Share = ({setIsShare, isShare }) => {
+const Share = ({ setIsShare, isShare }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER + "users/";
   const FETCH = process.env.REACT_APP_FETCH_PATH;
   const { user: currentUser } = useContext(AuthContext);
@@ -15,33 +15,31 @@ const Share = ({setIsShare, isShare }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(shareRef.current.value?.length === 0 ) setIsVisible(true)
-    if(shareRef.current.value?.length === 0 ) return;
+    if (shareRef.current.value?.length === 0) setIsVisible(true);
+    if (shareRef.current.value?.length === 0) return;
     setIsFetching(true);
-    const res = await axios.post(`${FETCH}posts`, {
+    await axios.post(`${FETCH}posts`, {
       userId: currentUser._id,
       type: "post",
       desc: shareRef.current.value,
     });
-    console.log("res", res);
-    setIsShare(!isShare)
+    setIsShare(!isShare);
     shareRef.current.value = "";
     setIsFetching(false);
   };
 
   return (
     <div className="shareContainer">
-      
       <div className="shareTextContent">
-      {isVisible === true ? (
-            <MyAlertComp
-              danger={ "danger"}
-              message={"Bu şekilde paylaşım yapılamaz!"}
-              setIsVisible={setIsVisible}
-            />
-          ) : (
-            ""
-          )}
+        {isVisible === true ? (
+          <MyAlertComp
+            danger={"danger"}
+            message={"Bu şekilde paylaşım yapılamaz!"}
+            setIsVisible={setIsVisible}
+          />
+        ) : (
+          ""
+        )}
         <div className="shareUserImg">
           <img src={currentUser.profilePicture} alt="" />
         </div>
@@ -53,8 +51,12 @@ const Share = ({setIsShare, isShare }) => {
           placeholder="Düşüncelerini arkadaşlarınla paylaş"
         ></textarea>
       </div>
-      <button  disabled={isFetching} onClick={handleSubmit} className="shareButton">
-        {isFetching ? <LoadingComp button /> :  "Paylaş"}
+      <button
+        disabled={isFetching}
+        onClick={handleSubmit}
+        className="shareButton"
+      >
+        {isFetching ? <LoadingComp button /> : "Paylaş"}
       </button>
     </div>
   );

@@ -10,15 +10,15 @@ import axios from "axios";
 import LoadingComp from "../../components/loadingComp/LoadingComp";
 
 const UserFollowings = () => {
+  const FETCH = process.env.REACT_APP_FETCH_PATH 
   const { username } = useParams();
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log("USEPARAMS:", username);
   const fetchUser = async () => {
     setIsLoading(true);
     const res = await axios.get(
-      `http://localhost:8000/api/users?username=${username}`
+      `${FETCH}users?username=${username}`
     );
     setUser(res.data);
     setTimeout(() => {
@@ -29,8 +29,6 @@ const UserFollowings = () => {
   useEffect(() => {
     fetchUser();
   }, [username]);
-
-  console.log("ELİMDEKİ USER", user);
 
   return (
     <>

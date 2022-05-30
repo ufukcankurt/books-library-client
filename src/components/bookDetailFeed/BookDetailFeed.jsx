@@ -21,9 +21,6 @@ const BookDetailFeed = ({ book, setIsOverlay }) => {
     getDatas();
   }, [bookId]);
 
-  console.log(notes);
-  console.log(typeof(notes));
-
   window.addEventListener('load', (event) => {
     setIsRender(true);
   });

@@ -14,8 +14,6 @@ const UserFollowers = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log("USEPARAMS:", username);
-
   const fetchUser = async () => {
     setIsLoading(true);
     const res = await axios.get(`${FETCH}users?username=${username}`);
@@ -29,7 +27,6 @@ const UserFollowers = () => {
     fetchUser();
   }, [username, FETCH]);
 
-  console.log("ELİMDEKİ USER", user);
   return (
     <>
       <Nav />

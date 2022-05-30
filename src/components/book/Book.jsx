@@ -40,8 +40,6 @@ const Book = ({ bookId, user }) => {
     );
   };
 
-  console.log("EN İÇBOOK", book);
-
   return (
     <div className="bookContainer">
       <div className="bookBookImg">

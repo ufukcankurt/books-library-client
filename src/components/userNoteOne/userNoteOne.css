@@ -27,11 +27,13 @@
 }
 
 .userNoteOneBookName {
+  text-transform: capitalize;
   font-weight: 700;
   font-size: 17px;
 }
 
 .userNoteOneBookAuthor {
+  text-transform: capitalize;
   font-weight: 400;
   color: gray;
   font-size: 14px;

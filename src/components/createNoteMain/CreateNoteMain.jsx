@@ -64,7 +64,6 @@ const CreateNoteMain = ({ book, currentBook, currentNote, isExist }) => {
           type: "quote",
           desc: noteForm.summary,
         });
-        console.log("resUser", resUser);
         res.status === 200 && resUser.status === 200
           ? navigate(`/${currentUser.username}/notes/${currentNote._id}`)
           : console.log("error");
@@ -80,9 +79,8 @@ const CreateNoteMain = ({ book, currentBook, currentNote, isExist }) => {
           type: "quote",
           desc: noteForm.summary,
         });
-        console.log("resUser", resUser);
         res.status === 200 && resUser.status === 200
-          ? navigate(`/${currentUser.username}/notes/${currentNote._id}`)
+          ? navigate(`/${currentUser.username}/notes/${res.data._id}`)
           : console.log("error");
       }
       setIsFetching(false);

@@ -98,20 +98,18 @@ const BookStatusModal = ({
       dispatch({ type: "ADDNEWBOOK", payload: allBook });
 
       if (formData.bookStatus !== "" || textareaRef.current.value !== "") {
-        const res = await axios.post(`${FETCH}posts`, {
+        await axios.post(`${FETCH}posts`, {
           userId: currentUser._id,
           bookId: bookId,
           type: "book",
           desc: textareaRef.current.value,
           bookStatus: formData.bookStatus,
         });
-        console.log("res", res);
       }
     } catch (error) {
       console.log(error);
     }
   };
-  console.log("FORM DATA", formData);
 
   return (
     <div className="bookStatusModalContainer">

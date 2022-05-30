@@ -11,12 +11,10 @@ const BookDetailOneBook = ({ book, setIsOverlay }) => {
   const { user: currentUser, dispatch } = useContext(AuthContext);
   const [userBook, setUserBook] = useState({});
   const { bookId } = useParams();
-  // const [isAdded, setIsAdded] = useState(false);
 
   useEffect(() => {
     const getBook = async () => {
       await currentUser.bookShelf.map(
-        // setIsAdded(true);
         (item) => item.bookId === bookId && setUserBook(item)
       );
     };

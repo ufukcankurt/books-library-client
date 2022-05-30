@@ -13,6 +13,7 @@ import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
 
 const UserProfileInfo = ({ user }) => {
+  const FETCH = process.env.REACT_APP_FETCH_PATH 
   const { user: currentUser, dispatch } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER + "users/";
   const [readLastYearCount, setReadLastYearCount] = useState(0);
@@ -44,12 +45,12 @@ const UserProfileInfo = ({ user }) => {
   const handleClick = async () => {
     try {
       if (followed) {
-        await axios.put(`/users/${user._id}/unfollow`, {
+        await axios.put(`${FETCH}users/${user._id}/unfollow`, {
           userId: currentUser._id,
         });
         dispatch({ type: "UNFOLLOW", payload: user._id });
       } else {
-        await axios.put(`/users/${user._id}/follow`, {
+        await axios.put(`${FETCH}users/${user._id}/follow`, {
           userId: currentUser._id,
         });
         dispatch({ type: "FOLLOW", payload: user._id });

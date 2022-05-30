@@ -20,6 +20,9 @@ const Share = ({ setIsShare, isShare }) => {
     setIsFetching(true);
     await axios.post(`${FETCH}posts`, {
       userId: currentUser._id,
+      userImg: currentUser.profilePicture,
+      userUsername: currentUser.username,
+      userFullname: currentUser.fullname,
       type: "post",
       desc: shareRef.current.value,
     });

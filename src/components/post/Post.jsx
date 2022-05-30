@@ -39,18 +39,6 @@ const Post = ({ postDetail, post }) => {
     return <p className="postBookTextTimeline">{post.desc}</p>;
   };
 
-  const SinglePostDetailSeeAllComp = () => {
-    return (
-      <>
-        <Link to={``}>
-          <div className="singlePostDetailSeeAll">
-            <p>Tüm notu gör.</p>
-          </div>
-        </Link>
-      </>
-    );
-  };
-
   const SinglePostDetail = () => {
     return (
       <>
@@ -85,11 +73,11 @@ const Post = ({ postDetail, post }) => {
       <div className="postTopside">
         <div className="postUserInfo">
           <Link
-            to={`/${user.username}`}
+            to={`/${post.userUsername}`}
             style={{ color: "inherit", textDecoration: "none" }}
           >
             <img
-              src={user.profilePicture}
+              src={post.userImg}
               alt=""
               className="postUserImg"
             />
@@ -99,8 +87,8 @@ const Post = ({ postDetail, post }) => {
               to="/ufukcankurt"
               style={{ color: "inherit", textDecoration: "none" }}
             >
-              <p className="postUserFullname">{user.fullname}</p>
-              <p className="postUserUsername">@{user.username}</p>
+              <p className="postUserFullname">{post.userFullname}</p>
+              <p className="postUserUsername">@{post.userUsername}</p>
             </Link>
           </div>
           <p className="postTimeago">
@@ -122,22 +110,22 @@ const Post = ({ postDetail, post }) => {
     return (
       <>
         <Link
-          to={`/book/${book._id}`}
+          to={`/book/${post.bookId}`}
           style={{ color: "inherit", textDecoration: "none" }}
         >
           <div className="postBookContainer">
             <div className="postBookImgDiv">
               <img
-                src={`${PF}books/${book.book_img}`}
+                src={`${PF}books/${post.bookImg}`}
                 alt=""
                 className="postBookImg"
               />
             </div>
 
             <div className="postBookInfo">
-              <p className="postBookName">{book.book_name}</p>
-              <p className="postBookAuthor">{book.book_author}</p>
-              <p className="postBookPages">{book.book_page} Sayfa</p>
+              <p className="postBookName">{post.bookName}</p>
+              <p className="postBookAuthor">{post.bookAuthor}</p>
+              <p className="postBookPages">{post.bookPage} Sayfa</p>
             </div>
           </div>
         </Link>

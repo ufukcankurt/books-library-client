@@ -12,8 +12,10 @@ const BooksFeed = ({ user }) => {
   const [allShelf, setAllShelf] = useState([]);
   const { user: currentUser, dispatch } = useContext(AuthContext);
   const [status, setStatus] = useState(2);
-  const successMessage = "Yeni raf başarıyla eklendi.";
-  const errorMessage = "Zaten bu raf mevcut";
+  const [isVisible, setIsVisible] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [message, setMessage] = useState("");
+
 
   useEffect(() => {
     setAllShelf(user?.allShelfs);
@@ -25,8 +27,17 @@ const BooksFeed = ({ user }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if(newShelf.length === 0 ){
+      setMessage("Bu şekilde raf ekleyemezsiniz!");
+      setIsError(true);
+      setIsVisible(true)
+      return;
+    }
+
     if (allShelf.includes(newShelf)) {
-      return alert(errorMessage);
+      setMessage("Zaten bu raf mevcut");
+      setIsError(true);
+      return setIsVisible(true);
     }
     allShelf.push(newShelf);
     // fetch request
@@ -42,6 +53,8 @@ const BooksFeed = ({ user }) => {
       );
       dispatch({ type: "ADDNEWSHELF", payload: allShelf });
       setStatus(res.status);
+      setMessage("Yeni raf başarıyla eklendi.");
+      setIsVisible(true);
     } catch (error) {
       console.log(error);
     }
@@ -64,8 +77,8 @@ const BooksFeed = ({ user }) => {
 
   return (
     <div className="booksFeedContainer">
-      {status === 200 ? (
-        <MyAlertComp message={successMessage}/>
+      {isVisible ? (
+        <MyAlertComp danger = {isError ? "danger" : ""} setIsVisible={setIsVisible} setIsError={setIsError} message={message}/>
       ) : (
         ""
       )}

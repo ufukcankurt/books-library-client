@@ -23,8 +23,6 @@ const ProfileSettingsForm = ({
 
   useEffect(() => {});
 
-  console.log("USER", user);
-
   const [formData, setFormData] = useState({
     full_name: user.fullname,
     education: user.education,

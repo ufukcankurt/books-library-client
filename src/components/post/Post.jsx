@@ -15,8 +15,6 @@ const Post = ({ postDetail, post }) => {
   const [book, setBook] = useState({});
   timeago.register("tr", tr);
 
-  console.log("BOOK",book);
-
   useEffect(() => {
     const getDatas = async () => {
       if (post.type === "post") {

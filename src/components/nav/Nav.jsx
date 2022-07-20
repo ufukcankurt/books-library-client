@@ -39,11 +39,24 @@ const Nav = () => {
                 </div>
               </Link>
             </li>
+
             <li>
               <Link to="/news" style={{ textDecoration: "none" }}>
                 <div className="modalDiv">
                   <img className="modalImage" src="/assets/news_1.png" alt="" />
                   <span className="modalLink">Haberler</span>
+                </div>
+              </Link>
+            </li>
+            <li>
+              <Link to="/books" style={{ textDecoration: "none" }}>
+                <div className="modalDiv">
+                  <img
+                    className="modalImage"
+                    src="/assets/book_12.png"
+                    alt=""
+                  />
+                  <span className="modalLink">Kitaplar</span>
                 </div>
               </Link>
             </li>

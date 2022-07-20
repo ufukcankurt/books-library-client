@@ -102,6 +102,10 @@
   text-transform: lowercase;
 }
 
+.descriptionContainer .userProperty .website > a {
+  color: red;
+}
+
 .followersInfo {
   display: flex;
   justify-content: flex-start;

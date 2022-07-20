@@ -1,0 +1,18 @@
+.booksContainer {
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+.booksFeedTitle {
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+.BooksLoader {
+  width: 70%;
+}

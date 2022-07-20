@@ -1,0 +1,24 @@
+.allBooksSearchContainer {
+  width: 375px;
+  position: relative;
+  margin: 0 0 35px 28%;
+}
+
+.allBooksSearchInput {
+  width: 375px;
+  padding: 10px 42px 10px 15px;
+  margin: 0 auto;
+  font-size: 15px;
+  border: 2px solid rgb(219, 219, 219);
+  border-radius: 5px;
+}
+
+.allBooksSearchIcon {
+  cursor: pointer;
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  border: none;
+  background-color: transparent;
+  padding: 7px 10px;
+}

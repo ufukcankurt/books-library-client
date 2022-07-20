@@ -21,7 +21,7 @@ const UserShelfFeed = ({user, shelfName}) => {
   return (
     <div className="userShelfFeedContainer">
       <h2 className="userShelfFeedTitle">{shelfName}</h2>
-      <div className="userShelfFeedSearch">
+      {/* <div className="userShelfFeedSearch">
         <input
           type="text"
           id="search_button"
@@ -33,7 +33,7 @@ const UserShelfFeed = ({user, shelfName}) => {
         <button onClick={handleSubmit}>
           <Search />
         </button>
-      </div>
+      </div> */}
       {
         user.bookShelf?.map((book, i) => (
           (book.bookHasShelf.includes(shelfName) || book.bookStatus === actualName ? <Book key={i} user= {user} bookId={book.bookId} /> :"")

@@ -1,5 +1,5 @@
 import Nav from "../../components/nav/Nav";
-import "./book.css";
+import "./books.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import LoadingComp from "../../components/loadingComp/LoadingComp";

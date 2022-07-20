@@ -1,15 +1,18 @@
-
 .newsContainer {
-    display: flex;
-    max-width: 1200px;
-    width: 100%;
-    min-height: 100vh;
-    margin: 0 auto;
-  }
-  
-  .newsFeedTitle{
-    font-size: 20px;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 25px;
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+.newsFeedTitle {
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+.newsLoader {
+  width: 70%;
 }

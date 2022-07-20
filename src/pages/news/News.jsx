@@ -24,11 +24,19 @@ const News = () => {
     fetchNews();
   }, []);
 
+  const Loader = () => {
+    return (
+      <div className="BooksLoader">
+        <LoadingComp />
+      </div>
+    );
+  };
+
   return (
     <>
       <Nav />
       <div className="newsContainer">
-        {isLoading ? <LoadingComp /> : <NewsFeed news={news} />}
+        {isLoading ? <Loader /> : <NewsFeed news={news} />}
 
         <NewsRightBar />
       </div>

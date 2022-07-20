@@ -1,0 +1,55 @@
+.allBooksRightBarContainer{
+    width: 30%;
+    padding: 20px 15px;
+}
+
+.allBooksRightBarContainer ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .allBooksRightBarContainer ul li {
+    width: 100%;
+    text-decoration: none;
+    list-style: none;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 8px;
+    border-bottom: 1px solid lightgray;
+  }
+  
+  .allBooksRightBarLinksDiv {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .allBooksRightBarLinkImage {
+    width: 30px;
+    height: 30px;
+    margin-left: 15px;
+  }
+  
+  .allBooksRightBarLink {
+    padding: 10px 14px;
+    color: black;
+  }
+  
+  .allBooksRightBarGenres{
+    margin-top: 25px;
+  }
+
+  .allBooksRightBarGenre{
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0 10px 10px 0;
+    border: 1px solid lightgray;
+    transition: all .1s ease-in-out;
+  }
+
+  .allBooksRightBarGenre:hover{
+    background-color: rgba(211, 211, 211,0.2);
+  }

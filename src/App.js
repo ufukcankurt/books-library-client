@@ -29,9 +29,12 @@ import { ChakraProvider } from "@chakra-ui/react"
 import CreateNoteDetail from "./pages/createNoteDetail/CreateNoteDetail";
 import NewsCategory from "./pages/newsCategory/NewsCategory";
 import Books from "./pages/books/Books";
+import Admin from "./pages/adminPanel/Admin";
+import AdminPanelCreate from "./pages/adminPanelCreate/AdminPanelCreate";
 
 function App() {
   const user = useContext(AuthContext)
+
   return (
     <ChakraProvider>
       <BrowserRouter>
@@ -56,6 +59,8 @@ function App() {
           <Route path="/create-note" element={user.user !== null ? <CreateNote /> : <Navigate replace to="/login" />} />
           <Route path="/create-note/:bookId" element={user.user !== null ? <CreateNoteDetail /> : <Navigate replace to="/login" />} />
           <Route path="/books" element={user.user !== null ? <Books /> : <Navigate replace to="/login" />} />
+          <Route path="/admin" element={user.user !== null  ? <Admin /> : <Navigate replace to="/login" />} />
+          <Route path="/admin/create/:categoryName" element={user.user !== null  ? <AdminPanelCreate /> : <Navigate replace to="/login" />} />
         </Routes>
       </BrowserRouter>
     </ChakraProvider>

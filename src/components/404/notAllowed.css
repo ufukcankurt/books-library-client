@@ -1,0 +1,26 @@
+.notAllowedContainer{
+    width: 100wh;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notAllowedContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.notAllowedImg{
+    width: 125px;
+    height: 125px;
+
+}
+
+.notAllowedTitle{
+    font-size: 34px;
+    font-weight: 700;
+    margin-top: 25px;
+}

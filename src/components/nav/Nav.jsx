@@ -18,6 +18,21 @@ const Nav = () => {
     setIsClicked(!isClicked);
   };
 
+  const AdminLink = () => {
+    return (
+      <>
+        <li>
+          <Link to="/admin" style={{ textDecoration: "none" }}>
+            <div className="modalDiv">
+              <img className="modalImage" src="/assets/admin.png" alt="" />
+              <span className="modalPrivate">Admin Paneli</span>
+            </div>
+          </Link>
+        </li>
+      </>
+    );
+  };
+
   return (
     <div className="navContainer">
       <div className="navContent">
@@ -142,6 +157,7 @@ const Nav = () => {
                 </Link>
               </li>
               <hr className="hrLink" />
+              {user.isAdmin ? <AdminLink /> : ""}
               <li>
                 <Link
                   to="/user/profile-settings"

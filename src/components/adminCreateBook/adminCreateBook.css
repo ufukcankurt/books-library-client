@@ -1,0 +1,220 @@
+.adminCreateBookContainer {
+}
+
+.adminCreateBookTitle {
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+.registerFormTitle h3 {
+  text-transform: uppercase;
+  font-size: 40px;
+  font-family: "Chelsea Market", cursive;
+}
+
+.adminCreateBookContainer form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.adminCreateBookContainer form section {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 35%;
+  text-align: start;
+}
+
+.adminCreateBookContainer form input,
+.adminCreateBookContainer form textarea {
+  padding: 15px 30px;
+  margin: 10px 0;
+  font-size: 15px;
+  border: 2px solid rgb(219, 219, 219);
+  border-radius: 10px;
+}
+
+.adminCreateBookContainer form input::-webkit-outer-spin-button,
+.adminCreateBookContainer form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.adminCreateBookContainer form label {
+  margin: 10px 0;
+}
+
+.adminCreateBookContainer form .multiple-input-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.adminCreateBookContainer form .multiple-input-container input {
+  margin-right: 10px;
+}
+
+.adminCreateBookContainer form .multiple-input-container label {
+  cursor: pointer;
+  padding: 10px;
+  border: 2px solid rgb(144, 144, 144);
+  border-radius: 10px;
+  transition: all 0.3s;
+  margin-right: 10px;
+}
+
+.adminCreateBookContainer form input[type="radio"] {
+  display: none;
+}
+
+.adminCreateBookContainer form input[type="radio"]:checked + label {
+  border: solid 2px rgb(221, 39, 22);
+}
+
+
+
+.adminCreateBookContainer form .haveAccount {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.adminCreateBookContainer form .registerFormButton {
+  cursor: pointer;
+}
+
+.adminCreateBookContainer form .haveAccount .registerFormLinkP {
+  margin-left: 5px;
+  text-decoration: none;
+  color: rgb(221, 39, 22);
+  font-weight: 700;
+}
+
+.adminCreateBookGenres {
+  border: 1px solid lightgray;
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.adminCreateBookGenresContent {
+  display: flex;
+  justify-content: space-between;
+}
+
+.adminCreateBookGenres input {
+  width: 80%;
+}
+
+.adminCreateBookGenreButton {
+  cursor: pointer;
+  width: 100px;
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  background-color: rgb(235, 235, 235);
+  text-align: center;
+  margin-left: auto;
+  margin-top: 10px;
+  transition: 0.2s ease-in-out;
+}
+
+.adminCreateBookGenreButton:hover {
+  background-color: #f1f1ef;
+}
+
+.adminCreateBookShowGenres {
+  margin: 20px 0 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.singleGenre {
+  position: relative;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 2px solid red;
+  color: red;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  padding-right: 15px;
+}
+
+.singleGenreClose {
+  position: absolute;
+  top: -6px;
+  right: -5px;
+  color: black;
+}
+
+.adminCreateBookMultiple {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  border: 1px solid lightgray;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.adminCreateBookMultipleItem {
+  width: 31%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.adminCreateBookMultipleItem input {
+  width: 100% !important;
+}
+
+
+
+.adminCreateBookPhotoBtn {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 99;
+  top: 10%;
+  right: 13%;
+}
+.adminCreateBookPhotoBtn svg {
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+
+.adminCreateBookPhotoBtn label {
+  cursor: pointer;
+  padding: 13px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+}
+
+.adminCreateBookPhotoBtn input {
+  display: none;
+}
+
+.adminCreateBookSubmit {
+  cursor: pointer;
+  padding: 15px 30px;
+  margin: 10px 0;
+  font-size: 15px;
+  border: 2px solid rgb(219, 219, 219);
+  border-radius: 10px;
+  margin-top: 25px;
+}
+
+.adminCreateBookSubmit:hover {
+  background-color: rgb(235, 235, 235);
+}

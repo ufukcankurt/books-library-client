@@ -1,0 +1,130 @@
+.adminCreateGetAuthorContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.adminCreateGetAuthorContentDeleteInput {
+  position: absolute;
+  top: 62px;
+  right: 0;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.adminCreateGetAuthorContentDeleteInput svg {
+  width: 33px;
+  height: 33px;
+  margin-top: 4px;
+}
+
+.adminCreateGetAuthorShowAuthors {
+  width: 100%;
+  height: 235px;
+  background-color: lightgray;
+  overflow-y: scroll;
+  position: absolute;
+  top: 110px;
+  left: 0;
+  padding: 5px;
+  border-radius: 15px;
+}
+
+.adminCreateGetAuthorShowAuthorsError{
+    margin: 20px 0 0 20px;
+    color: red;
+    font-size: 18px;
+}
+
+.adminCreateGetAuthorItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  height: 75px;
+  margin-bottom: 3px;
+  border-bottom: 1px solid gray;
+}
+
+.adminCreateGetAuthorInfos {
+  width: 88%;
+  display: flex;
+}
+
+.adminCreateGetAuthorImg {
+  max-width: 50px;
+  max-height: 70px;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.adminCreateGetAuthorImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.adminCreateGetAuthorName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: capitalize;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-left: 20px;
+}
+
+.adminCreateGetAuthorButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 25px;
+  background-color: aliceblue;
+  border-radius: 10px;
+}
+
+.adminCreateGetAuthorSelected {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid red;
+  padding: 5px;
+  position: absolute;
+  width: 100%;
+  border-radius: 10px;
+  background-color: white;
+  top: 54px;
+}
+
+.adminCreateGetAuthorSelected svg {
+  cursor: pointer;
+  width: 33px;
+  height: 33px;
+  margin-top: 4px;
+}
+
+.adminCreateGetAuthorSelectedContent {
+  display: flex;
+  align-items: center;
+}
+
+.selectedAuthorImg {
+  width: 35px;
+  height: 42px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.selectedAuthorName {
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: capitalize;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-left: 20px;
+  color: red;
+}

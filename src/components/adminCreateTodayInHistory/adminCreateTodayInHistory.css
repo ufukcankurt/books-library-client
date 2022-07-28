@@ -1,0 +1,97 @@
+.adminCreateTodayInHistoryContainer {
+}
+
+.adminCreateTodayInHistoryTitle {
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+.adminCreateTodayInHistoryContainer form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.adminCreateTodayInHistoryContainer form section {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 35%;
+  text-align: start;
+}
+
+.adminCreateTodayInHistoryContainer form input,
+.adminCreateTodayInHistoryContainer form textarea {
+  padding: 15px 30px;
+  margin: 10px 0;
+  font-size: 15px;
+  border: 2px solid rgb(219, 219, 219);
+  border-radius: 10px;
+}
+
+.adminCreateTodayInHistoryContainer form input::-webkit-outer-spin-button,
+.adminCreateTodayInHistoryContainer form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.adminCreateTodayInHistoryContainer form label {
+  margin: 10px 0;
+}
+
+.adminCreateTodayInHistoryMultiple {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+  align-items: center;
+  margin: 20px 0;
+  border: 1px solid lightgray;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.adminCreateTodayInHistorySubmit {
+  cursor: pointer;
+  padding: 15px 30px;
+  margin: 10px 0;
+  font-size: 15px;
+  border: 2px solid rgb(219, 219, 219);
+  border-radius: 10px;
+  margin-top: 25px;
+}
+
+.adminCreateTodayInHistorySubmit:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+
+
+.adminCreateTodayInHistoryContainer form .adminCreateTodayInHistoryMultiple {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .adminCreateTodayInHistoryContainer form .adminCreateTodayInHistoryMultiple input {
+    margin-right: 10px;
+  }
+  
+  .adminCreateTodayInHistoryContainer form .adminCreateTodayInHistoryMultiple label {
+    cursor: pointer;
+    padding: 10px;
+    border: 2px solid rgb(144, 144, 144);
+    border-radius: 10px;
+    transition: all 0.3s;
+    margin-right: 25px;
+  }
+  
+  .adminCreateTodayInHistoryContainer form input[type="radio"] {
+    display: none;
+  }
+  
+  .adminCreateTodayInHistoryContainer form input[type="radio"]:checked + label {
+    border: solid 2px rgb(221, 39, 22);
+  }
+  

@@ -1,0 +1,25 @@
+.adminPanelCreateContainer {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding-bottom: 50px;
+  }
+
+  .adminPanelCreateFeed{
+    width: 70%;
+    position: relative;
+    padding: 20px 50px;
+  }
+
+  .adminPanelCreateTitle{
+    margin-bottom: 25px;
+    font-size: 40px;
+    font-weight: 700;
+
+  }
+
+.adminPanelCreateTitle{
+    text-transform: capitalize;
+}

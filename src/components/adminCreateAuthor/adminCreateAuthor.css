@@ -1,0 +1,87 @@
+.adminCreateAuthorContainer {
+}
+
+.adminCreateAuthorTitle {
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+.adminCreateAuthorContainer form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.adminCreateAuthorContainer form section {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 35%;
+  text-align: start;
+}
+
+.adminCreateAuthorContainer form input,
+.adminCreateAuthorContainer form textarea {
+  padding: 15px 30px;
+  margin: 10px 0;
+  font-size: 15px;
+  border: 2px solid rgb(219, 219, 219);
+  border-radius: 10px;
+}
+
+.adminCreateAuthorContainer form input::-webkit-outer-spin-button,
+.adminCreateAuthorContainer form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.adminCreateAuthorContainer form label {
+  margin: 10px 0;
+}
+
+.adminCreateAuthorMultiple {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  border: 1px solid lightgray;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.adminCreateAuthorMultipleItem {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.adminCreateAuthorMultipleItem input {
+  width: 100% !important;
+}
+
+.authorDate{
+    width: 25% !important;
+}
+
+.authorPlace{
+    width: 70% !important;
+}
+
+.adminCreateAuthorSubmit {
+  cursor: pointer;
+  padding: 15px 30px;
+  margin: 10px 0;
+  font-size: 15px;
+  border: 2px solid rgb(219, 219, 219);
+  border-radius: 10px;
+  margin-top: 25px;
+}
+
+.adminCreateAuthorSubmit:hover {
+  background-color: rgb(235, 235, 235);
+}

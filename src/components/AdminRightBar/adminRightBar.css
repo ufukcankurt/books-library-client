@@ -1,0 +1,39 @@
+.adminRightBarContainer{
+    width: 30%;
+    padding: 20px 15px;
+}
+
+.adminRightBarContainer ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .adminRightBarContainer ul li {
+    width: 100%;
+    text-decoration: none;
+    list-style: none;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 8px;
+    border-bottom: 1px solid lightgray;
+  }
+  
+  .adminRightBarLinksDiv {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .adminRightBarLinkImage {
+    width: 30px;
+    height: 30px;
+    margin-left: 15px;
+  }
+  
+  .adminRightBarLink {
+    padding: 10px 14px;
+    color: black;
+  }
+  

@@ -1,7 +1,6 @@
 import "./todayInHistory.css";
 
 const TodayInHistory = ({ quote }) => {
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER + "authors/";
 
   const TodayInHistoryComp = () => {
     return (
@@ -22,7 +21,7 @@ const TodayInHistory = ({ quote }) => {
       )}
       <div className="todayInHistoryContent">
         <div className="todayInHistoryImg">
-          <img src={`${PF}${quote.authorImg}`} alt="" />
+          <img src={quote.authorImg}alt="" />
         </div>
         <p className="todayInHistoryAuthorName">{quote.authorName}</p>
       </div>

@@ -4,7 +4,6 @@ import { Link, useParams } from "react-router-dom";
 import { Lock } from "@material-ui/icons";
 
 function UserNoteDetailContent({ note, book, currentUser }) {
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER + "books/";
   const author = book.book_author;
   const bookTitle = book.book_name;
   const { username } = useParams();
@@ -53,7 +52,7 @@ function UserNoteDetailContent({ note, book, currentUser }) {
         </div>
         <Link to={`/book/${book._id}`}>
           <div className="userNoteDetailContentBookImg">
-            <img src={`${PF}${book.book_img}`} alt="" />
+            <img src={book.book_img} alt="" />
           </div>
         </Link>
       </div>

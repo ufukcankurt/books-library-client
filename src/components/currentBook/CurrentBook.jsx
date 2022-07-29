@@ -3,7 +3,6 @@ import "./currentBook.css"
 import { Link } from "react-router-dom";
 
 const CurrentBook = ({book, setReadingCount}) => {
-    const PF = process.env.REACT_APP_PUBLIC_FOLDER + "books/";
     useEffect(()=> {
         setReadingCount((prev) => prev + 1)
     },[])
@@ -11,7 +10,7 @@ const CurrentBook = ({book, setReadingCount}) => {
         <div className="CurrentBookContainer">
             <Link to={`/book/${book.bookId}`}>
             <div className="currentBookImg">
-                <img src={`${PF}${book.bookImg}`} alt="" />
+                <img src={book.bookImg} alt="" />
             </div>
             </Link>
             <div className="currentBookInfo">

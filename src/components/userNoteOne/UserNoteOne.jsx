@@ -6,7 +6,6 @@ import { AuthContext } from "../../context/authContext/AuthContext";
 
 function UserNoteOne({ note }) {
   const FETCH = process.env.REACT_APP_FETCH_PATH;
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER + "books/";
   const { user: currentUser } = useContext(AuthContext);
   const { username } = useParams();
   const [book, setBook] = useState({});
@@ -31,7 +30,7 @@ function UserNoteOne({ note }) {
     <div className="userNoteOneContainer">
       <div className="userNoteOneLeftside">
         <div className="userNoteOneImg">
-          <img src={`${PF}${book.book_img}`} alt="" />
+          <img src={book.book_img}alt="" />
         </div>
         <div className="userNoteOneInfo">
           <p className="userNoteOneBookName">{book.book_name}</p>

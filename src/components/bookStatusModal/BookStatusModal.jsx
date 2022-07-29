@@ -14,7 +14,6 @@ const BookStatusModal = ({
   currentUser,
   dispatch,
 }) => {
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER + "books/";
   const FETCH = process.env.REACT_APP_FETCH_PATH;
   const { bookId } = useParams();
   let allBook = [...currentUser.bookShelf];
@@ -146,7 +145,7 @@ const BookStatusModal = ({
       </div>
       <div className="bookStatusModalTopside">
         <div className="bookStatusModalImg">
-          <img src={`${PF}${book.book_img}`} alt="" />
+          <img src={book.book_img} alt="" />
         </div>
         <div className="bookStatusModalButtonContainer">
           <input

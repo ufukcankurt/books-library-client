@@ -9,7 +9,6 @@ import * as timeago from "timeago.js";
 
 const Post = ({ postDetail, post }) => {
   const FETCH = process.env.REACT_APP_FETCH_PATH;
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const { user: currentUser } = useContext(AuthContext);
   const [user, setUser] = useState({});
   const [book, setBook] = useState({});
@@ -116,7 +115,7 @@ const Post = ({ postDetail, post }) => {
           <div className="postBookContainer">
             <div className="postBookImgDiv">
               <img
-                src={`${PF}books/${book.book_img}`}
+                src={book.book_img}
                 alt=""
                 className="postBookImg"
               />

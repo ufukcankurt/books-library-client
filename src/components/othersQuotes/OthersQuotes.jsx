@@ -6,7 +6,6 @@ import { AuthContext } from "../../context/authContext/AuthContext";
 
 const OthersQuotes = ({ note }) => {
   const FETCH = process.env.REACT_APP_FETCH_PATH;
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER + "books/";
   const { user: currentUser } = useContext(AuthContext);
   const { bookId } = useParams();
 

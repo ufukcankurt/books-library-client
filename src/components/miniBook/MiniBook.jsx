@@ -5,7 +5,6 @@ import { AuthContext } from "../../context/authContext/AuthContext";
 import { Link } from "react-router-dom";
 
 const MiniBook = ({ bookId, setCount }) => {
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER + "books/";
   const FETCH = process.env.REACT_APP_FETCH_PATH;
   const { user: currentUser } = useContext(AuthContext);
   const [book, setBook] = useState({});
@@ -27,7 +26,7 @@ const MiniBook = ({ bookId, setCount }) => {
     <>
       <Link to={`/book/${bookId}`}>
         <div className="miniBookContainer">
-          <img src={`${PF}${book.book_img}`} alt="" />
+          <img src={book.book_img} alt="" />
         </div>
       </Link>
     </>

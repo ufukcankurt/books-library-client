@@ -3,12 +3,11 @@ import { Link } from "react-router-dom";
 import "./booksPost.css";
 
 const BooksPost = ({ book }) => {
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER + "books/";
   return (
     <div className="bookPostContainer">
       <Link to={`/book/${book._id}`}>
         <div className="bookPostImg">
-          <img src={`${PF}${book.book_img}`} alt="" />
+          <img src={book.book_img} alt="" />
         </div>
       </Link>
       <div className="bookPostInfos">

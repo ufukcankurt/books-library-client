@@ -7,7 +7,6 @@ import LoadingComp from "../loadingComp/LoadingComp";
 
 const CreateNoteMain = ({ book, currentBook, currentNote, isExist }) => {
   const navigate = useNavigate();
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER + "books/";
   const FETCH = process.env.REACT_APP_FETCH_PATH;
   const { user: currentUser } = useContext(AuthContext);
   const { bookId } = useParams();
@@ -94,7 +93,7 @@ const CreateNoteMain = ({ book, currentBook, currentNote, isExist }) => {
       <div className="createNoteMainBookInfoContent">
         <Link to={`/book/${bookId}`}>
           <div className="createNoteMainBookImg">
-            <img src={`${PF}${book.book_img}`} alt="" />
+            <img src={book.book_img} alt="" />
           </div>
         </Link>
         <div className="createNoteMainBookInfo">

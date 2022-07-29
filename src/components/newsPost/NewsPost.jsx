@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import "./newsPost.css";
 
 const NewsPost = ({ single, news }) => {
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER + "news/";
-
   const SinglePost = () => {
     return <p className="newsPostSingleText">{news.desc}</p>;
   };
@@ -20,7 +18,7 @@ const NewsPost = ({ single, news }) => {
     return (
       <>
         <div className="newsPostMid">
-          <img src={`${PF}${news.img}`} alt="" />
+          <img src={news.img} alt="" />
         </div>
       </>
     );
@@ -34,7 +32,7 @@ const NewsPost = ({ single, news }) => {
           style={{ textDecoration: "none", color: "inherit" }}
         >
           <div className="newsPostMid">
-            <img src={`${PF}${news.img}`} alt="" />
+            <img src={news.img} alt="" />
           </div>
         </Link>
       </>

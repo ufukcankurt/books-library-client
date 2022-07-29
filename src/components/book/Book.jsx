@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 
 const Book = ({ bookId, user }) => {
   const FETCH = process.env.REACT_APP_FETCH_PATH;
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER + "books/";
   const { user: currentUser } = useContext(AuthContext);
   const [book, setBook] = useState({});
   const [isClicked, setIsClicked] = useState(false);
@@ -43,7 +42,7 @@ const Book = ({ bookId, user }) => {
   return (
     <div className="bookContainer">
       <div className="bookBookImg">
-        <img src={`${PF}${book.book_img}`} alt="" />
+        <img src={book.book_img} alt="" />
       </div>
       <div className="bookBookInfo">
         <p className="bookBookName">{book.book_name}</p>

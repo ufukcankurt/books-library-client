@@ -11,6 +11,7 @@ const AllBooksRightBar = ({ setBooks, allBooks }) => {
   const genres = [
     "Dünya Klasikleri",
     "Edebiyat",
+    "Aşk",
     "Şiir",
     "Biyografi",
     "Tiyatro",

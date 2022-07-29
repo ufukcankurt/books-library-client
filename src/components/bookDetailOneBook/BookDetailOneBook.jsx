@@ -6,7 +6,6 @@ import { AuthContext } from "../../context/authContext/AuthContext";
 import { useParams } from "react-router-dom";
 
 const BookDetailOneBook = ({ book, setIsOverlay }) => {
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER + "books/";
   const [isClicked, setIsClicked] = useState(false);
   const { user: currentUser, dispatch } = useContext(AuthContext);
   const [userBook, setUserBook] = useState({});
@@ -51,7 +50,7 @@ const BookDetailOneBook = ({ book, setIsOverlay }) => {
       </div>
       <div className="bookDetailOneBookTopside">
         <div className="bookDetailOneBookImage">
-          <img src={`${PF}${book.book_img}`} alt="" />
+          <img src={book.book_img} alt="" />
         </div>
         <div className="bookDetailOneBookContent">
           <div className="bookDetailOneBookDetail">

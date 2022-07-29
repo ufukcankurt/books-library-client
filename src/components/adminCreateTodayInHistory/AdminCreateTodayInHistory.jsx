@@ -121,7 +121,7 @@ const AdminCreateTodayInHistory = ({ currentUser }) => {
             onChange={(e) => setQuoteCategory(e.target.value)}
             checked={quoteCategory === "death"}
           />
-          <label htmlFor="create_quote_death">Ölüm Günü</label>
+          <label htmlFor="create_quote_death">Ölüm Yıl Dönümü</label>
           <input
             type="radio"
             id="create_quote_born"
@@ -131,7 +131,7 @@ const AdminCreateTodayInHistory = ({ currentUser }) => {
             onChange={(e) => setQuoteCategory(e.target.value)}
             checked={quoteCategory === "born"}
           />
-          <label htmlFor="create_quote_born">Doğum Günü</label>
+          <label htmlFor="create_quote_born">Doğum Yıl Dönümü</label>
         </div>
         <button
           className="adminCreateAuthorSubmit"

@@ -52,9 +52,9 @@
 
 .postStatus {
   font-size: 14px;
-    color: gray;
-    margin-top: 8px;
-    text-align: right;
+  color: gray;
+  margin-top: 8px;
+  text-align: right;
 }
 
 .postBookContainer {
@@ -63,6 +63,7 @@
   width: 100%;
   border: 1px solid lightgray;
   border-radius: 15px;
+  margin-bottom: 20px;
 }
 
 .postBookImgDiv {
@@ -110,7 +111,7 @@
 
 .postBookTextTimeline {
   width: 100%;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   margin-bottom: 20px;
   display: -webkit-box;
@@ -118,19 +119,105 @@
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  padding: 8px;
 }
 
-.postBookTextSingle{
+.postBookTextSingle {
   width: 100%;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   margin-bottom: 20px;
+  padding: 8px;
 }
 
-.singlePostDetailSeeAll{
+.singlePostDetailSeeAll {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 20px;
   color: red;
   font-weight: 500;
+}
+
+.postActionsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.postActions {
+  display: flex;
+  margin: 5px 0;
+}
+
+.postIcon {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 10px;
+  background-color: #43464917;
+  margin-right: 10px;
+  border-radius: 20px;
+}
+
+/* .postIcon svg{
+  width: 25px;
+  height: 25px;
+} */
+
+.postActionInfo {
+  width: fit-content;
+  font-weight: 500;
+  font-size: 13px;
+  padding: 8px;
+  border-radius: 20px;
+  transition: 0.2s all ease-in-out;
+}
+
+.postActionInfoComment {
+  width: auto !important;
+  display: block;
+}
+
+.postActionInfo:hover {
+  background-color: #43464917;
+}
+
+.postLiked {
+  color: #db1f1f;
+}
+
+.hoverActionsText {
+  display: none;
+  transition: 0.3s all ease-in-out;
+}
+
+.postIcon:hover .hoverActionsText {
+  width: max-content;
+  display: block;
+  position: absolute;
+  top: 45px;
+  margin-left: auto;
+  color: #fff;
+  background-color: #434649d4;
+  border-radius: 20px;
+  padding: 5px 8px;
+  font-size: 12px;
+  font-weight: 400;
+  transition: 0.3s all ease-in-out;
+}
+
+.postCommentUserRemove {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 50%;
+  color: #db1f1f;
+  transition: 0.2s all ease-in-out;
+}
+
+.postCommentUserRemove:hover {
+  background-color: #db1f1f17;
 }

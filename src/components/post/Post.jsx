@@ -7,41 +7,63 @@ import TimeAgo from "timeago-react";
 import tr from "timeago.js/lib/lang/tr";
 import * as timeago from "timeago.js";
 
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
+
 const Post = ({ postDetail, post }) => {
   const FETCH = process.env.REACT_APP_FETCH_PATH;
   const { user: currentUser } = useContext(AuthContext);
   const [user, setUser] = useState({});
   const [book, setBook] = useState({});
+  const [isLiked, setIsLiked] = useState(false);
+  const [likedCount, setLikedCount] = useState(0);
+  const [commentCount, setCommentCount] = useState(0);
   timeago.register("tr", tr);
 
   useEffect(() => {
-    const getDatas = async () => {
-      if (post.type === "post") {
-        const resUser = await axios.get(`${FETCH}users?userId=${post.userId}`);
-        setUser(resUser.data);
-      } else {
-        const resUser = await axios.get(`${FETCH}users?userId=${post.userId}`);
-        setUser(resUser.data);
+    post.post.likes.includes(currentUser._id) ? setIsLiked(true) : setIsLiked(false);
+    setLikedCount(post.post.likes.length);
+    setCommentCount(post.comments.length);
+  }, [post, currentUser._id]);
 
-        const resBook = await axios.get(`${FETCH}books/${post.bookId}`, {
-          headers: {
-            token: `Bearer ${currentUser.accessToken}`,
-          },
-        });
-        setBook(resBook.data);
-      }
-    };
-    getDatas();
-  }, [post]);
+  const likeHandler = async () => {
+    try {
+      await axios.put(`${FETCH}posts/like/${post.post._id}`, {}, {
+        headers: {
+          token: `Bearer ${currentUser.accessToken}`,
+        },
+      });
+      setIsLiked(!isLiked);
+      setLikedCount(isLiked ? likedCount - 1 : likedCount + 1);
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  const dislikeHandler = async () => {
+    try {
+      await axios.put(`${FETCH}posts/dislike/${post.post._id}`, {}, {
+        headers: {
+          token: `Bearer ${currentUser.accessToken}`,
+        },
+      });
+      setIsLiked(!isLiked);
+      setLikedCount(isLiked ? likedCount - 1 : likedCount + 1);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   const TimelineAllPost = () => {
-    return <p className="postBookTextTimeline">{post.desc}</p>;
+    return <p className="postBookTextTimeline">{post.post.desc}</p>;
   };
 
   const SinglePostDetail = () => {
     return (
       <>
-        <p className="postBookTextSingle">{post.desc}</p>
+        <p className="postBookTextSingle">{post.post.desc}</p>
       </>
     );
   };
@@ -49,17 +71,17 @@ const Post = ({ postDetail, post }) => {
   const TypeBookInfoComp = () => {
     return (
       <>
-        {post.bookStatus === "unfinished" ? "Bir kitabı yarım bıraktı." : ""}
-        {post.bookStatus === "finished" ? "Bir kitabı okudu." : ""}
-        {post.bookStatus === "willread" ? "Bir kitabı okuyacak." : ""}
-        {post.bookStatus === "reading" ? "Bir kitabı okuyor." : ""}
+        {post.post.bookStatus === "unfinished" ? "Bir kitabı yarım bıraktı." : ""}
+        {post.post.bookStatus === "finished" ? "Bir kitabı okudu." : ""}
+        {post.post.bookStatus === "willread" ? "Bir kitabı okuyacak." : ""}
+        {post.post.bookStatus === "reading" ? "Bir kitabı okuyor." : ""}
       </>
     );
   };
 
   const PostInfoComp = () => {
     return (
-      <>{post.type === "book" ? <TypeBookInfoComp /> : <TypeQuoteInfoComp />}</>
+      <>{post.post.type === "book" ? <TypeBookInfoComp /> : <TypeQuoteInfoComp />}</>
     );
   };
 
@@ -72,11 +94,11 @@ const Post = ({ postDetail, post }) => {
       <div className="postTopside">
         <div className="postUserInfo">
           <Link
-            to={`/${user.username}`}
+            to={`/${post.user.username}`}
             style={{ color: "inherit", textDecoration: "none" }}
           >
             <img
-              src={user.profilePicture}
+              src={post.user.profilePicture}
               alt=""
               className="postUserImg"
             />
@@ -86,45 +108,45 @@ const Post = ({ postDetail, post }) => {
               to="/ufukcankurt"
               style={{ color: "inherit", textDecoration: "none" }}
             >
-              <p className="postUserFullname">{user.fullname}</p>
-              <p className="postUserUsername">@{user.username}</p>
+              <p className="postUserFullname">{post.user.fullname}</p>
+              <p className="postUserUsername">@{post.user.username}</p>
             </Link>
           </div>
           <p className="postTimeago">
-            ▪ <TimeAgo datetime={post.createdAt} locale="tr" />
+            ▪ <TimeAgo datetime={post.post.createdAt} locale="tr" />
           </p>
         </div>
         <div className="postStatus">
-          {post.type === "post" ? "" : <PostInfoComp />}
+          {post.post.type === "post" ? "" : <PostInfoComp />}
         </div>
       </div>
     );
   };
 
   const MidSideComp = () => {
-    return <>{postDetail ? <SinglePostDetail /> : <TimelineAllPost />}</>;
+    return <>{postDetail ? <SinglePostDetail /> : post.post.desc && <TimelineAllPost />}</>;
   };
 
   const BottomSideComp = () => {
     return (
       <>
         <Link
-          to={`/book/${book._id}`}
+          to={`/book/${post.book._id}`}
           style={{ color: "inherit", textDecoration: "none" }}
         >
           <div className="postBookContainer">
             <div className="postBookImgDiv">
               <img
-                src={book.book_img}
+                src={post.book.book_img}
                 alt=""
                 className="postBookImg"
               />
             </div>
 
             <div className="postBookInfo">
-              <p className="postBookName">{book.book_name}</p>
-              <p className="postBookAuthor">{book.book_author}</p>
-              <p className="postBookPages">{book.book_page} Sayfa</p>
+              <p className="postBookName">{post.book.book_name}</p>
+              <p className="postBookAuthor">{post.book.book_author}</p>
+              <p className="postBookPages">{post.book.book_page} Sayfa</p>
             </div>
           </div>
         </Link>
@@ -132,26 +154,66 @@ const Post = ({ postDetail, post }) => {
     );
   };
 
+  const HoverActions = ({ text }) => {
+    return (
+      <span className="hoverActionsText">
+        {text}
+      </span>
+    )
+  }
+
+  const Actions = () => {
+    return (
+      <div className="postActionsContainer">
+        {likedCount > 0 &&
+          <span className="postActionInfo">{likedCount} beğeni</span>
+        }
+        <div className="postActions">
+
+          {isLiked
+            ? <div className="postIcon postLiked" onClick={dislikeHandler}>
+              <FavoriteIcon />
+              <HoverActions text="Beğenmekten Vazgeç" />
+            </div>
+            : <div className="postIcon" onClick={likeHandler}>
+              <FavoriteBorderIcon />
+              <HoverActions text="Beğen" />
+            </div>}
+
+          <Link to={`/post/${post.post._id}`}>
+            <div className="postIcon"><ChatBubbleOutlineOutlinedIcon /> <HoverActions text="Yorum Yap" /></div>
+          </Link>
+
+        </div>
+        <Link to={`/post/${post.post._id}`}>
+          {commentCount > 0 && !postDetail &&
+            <span className="postActionInfo postActionInfoComment">{commentCount} yorumun tümünü gör</span>}
+        </Link>
+      </div>
+    )
+  }
+
   return (
     <>
-      <Link
-        to={`/post/${post._id}`}
-        style={{ color: "inherit", textDecoration: "none" }}
+      <div
+        className="PostContainer"
+        style={
+          post.post.type === "post"
+            ? { backgroundColor: "rgba(240, 248, 255, 0.4)" }
+            : { backgroundColor: "inherit" }
+
+        }
       >
-        <div
-          className="PostContainer"
-          style={
-            post.type === "post"
-              ? { backgroundColor: "rgba(240, 248, 255, 0.4)" }
-              : { backgroundColor: "inherit" }
-              
-          }
+        <Link
+          to={`/post/${post.post._id}`}
+          style={{ color: "inherit", textDecoration: "none" }}
         >
           <PostTopsideComp />
           <MidSideComp />
-          {post.type === "post" && !post.bookId ? "" : <BottomSideComp />}
-        </div>
-      </Link>
+          {post.post.type === "post" && !post.post.bookId ? "" : <BottomSideComp />}
+        </Link>
+        <Actions />
+      </div>
     </>
   );
 };

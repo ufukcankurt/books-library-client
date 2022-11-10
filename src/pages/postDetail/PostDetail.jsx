@@ -8,6 +8,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import LoadingComp from "../../components/loadingComp/LoadingComp";
+import PostComment from "../../components/postComment/PostComment";
 
 const PostDetail = () => {
   const FETCH = process.env.REACT_APP_FETCH_PATH;
@@ -35,6 +36,7 @@ const PostDetail = () => {
       <div className="postDetailContainer">
         <div className="postDetailTimeline">
           {isLoading ? <LoadingComp /> : <Post post={post} postDetail />}
+          {!isLoading && <PostComment post={post} setPost={setPost} />}
         </div>
         <RightBar profile />
       </div>

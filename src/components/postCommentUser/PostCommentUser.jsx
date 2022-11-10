@@ -7,6 +7,7 @@ import axios from "axios";
 import TimeAgo from "timeago-react";
 import tr from "timeago.js/lib/lang/tr";
 import * as timeago from "timeago.js";
+import { HoverActions } from "../post/Post";
 
 const PostCommentUser = ({ comment, post, setPost }) => {
 
@@ -47,6 +48,7 @@ const PostCommentUser = ({ comment, post, setPost }) => {
             {((currentUser._id === comment.comment.userId) || (post.user._id === currentUser._id)) &&
                 <div className="postCommentUserRemove" onClick={handleRemoveComment}>
                     <DeleteIcon />
+                    <HoverActions text="Yorumu Sil" />
                 </div>
             }
         </div >

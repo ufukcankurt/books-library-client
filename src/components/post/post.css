@@ -212,6 +212,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   padding: 10px;
   border-radius: 50%;
   color: #db1f1f;

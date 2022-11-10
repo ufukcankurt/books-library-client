@@ -56,3 +56,18 @@
   margin-top: 2px;
   font-weight: 500;
 }
+
+.postCommentUserRemove:hover .hoverActionsText {
+  width: max-content;
+  display: block;
+  position: absolute;
+  top: 45px;
+  margin-left: auto;
+  color: #fff;
+  background-color: #434649d4;
+  border-radius: 20px;
+  padding: 5px 8px;
+  font-size: 12px;
+  font-weight: 400;
+  transition: 0.3s all ease-in-out;
+}

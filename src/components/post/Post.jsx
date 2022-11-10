@@ -154,13 +154,7 @@ const Post = ({ postDetail, post }) => {
     );
   };
 
-  const HoverActions = ({ text }) => {
-    return (
-      <span className="hoverActionsText">
-        {text}
-      </span>
-    )
-  }
+
 
   const Actions = () => {
     return (
@@ -219,3 +213,11 @@ const Post = ({ postDetail, post }) => {
 };
 
 export default Post;
+
+export const HoverActions = ({ text }) => {
+  return (
+    <span className="hoverActionsText">
+      {text}
+    </span>
+  )
+}

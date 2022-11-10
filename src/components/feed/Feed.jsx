@@ -16,11 +16,11 @@ const Feed = ({ user }) => {
     try {
       const fetchPost = async () => {
         const res = user
-          ? await axios.get(`${FETCH}posts/profile/${user.username}`)
-          : await axios.get(`${FETCH}posts/timeline/${currentUser._id}`);
+          ? await axios.get(`${FETCH}posts/profile/getall/${user.username}`)
+          : await axios.get(`${FETCH}posts/timeline/getall/${currentUser._id}`);
         setPosts(
           res.data.sort((p1, p2) => {
-            return new Date(p2.createdAt) - new Date(p1.createdAt);
+            return new Date(p2.post.createdAt) - new Date(p1.post.createdAt);
           })
         );
         setTimeout(() => {
@@ -38,7 +38,7 @@ const Feed = ({ user }) => {
       <div className="FeedContainer">
         {user ? "" : <Share isShare={isShare} setIsShare={setIsShare} />}
 
-        {posts?.map((post, i) => (
+        {posts?.map((post) => (
           <Post key={post._id} post={post} />
         ))}
 

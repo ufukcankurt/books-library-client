@@ -1,0 +1,51 @@
+.postCommentContainer {
+}
+
+.postCommentShare {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 15px;
+  background-color: #43464917;
+}
+
+.postCommentShareContent {
+  display: flex;
+  gap: 20px;
+}
+
+.postCommentImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.postCommentImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.postCommentInput {
+  min-height: 68px;
+  max-height: 150px;
+  flex: 1;
+  padding: 10px 15px;
+  border-radius: 15px;
+}
+
+.postCommentButton {
+  width: 100px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  text-align: center;
+  margin-left: auto;
+  margin-top: 10px;
+  transition: 0.2s ease-in-out;
+}
+
+.postCommentButton:hover{
+    background-color: #43464917;
+}

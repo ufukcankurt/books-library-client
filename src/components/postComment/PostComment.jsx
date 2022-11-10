@@ -3,32 +3,15 @@ import React, { useState, useContext } from 'react'
 import { AuthContext } from "../../context/authContext/AuthContext";
 import PostCommentUser from "../postCommentUser/PostCommentUser"
 import axios from "axios"
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import MyAlertComp from "../myAlertComp/MyAlertComp";
 
 const PostComment = ({ post, setPost }) => {
     const FETCH = process.env.REACT_APP_FETCH_PATH;
     const { user: currentUser } = useContext(AuthContext);
-    const { postId } = useParams();
 
+    const [isVisible, setIsVisible] = useState(false);
+    const [message, setMessage] = useState(false);
     const [input, setInput] = useState("")
-    const [comments, setComments] = useState([])
-
-    useEffect(() => {
-
-        const getComments = async () => {
-            try {
-                const res = await axios.get(`${FETCH}comments/${postId}`);
-                setComments(res.data);
-            } catch (err) {
-                console.log(err)
-            }
-        }
-
-        if (postId) {
-            getComments();
-        }
-    }, [postId, FETCH, currentUser])
 
     const handleComment = async (e) => {
         e.preventDefault()
@@ -48,14 +31,22 @@ const PostComment = ({ post, setPost }) => {
             obj.comment = res.data
             obj.user = currentUser
             setPost({ ...post, comments: [...post.comments, obj] })
-            // setComments([...comments, obj])
             setInput("")
+            setIsVisible(true)
+            setMessage("Yorum başarılı bir şekilde paylaşıldı!")
         }
 
     }
 
     return (
         <div className='postCommentContainer'>
+            {isVisible === true && (
+                <MyAlertComp
+                    message={message}
+                    setIsVisible={setIsVisible}
+                    setIsError={false}
+                />
+            )}
             <div className='postCommentShare'>
                 <div className="postCommentShareContent">
                     <div className="postCommentImg">
@@ -66,7 +57,7 @@ const PostComment = ({ post, setPost }) => {
                 {input.length > 0 && <button className='postCommentButton' onClick={handleComment}>Paylaş</button>}
             </div>
             {
-                post.comments?.map((comment) => <PostCommentUser key={comment.comment._id} setPost={setPost} comment={comment} post={post} />)
+                post.comments?.map((comment) => <PostCommentUser setIsVisible={setIsVisible} setMessage={setMessage} key={comment.comment._id} setPost={setPost} comment={comment} post={post} />)
             }
         </div>
     )

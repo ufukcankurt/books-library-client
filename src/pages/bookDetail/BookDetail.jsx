@@ -1,5 +1,4 @@
 import "./bookDetail.css";
-import Nav from "../../components/nav/Nav";
 import RightBar from "../../components/rightBar/RightBar";
 import BookDetailFeed from "../../components/bookDetailFeed/BookDetailFeed";
 import { useParams } from "react-router-dom";
@@ -41,7 +40,6 @@ const BookDetail = () => {
   return (
     <>
       {isOverlay ? <Overlay /> : ""}
-      <Nav />
       <div className="bookDetailContainer">
         <div className="bookDetailTimeline">
           {isLoading ? (

@@ -1,6 +1,5 @@
 import "./userNoteDetail.css";
 import React, { useContext, useEffect, useState } from "react";
-import Nav from "../../components/nav/Nav";
 import RightBar from "../../components/rightBar/RightBar";
 import UserNoteDetailContent from "../../components/userNoteDetailContent/UserNoteDetailContent";
 import { useParams } from "react-router-dom";
@@ -39,7 +38,6 @@ function UserNoteDetail() {
 
   return (
     <>
-      <Nav />
       <div className="userNoteDetailContainer">
         {isLoading ? (
           <LoadingComp />

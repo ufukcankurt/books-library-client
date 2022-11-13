@@ -1,5 +1,4 @@
 import "./profile.css";
-import Nav from "../../components/nav/Nav";
 import RightBar from "../../components/rightBar/RightBar";
 import UserProfileInfo from "../../components/userProfileInfo/UserProfileInfo";
 import Feed from "../../components/feed/Feed";
@@ -42,7 +41,6 @@ const Profile = () => {
 
   return (
     <div>
-      <Nav />
       <div className="profileContainer">
         <div className="profileTimeline">
           {isLoading ? <LoadingComp /> : <MainComp />}

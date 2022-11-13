@@ -1,5 +1,4 @@
 import "./profileSettings.css";
-import Nav from "../../components/nav/Nav";
 import RightBar from "../../components/rightBar/RightBar";
 import ChangeProfilePhoto from "../../components/changeProfilePhoto/ChangeProfilePhoto";
 import ProfileSettingsForm from "../../components/profileSettingsForm/ProfileSettingsForm";
@@ -13,7 +12,6 @@ const ProfileSettings = () => {
 
   return (
     <div>
-      <Nav />
       <div className="profileSettingsContainer">
         <div className="profileSettingsTimeline">
           <ChangeProfilePhoto

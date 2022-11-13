@@ -1,4 +1,3 @@
-import Nav from "../../components/nav/Nav";
 import "./books.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -36,7 +35,6 @@ const Books = () => {
 
   return (
     <>
-      <Nav />
       <div className="booksContainer">
         {isLoading ? (
           <Loader />

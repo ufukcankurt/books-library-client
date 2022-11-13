@@ -1,6 +1,5 @@
 import "./postDetail.css";
 
-import Nav from "../../components/nav/Nav";
 import RightBar from "../../components/rightBar/RightBar";
 import Post from "../../components/post/Post";
 import { useContext, useEffect, useState } from "react";
@@ -32,7 +31,6 @@ const PostDetail = () => {
 
   return (
     <div>
-      <Nav />
       <div className="postDetailContainer">
         <div className="postDetailTimeline">
           {isLoading ? <LoadingComp /> : <Post post={post} postDetail />}

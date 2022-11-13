@@ -1,5 +1,4 @@
 import "./newsCategory.css";
-import Nav from "../../components/nav/Nav";
 import NewsFeed from "../../components/newsFeed/NewsFeed";
 import NewsRightBar from "../../components/newsRightBar/NewsRightBar";
 import axios from "axios";
@@ -28,7 +27,6 @@ const NewsCatergory = () => {
 
   return (
     <>
-      <Nav />
       <div className="newsCategoryContainer">
         {isLoading ? <LoadingComp /> : <NewsFeed news={news} />}
         <NewsRightBar />

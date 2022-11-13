@@ -1,4 +1,3 @@
-import Nav from "../../components/nav/Nav";
 import NewsFeed from "../../components/newsFeed/NewsFeed";
 import NewsPost from "../../components/newsPost/NewsPost";
 import NewsRightBar from "../../components/newsRightBar/NewsRightBar";
@@ -36,7 +35,6 @@ const NewsDetail = () => {
 
   return (
     <>
-      <Nav />
       <div className="newsDetailContainer">
         <div className="newsDetailContainer">
           <div className="newsDetailFeedContainer">

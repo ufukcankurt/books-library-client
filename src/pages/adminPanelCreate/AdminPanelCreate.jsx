@@ -1,7 +1,6 @@
 import "./adminPanelCreate.css"
 import React, {useContext} from "react";
 import { useParams } from "react-router-dom";
-import Nav from "../../components/nav/Nav";
 import AdminRightBar from "../../components/AdminRightBar/AdminRightBar";
 import AdminCreateBook from "../../components/adminCreateBook/AdminCreateBook";
 import { AuthContext } from "../../context/authContext/AuthContext";
@@ -15,7 +14,6 @@ const AdminPanelCreate = () => {
 
   return (
     <>
-      <Nav />
       <div className="adminPanelCreateContainer">
         <div className="adminPanelCreateFeed">
             {categoryName === "book" ? <AdminCreateBook currentUser={currentUser} /> : ""}

@@ -2,7 +2,6 @@ import "./admin.css"
 import React, { useContext } from "react";
 import NotAllowed from "../../components/404/NotAllowed";
 import { AuthContext } from "../../context/authContext/AuthContext";
-import Nav from "../../components/nav/Nav";
 import AdminRightBar from "../../components/AdminRightBar/AdminRightBar";
 
 const Admin = () => {
@@ -11,7 +10,6 @@ const Admin = () => {
   const Page = () => {
     return (
       <>
-        <Nav />
         <div className="adminContainer">
             <div className="adminFeed">
                 <h1 className="adminTitle">ADMİN PANELİNE HOŞGELDİNİZ...</h1>

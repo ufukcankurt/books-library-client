@@ -1,5 +1,4 @@
 import "./createNoteDetail.css";
-import Nav from "../../components/nav/Nav";
 import RightBar from "../../components/rightBar/RightBar";
 import CreateNoteFeed from "../../components/createNoteFeed/CreateNoteFeed";
 import { useParams } from "react-router-dom";
@@ -70,7 +69,6 @@ const CreateNoteDetail = () => {
 
   return (
     <>
-      <Nav />
       <div className="createNoteDetailContainer">
         {isLoading ? (
           <LoadingComp />

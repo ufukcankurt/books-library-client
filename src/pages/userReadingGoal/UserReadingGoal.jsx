@@ -1,5 +1,4 @@
 import "./userReadingGoal.css";
-import Nav from "../../components/nav/Nav";
 import RightBar from "../../components/rightBar/RightBar";
 import UserProfileInfo from "../../components/userProfileInfo/UserProfileInfo";
 import ReadingGoal from "../../components/readingGoal/ReadingGoal";
@@ -87,7 +86,6 @@ const UserReadingGoal = () => {
   }
   return (
     <>
-      <Nav />
       <div className="userReadingGoalContainer">
         <div className="userReadingGoalTimeline">
           <UserProfileInfo user={user} />

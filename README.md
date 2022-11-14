@@ -1,4 +1,4 @@
-# Social Media Based Library App
+# Social Media Based Library App 📚
 
 This application is my thesis project. The starting point of the project is as follows; <br> ***I love reading books. After reading the book, I write summaries and notes. There is no app that can do this. That's why I keep all these notes in my [myLibrary](https://github.com/ufukcankurt/myLibrary) repo on github... Considering all this, I decided to turn it into an application.***
 
@@ -22,7 +22,7 @@ This application is my thesis project. The starting point of the project is as f
 - You can create your own personal shelves.
 - After reading the books, you can write summaries and quotes. If you want, you can write in private notes that only you will see.
 - You can reach all the news about the books in general.
-- You can add friends
+- You can add friends.
 - You can share the post as you wish.
 - You can share your thoughts with your friends and exchange different ideas and opinions.
 

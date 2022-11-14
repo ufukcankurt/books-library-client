@@ -5,6 +5,7 @@ import {
   Route,
   useNavigate,
   Navigate,
+  useLocation,
 } from "react-router-dom";
 import Home from "./pages/home/Home"
 import Login from "./pages/login/Login";
@@ -23,7 +24,7 @@ import PostDetail from "./pages/postDetail/PostDetail";
 import CreateNote from "./pages/createNote/CreateNote";
 import UserNotes from "./pages/userNotes/UserNotes";
 import UserNoteDetail from "./pages/userNoteDetail/UserNoteDetail";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "./context/authContext/AuthContext";
 import { ChakraProvider } from "@chakra-ui/react"
 import CreateNoteDetail from "./pages/createNoteDetail/CreateNoteDetail";
@@ -31,39 +32,51 @@ import NewsCategory from "./pages/newsCategory/NewsCategory";
 import Books from "./pages/books/Books";
 import Admin from "./pages/adminPanel/Admin";
 import AdminPanelCreate from "./pages/adminPanelCreate/AdminPanelCreate";
+import { ThemeContext, ThemeContextProvider } from "./context/themeContext/ThemeContext";
+import { useEffect } from "react";
+import Nav from "./components/nav/Nav";
+
 
 function App() {
   const user = useContext(AuthContext)
+  const { isDark } = useContext(ThemeContext);
+  const [isThemeDark, setIsThemeDark] = useState(isDark);
+
 
   return (
-    <ChakraProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={user.user !== null ? <Home /> : <Navigate replace to="/login" />} />
-          <Route path="/login" element={user.user === null ? <Login /> : <Navigate replace to="/" />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/user/profile-settings" element={user.user !== null ? <ProfileSettings /> : <Navigate replace to="/login" />} />
-          <Route path="/:username" element={user.user !== null ? <Profile /> : <Navigate replace to="/login" />} />
-          <Route path="/:username/reading-goal" element={user.user !== null ? <UserReadingGoal /> : <Navigate replace to="/login" />} />
-          <Route path="/:username/followers" element={user.user !== null ? <UserFollowers /> : <Navigate replace to="/login" />} />
-          <Route path="/:username/followings" element={user.user !== null ? <UserFollowings /> : <Navigate replace to="/login" />} />
-          <Route path="/:username/shelf" element={user.user !== null ? <UserBooks /> : <Navigate replace to="/login" />} />
-          <Route path="/:username/shelf/:shelfId" element={user.user !== null ? <UserShelf /> : <Navigate replace to="/login" />} />
-          <Route path="/:username/notes" element={user.user !== null ? <UserNotes /> : <Navigate replace to="/login" />} />
-          <Route path="/:username/notes/:noteId" element={user.user !== null ? <UserNoteDetail /> : <Navigate replace to="/login" />} />
-          <Route path="/book/:bookId" element={user.user !== null ? <BookDetail /> : <Navigate replace to="/login" />} />
-          <Route path="/post/:postId" element={user.user !== null ? <PostDetail /> : <Navigate replace to="/login" />} />
-          <Route path="/news" element={user.user !== null ? <News /> : <Navigate replace to="/login" />} />
-          <Route path="/news/:newsId" element={user.user !== null ? <NewsDetail /> : <Navigate replace to="/login" />} />
-          <Route path="/news/category/:categoryName" element={user.user !== null ? <NewsCategory /> : <Navigate replace to="/login" />} />
-          <Route path="/create-note" element={user.user !== null ? <CreateNote /> : <Navigate replace to="/login" />} />
-          <Route path="/create-note/:bookId" element={user.user !== null ? <CreateNoteDetail /> : <Navigate replace to="/login" />} />
-          <Route path="/books" element={user.user !== null ? <Books /> : <Navigate replace to="/login" />} />
-          <Route path="/admin" element={user.user !== null  ? <Admin /> : <Navigate replace to="/login" />} />
-          <Route path="/admin/create/:categoryName" element={user.user !== null  ? <AdminPanelCreate /> : <Navigate replace to="/login" />} />
-        </Routes>
-      </BrowserRouter>
-    </ChakraProvider>
+    <ThemeContextProvider>
+      <ChakraProvider>
+        <div className="mydiv" my-data-theme={isThemeDark && "dark"}>
+          <BrowserRouter>
+            {user.user !== null && <Nav setIsThemeDark={setIsThemeDark} />}
+            <Routes>
+              <Route path="/" element={user.user !== null ? <Home /> : <Navigate replace to="/login" />} />
+              <Route path="/login" element={user.user === null ? <Login /> : <Navigate replace to="/" />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/user/profile-settings" element={user.user !== null ? <ProfileSettings /> : <Navigate replace to="/login" />} />
+              <Route path="/:username" element={user.user !== null ? <Profile /> : <Navigate replace to="/login" />} />
+              <Route path="/:username/reading-goal" element={user.user !== null ? <UserReadingGoal /> : <Navigate replace to="/login" />} />
+              <Route path="/:username/followers" element={user.user !== null ? <UserFollowers /> : <Navigate replace to="/login" />} />
+              <Route path="/:username/followings" element={user.user !== null ? <UserFollowings /> : <Navigate replace to="/login" />} />
+              <Route path="/:username/shelf" element={user.user !== null ? <UserBooks /> : <Navigate replace to="/login" />} />
+              <Route path="/:username/shelf/:shelfId" element={user.user !== null ? <UserShelf /> : <Navigate replace to="/login" />} />
+              <Route path="/:username/notes" element={user.user !== null ? <UserNotes /> : <Navigate replace to="/login" />} />
+              <Route path="/:username/notes/:noteId" element={user.user !== null ? <UserNoteDetail /> : <Navigate replace to="/login" />} />
+              <Route path="/book/:bookId" element={user.user !== null ? <BookDetail /> : <Navigate replace to="/login" />} />
+              <Route path="/post/:postId" element={user.user !== null ? <PostDetail /> : <Navigate replace to="/login" />} />
+              <Route path="/news" element={user.user !== null ? <News /> : <Navigate replace to="/login" />} />
+              <Route path="/news/:newsId" element={user.user !== null ? <NewsDetail /> : <Navigate replace to="/login" />} />
+              <Route path="/news/category/:categoryName" element={user.user !== null ? <NewsCategory /> : <Navigate replace to="/login" />} />
+              <Route path="/create-note" element={user.user !== null ? <CreateNote /> : <Navigate replace to="/login" />} />
+              <Route path="/create-note/:bookId" element={user.user !== null ? <CreateNoteDetail /> : <Navigate replace to="/login" />} />
+              <Route path="/books" element={user.user !== null ? <Books /> : <Navigate replace to="/login" />} />
+              <Route path="/admin" element={user.user !== null ? <Admin /> : <Navigate replace to="/login" />} />
+              <Route path="/admin/create/:categoryName" element={user.user !== null ? <AdminPanelCreate /> : <Navigate replace to="/login" />} />
+            </Routes>
+          </BrowserRouter>
+        </div>
+      </ChakraProvider>
+    </ThemeContextProvider>
 
   );
 }

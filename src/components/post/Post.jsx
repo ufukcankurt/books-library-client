@@ -105,7 +105,7 @@ const Post = ({ postDetail, post }) => {
           </Link>
           <div className="postUserNames">
             <Link
-              to="/ufukcankurt"
+             to={`/${post.user.username}`}
               style={{ color: "inherit", textDecoration: "none" }}
             >
               <p className="postUserFullname">{post.user.fullname}</p>

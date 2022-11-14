@@ -2,9 +2,10 @@ import "./userFollowerOne.css";
 import { useEffect, useRef, useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/authContext/AuthContext";
+import { Link } from "react-router-dom";
 
 const UserFollowerOne = ({ id }) => {
-  const FETCH = process.env.REACT_APP_FETCH_PATH 
+  const FETCH = process.env.REACT_APP_FETCH_PATH
   const { user: currentUser, dispatch } = useContext(AuthContext);
 
   const follow = useRef();
@@ -84,13 +85,17 @@ const UserFollowerOne = ({ id }) => {
   return (
     <div className="userFollowerOneContainer">
       <div className="userFollowerOneLeftside">
-        <div className="userFollowerOneImg">
-          <img src={user.profilePicture} alt="" />
-        </div>
-        <div className="userFollowerOneInfo">
-          <p className="userFollowerOneFullname">{user.fullname}</p>
-          <p className="userFollowerOneUsername">@{user.username}</p>
-        </div>
+        <Link to={`/${user.username}`}>
+          <div className="userFollowerOneImg">
+            <img src={user.profilePicture} alt="" />
+          </div>
+        </Link>
+        <Link to={`/${user.username}`}>
+          <div className="userFollowerOneInfo">
+            <p className="userFollowerOneFullname">{user.fullname}</p>
+            <p className="userFollowerOneUsername">@{user.username}</p>
+          </div>
+        </Link>
       </div>
       {user.username !== currentUser.username ? (
         <FollowersFollowingsButtonComp />

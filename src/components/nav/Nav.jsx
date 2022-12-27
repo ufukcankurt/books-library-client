@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import SearchComp from "../searchComp/SearchComp";
+import { ThemeContext } from "../../context/themeContext/ThemeContext";
 
-const Nav = () => {
+const Nav = ({ setIsThemeDark }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER + "users/";
   const [isClicked, setIsClicked] = useState(false);
   const { user } = useContext(AuthContext);
+  const { isDark, dispatch } = useContext(ThemeContext);
 
   const handleLogout = () => {
     localStorage.setItem("user", null);
@@ -21,7 +23,7 @@ const Nav = () => {
   const AdminLink = () => {
     return (
       <>
-        <li>
+        <li className="navModalLi">
           <Link to="/admin" style={{ textDecoration: "none" }}>
             <div className="modalDiv">
               <img className="modalImage" src="/assets/admin.png" alt="" />
@@ -32,6 +34,13 @@ const Nav = () => {
       </>
     );
   };
+
+  console.log("isDarkkk:", isDark);
+
+  const handleTheme = async () => {
+    await dispatch({ type: "CHANGE_THEME", payload: isDark ? false : true });
+    await setIsThemeDark(isDark ? false : true);
+  }
 
   return (
     <div className="navContainer">
@@ -77,29 +86,29 @@ const Nav = () => {
             </li>
           </ul>
           <div className="navProfilePhoto" onClick={handleClick}>
-            <img src={user.profilePicture} alt="" />
+            <img src={user?.profilePicture} alt="" />
           </div>
           <div
             className="navModal"
             style={isClicked ? { display: "block" } : { display: "none" }}
           >
             <ul>
-              <li>
+              <li className="navModalLi">
                 <Link
-                  to={`/${user.username}`}
+                  to={`/${user?.username}`}
                   style={{ textDecoration: "none" }}
                 >
                   <div className="modalDiv">
                     <img
                       className="modalProfilImage"
-                      src={user.profilePicture}
+                      src={user?.profilePicture}
                       alt=""
                     />
-                    <span className="modalPrivate">{user.fullname}</span>
+                    <span className="modalPrivate">{user?.fullname}</span>
                   </div>
                 </Link>
               </li>
-              <li>
+              <li className="navModalLi">
                 <Link to="/create-note" style={{ textDecoration: "none" }}>
                   <div className="modalDiv">
                     <img
@@ -111,9 +120,9 @@ const Nav = () => {
                   </div>
                 </Link>
               </li>
-              <li>
+              <li className="navModalLi">
                 <Link
-                  to={`/${user.username}/shelf/Okuduklarım`}
+                  to={`/${user?.username}/shelf/Okuduklarım`}
                   style={{ textDecoration: "none" }}
                 >
                   <div className="modalDiv">
@@ -126,9 +135,9 @@ const Nav = () => {
                   </div>
                 </Link>
               </li>
-              <li>
+              <li className="navModalLi">
                 <Link
-                  to={`/${user.username}/shelf/Okuyacaklarım`}
+                  to={`/${user?.username}/shelf/Okuyacaklarım`}
                   style={{ textDecoration: "none" }}
                 >
                   <div className="modalDiv">
@@ -141,9 +150,9 @@ const Nav = () => {
                   </div>
                 </Link>
               </li>
-              <li>
+              <li className="navModalLi">
                 <Link
-                  to={`/${user.username}/reading-goal`}
+                  to={`/${user?.username}/reading-goal`}
                   style={{ textDecoration: "none" }}
                 >
                   <div className="modalDiv">
@@ -156,9 +165,9 @@ const Nav = () => {
                   </div>
                 </Link>
               </li>
-              <hr className="hrLink" />
-              {user.isAdmin ? <AdminLink /> : ""}
-              <li>
+              {/* <hr className="hrLink" /> */}
+              {user?.isAdmin ? <AdminLink /> : ""}
+              <li className="navModalLi">
                 <Link
                   to="/user/profile-settings"
                   style={{ textDecoration: "none" }}
@@ -173,11 +182,21 @@ const Nav = () => {
                   </div>
                 </Link>
               </li>
-              <li>
+              <li className="navModalLi">
+
+                <div onClick={handleTheme} className="modalDiv">
+                  <img className="modalImage" src={`/assets/${isDark ? "lightmode.png" : "darkmode.png"}`} alt="" />
+                  <span className="modalPrivate">{isDark ? "Light Mode" : "Dark Mode"}</span>
+                </div>
+
+              </li>
+              <li className="navModalLi">
+
                 <div onClick={handleLogout} className="modalDiv">
                   <img className="modalImage" src="/assets/logout.png" alt="" />
                   <span className="modalPrivate">Çıkış Yap</span>
                 </div>
+
               </li>
             </ul>
           </div>

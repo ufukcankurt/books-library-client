@@ -1,3 +1,23 @@
+:root {
+  --bg: #f9f9f9;
+  --bgLighter: white;
+  --bgLightest: #e9e9ea;
+  --text: black;
+  --textSoft: #606060;
+  --soft: #e2e2e2;
+  --hover: #e9e9ea;
+}
+
+[my-data-theme="dark"] {
+  --bg: #15202b;
+  --bgLighter: #273340;
+  --bgLightest: #2c3640;
+  --text: white;
+  --textSoft: #aaaaaa;
+  --soft: rgb(56, 68, 77);
+  --hover: #273340;
+}
+
 *,
 html {
   margin: 0;
@@ -11,8 +31,8 @@ body {
   position: relative;
 }
 
-#root {
-  background-color: #fffaf080;
+.mydiv {
+  background-color: var(--bg);
 }
 
 ::-webkit-scrollbar {
@@ -30,6 +50,6 @@ body {
 }
 
 ::selection {
-  background: #DB1F1F;
+  background: #db1f1f;
   color: #fff;
 }

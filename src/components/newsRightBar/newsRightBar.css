@@ -16,7 +16,7 @@
     font-size: 16px;
     text-align: center;
     margin-bottom: 8px;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid var(--soft);
   }
   
   .newsRightBarLinksDiv {
@@ -33,6 +33,6 @@
   
   .newsRightBarLink {
     padding: 10px 14px;
-    color: black;
+    color: var(--text);
   }
   

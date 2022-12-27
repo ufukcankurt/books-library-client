@@ -9,8 +9,14 @@
   padding: 10px 42px 10px 15px;
   margin: 0 auto;
   font-size: 15px;
-  border: 2px solid rgb(219, 219, 219);
   border-radius: 5px;
+  border: 1px solid var(--soft);
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+.allBooksSearchInput::placeholder{
+  color: var(--textSoft);
 }
 
 .allBooksSearchIcon {
@@ -21,4 +27,5 @@
   border: none;
   background-color: transparent;
   padding: 7px 10px;
+  color: var(--text);
 }

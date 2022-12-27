@@ -3,7 +3,7 @@
   height: 150px;
   width: 100%;
   margin-top: 10px;
-  border: 1px solid lightgray;
+  border: 1px solid var(--soft);
   border-radius: 15px;
   position: relative;
 }
@@ -42,6 +42,7 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  color: var(--text);
 }
 
 .bookBookAuthor {
@@ -53,7 +54,7 @@
   font-size: 15px;
   font-weight: 500;
   margin-top: 5px;
-  color: gray;
+  color: var(--textSoft);
   text-transform: capitalize;
 }
 
@@ -61,14 +62,14 @@
   font-size: 14px;
   font-weight: 400;
   margin-top: 5px;
-  color: gray;
+  color: var(--textSoft);
 }
 
 .bookBookDate {
   font-size: 13px;
   font-weight: 400;
   margin-top: 5px;
-  color: gray;
+  color: var(--textSoft);
 }
 
 .bookBookSettings {
@@ -88,9 +89,11 @@
   cursor: pointer;
   padding: 10px 12px;
   border-radius: 10px;
-  border: 1px solid lightgray;
+  border: 1px solid var(--soft);
+  color: var(--text);
   font-size: 14px;
   text-align: center;
+  transition: .2s all ease-in-out;
 }
 
 .bookBookSettingsAddQuote {
@@ -100,10 +103,18 @@
   justify-content: center;
   padding: 10px 12px;
   border-radius: 10px;
-  border: 1px solid lightgray;
+  border: 1px solid var(--soft);
+  color: var(--text);
   font-size: 14px;
   text-align: center;
   margin-top: 10px;
+  transition: .2s all ease-in-out;
+}
+
+.bookBookStatus:hover,
+.bookBookSettingsAddQuote:hover{
+  background-color: var(--hover);
+  border-color: var(--hover);
 }
 
 .bookAddQuoteTitle {

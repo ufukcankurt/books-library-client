@@ -21,7 +21,7 @@
 .adminCreateGetAuthorShowAuthors {
   width: 100%;
   height: 235px;
-  background-color: lightgray;
+  background-color: var(--bgLightest);
   overflow-y: scroll;
   position: absolute;
   top: 110px;
@@ -30,10 +30,10 @@
   border-radius: 15px;
 }
 
-.adminCreateGetAuthorShowAuthorsError{
-    margin: 20px 0 0 20px;
-    color: red;
-    font-size: 18px;
+.adminCreateGetAuthorShowAuthorsError {
+  margin: 20px 0 0 20px;
+  color: red;
+  font-size: 18px;
 }
 
 .adminCreateGetAuthorItem {
@@ -42,7 +42,7 @@
   padding: 10px;
   height: 75px;
   margin-bottom: 3px;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid var(--soft);
 }
 
 .adminCreateGetAuthorInfos {
@@ -76,6 +76,7 @@
   overflow: hidden;
   white-space: nowrap;
   margin-left: 20px;
+  color: var(--text);
 }
 
 .adminCreateGetAuthorButton {
@@ -83,8 +84,10 @@
   justify-content: center;
   align-items: center;
   padding: 10px 25px;
-  background-color: aliceblue;
+  background-color: var(--bg);
   border-radius: 10px;
+  transition: 0.2s all ease-in-out;
+  color: var(--text);
 }
 
 .adminCreateGetAuthorSelected {

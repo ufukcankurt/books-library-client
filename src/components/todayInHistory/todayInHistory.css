@@ -12,6 +12,7 @@
 .todayInHistoryStatus{
     font-size: 16px;
     font-weight: 700;
+    color: var(--text);
 }
 
 .todayInHistoryContent{
@@ -39,11 +40,11 @@
     margin-top: 10px;
     font-size: 16px;
     font-weight: 700;
-    color: gray;
+    color: var(--textSoft);
 }
 
 .todayInHistoryQuote{
     margin-top: 20px;
     font-size: 16px;
-    color: gray;
+    color: var(--textSoft);
 }

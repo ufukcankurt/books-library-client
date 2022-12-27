@@ -22,7 +22,14 @@
   padding: 10px;
   margin-right: 20px;
   border-radius: 10px;
-  border: 1px solid lightgray;
+  border: 1px solid var(--soft);
+  color: var(--text);
+  transition: 0.2s all ease-in-out;
+}
+
+.userNoteDetailContentUpdateButton:hover{
+  background-color: var(--hover);
+  border-color: var(--hover);
 }
 
 .userNoteDetailContentBookInfo {
@@ -37,11 +44,16 @@
   font-weight: 700;
 }
 
+.userNoteDetailContentBookName{
+  color: var(--text);
+}
+
 .userNoteDetailContentBookPage {
   max-width: 73%;
   font-size: 17px;
   font-weight: 500;
   margin-top: 5px;
+  color: var(--text);
 }
 
 .userNoteDetailContentBookDate {
@@ -73,6 +85,7 @@
   margin-top: 20px;
   font-size: 18px;
   font-weight: 700;
+  color: var(--text);
 }
 
 .userNoteDetailContentBookTitle svg {
@@ -83,7 +96,7 @@
 .userNoteDetailContentBookSummary,
 .userNoteDetailContentBookQuotes,
 .userNoteDetailContentBookPrivateNotes {
-  color: #6c757d !important;
+  color: var(--textSoft) !important;
   line-height: 1.75;
   margin-bottom: 1rem;
   padding: 10px 25px;

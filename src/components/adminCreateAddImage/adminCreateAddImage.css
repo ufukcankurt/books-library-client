@@ -14,7 +14,8 @@
     margin-bottom: 25px;
     padding: 20px;
     border-radius: 10px;
-    background-color: rgb(235, 235, 235);
+    color: var(--text);
+    background-color: var(--soft);
   }
   
   .shareImgContainer{

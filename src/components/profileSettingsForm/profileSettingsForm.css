@@ -8,6 +8,7 @@
   font-size: 20px;
   font-weight: 700;
   text-transform: uppercase;
+  color: var(--text);
 }
 
 .profileSettingsFormContainer form {
@@ -28,8 +29,10 @@
   padding: 15px 30px;
   margin: 10px 0;
   font-size: 15px;
-  border: 2px solid rgb(219, 219, 219);
+  border: 2px solid var(--soft);
   border-radius: 10px;
+  color: var(--text);
+  background-color: var(--bg);
 }
 
 .profileSettingsFormContainer form input::-webkit-outer-spin-button,
@@ -40,6 +43,7 @@
 
 .profileSettingsFormContainer form label {
   margin: 10px 0;
+  color: var(--text);
 }
 
 .profileSettingsFormContainer form .multiple-input-container {
@@ -54,10 +58,11 @@
 .profileSettingsFormContainer form .multiple-input-container label {
   cursor: pointer;
   padding: 10px;
-  border: 2px solid rgb(144, 144, 144);
+  border: 2px solid var(--soft);
   border-radius: 10px;
   transition: all 0.3s;
   margin-right: 10px;
+  color: var(--text);
 }
 
 .profileSettingsFormContainer form input[type="radio"] {
@@ -74,7 +79,8 @@
 
 .profileSettingsFormContainer form input[type="submit"]:hover {
   cursor: pointer;
-  background-color: rgb(235, 235, 235);
+  background-color: var(--hover);
+  border-color: var(--hover);
 }
 
 .profileSettingsFormContainer form .registerFormButton {
@@ -88,6 +94,8 @@
   resize: vertical;
   padding: 15px 30px;
   font-size: 15px;
-  border: 2px solid rgb(219, 219, 219);
+  border: 2px solid var(--soft);
   border-radius: 10px;
+  color: var(--text);
+  background-color: var(--bg);
 }

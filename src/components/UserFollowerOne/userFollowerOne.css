@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   padding: 15px;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid var(--soft);
   background-color: inherit;
 }
 
@@ -30,11 +30,12 @@
 .userFollowerOneFullname {
   font-weight: 700;
   font-size: 17px;
+  color: var(--text);
 }
 
 .userFollowerOneUsername {
   font-weight: 400;
-  color: gray;
+  color: var(--textSoft);
   font-size: 14px;
 }
 
@@ -46,5 +47,5 @@
   padding: 10px 20px;
   margin-right: 20px;
   border-radius: 10px;
-  border: 1px solid lightgray;
+  border: 1px solid none;
 }

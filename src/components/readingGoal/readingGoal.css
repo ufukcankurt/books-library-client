@@ -5,6 +5,7 @@
     padding: 15px;
     border-radius: 5px;
     box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+    background-color: var(--bgLighter);
 }
 
 .readingGoalSettings{
@@ -33,6 +34,7 @@
     font-size: 18px;
     font-weight: 700;
     text-transform: uppercase;
+    color: var(--text);
 }
 
 .readingGoalCountTitle{
@@ -42,6 +44,7 @@
 .readingGoalProgress{
     display: flex;
     margin-top: 15px;
+    color: var(--text);
 }
 
 .readingGoalInfo{
@@ -53,13 +56,14 @@
     font-size: 18px;
     font-weight: 700;
     margin-bottom: 5px;
+    color: var(--text);
 }
 
 
 .readingGoalStatus{
     font-size: 14px;
     font-weight: 400;
-    color: gray;
+    color: var(--textSoft);
     margin-top: 8px;
 }
 

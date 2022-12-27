@@ -17,12 +17,13 @@
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 10px;
+  color: var(--text);
 }
 
 .newsPostTimeago {
   font-size: 15px;
   font-weight: 500;
-  color: gray;
+  color: var(--textSoft);
   margin-bottom: 25px;
 }
 
@@ -45,7 +46,7 @@
 
 .newsPostText {
   --bs-text-opacity: 1;
-  color: #6c757d !important;
+  color: var(--text) !important;
   line-height: 1.75;
   margin-bottom: 1rem;
   display: -webkit-box;
@@ -57,7 +58,7 @@
 
 .newsPostSingleText {
   --bs-text-opacity: 1;
-  color: #6c757d !important;
+  color: var(--text) !important;
   line-height: 1.75;
   margin-bottom: 1rem;
   padding: 10px 20px;

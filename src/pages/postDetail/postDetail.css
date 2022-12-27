@@ -9,6 +9,6 @@
 .postDetailTimeline {
   width: 46%;
   min-height: 100vh;
-  border-right: 1px solid lightgray;
-  border-left: 1px solid lightgray;
+  border-right: 1px solid var(--soft);
+  border-left: 1px solid var(--soft);
 }

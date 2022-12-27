@@ -4,8 +4,7 @@
   padding: 20px 15px;
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid lightgray;
-  background-color: rgba(240, 248, 255, 0.4);
+  border-bottom: 1px solid var(--soft);
 }
 
 .postTopside {
@@ -33,18 +32,19 @@
 .postUserFullname {
   font-weight: 700;
   font-size: 16px;
+  color: var(--text);
 }
 
 .postUserUsername {
   font-weight: 400;
-  color: gray;
+  color: var(--textSoft);
   font-size: 14px;
   margin-top: 5px;
 }
 
 .postTimeago {
   font-size: 14px;
-  color: gray;
+  color: var(--textSoft);
   margin-left: 15px;
   margin-top: 7px;
   font-weight: 500;
@@ -61,7 +61,7 @@
   display: flex;
   height: 150px;
   width: 100%;
-  border: 1px solid lightgray;
+  border: 1px solid var(--soft);
   border-radius: 15px;
   margin-bottom: 20px;
 }
@@ -91,6 +91,7 @@
 .postBookName {
   font-size: 18px;
   font-weight: 700;
+  color: var(--text);
   text-transform: capitalize;
 }
 
@@ -99,14 +100,14 @@
   font-size: 17px;
   font-weight: 500;
   margin-top: 5px;
-  color: gray;
+  color: var(--textSoft);
 }
 
 .postBookPages {
   font-size: 16px;
   font-weight: 400;
   margin-top: 5px;
-  color: gray;
+  color: var(--textSoft);
 }
 
 .postBookTextTimeline {
@@ -119,7 +120,8 @@
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  padding: 8px;
+  padding: 0 8px;
+  color: var(--text);
 }
 
 .postBookTextSingle {
@@ -155,9 +157,23 @@
   align-items: center;
   position: relative;
   padding: 10px;
-  background-color: #43464917;
   margin-right: 10px;
   border-radius: 20px;
+  color: var(--textSoft);
+  background-color: var(--bgLightest);
+  transition: 0.2s all ease-in-out;
+}
+
+.postIcon:hover {
+  background-color: var(--hover);
+}
+
+.postIcon.postIconLiked:hover {
+  color: #db1f1f;
+}
+
+.postIcon.postIconComment:hover {
+  color: rgb(13, 145, 13);
 }
 
 /* .postIcon svg{
@@ -172,6 +188,7 @@
   padding: 8px;
   border-radius: 20px;
   transition: 0.2s all ease-in-out;
+  color: var(--text);
 }
 
 .postActionInfoComment {
@@ -180,7 +197,7 @@
 }
 
 .postActionInfo:hover {
-  background-color: #43464917;
+  background-color: var(--hover);
 }
 
 .postLiked {

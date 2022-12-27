@@ -1,120 +1,126 @@
-.createNoteMainContainer{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin-top: 50px;
-    padding-bottom: 50px;
+.createNoteMainContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  padding-bottom: 50px;
 }
 
-.createNoteMainBookInfoContent{
-    display: flex;
+.createNoteMainBookInfoContent {
+  display: flex;
 }
 
 .createNoteMainBookImg {
-    width: 175px;
-    height: 275px;
+  width: 175px;
+  height: 275px;
 }
 
 .createNoteMainBookImg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.createNoteMainBookInfo{
-    display: flex;
-    flex-direction: column;
-    margin-left: 25px;
+.createNoteMainBookInfo {
+  display: flex;
+  flex-direction: column;
+  margin-left: 25px;
 }
 
-.createNoteMainBookName{
-    font-size: 21px;
-    font-weight: 700;
+.createNoteMainBookName {
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--text);
 }
 
-.createNoteMainBookAuthor{
-    font-size: 19px;
-    font-weight: 500;
-    margin-top: 5px;
-    color: gray;
+.createNoteMainBookAuthor {
+  font-size: 19px;
+  font-weight: 500;
+  margin-top: 5px;
+  color: var(--textSoft);
 }
 
-.createNoteMainBookPage{
-    font-size: 18px;
-    font-weight: 400;
-    margin-top: 5px;
-    color: gray;
+.createNoteMainBookPage {
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 5px;
+  color: var(--textSoft);
 }
 
-.createNoteMainBookDate{
-    font-size: 16px;
-    font-weight: 400;
-    margin-top: 5px;
-    color: gray;
+.createNoteMainBookDate {
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 5px;
+  color: var(--textSoft);
 }
 
-.createNoteMainContainer form{
-    display: flex;
-    flex-direction: column;
-    margin-top: 50px;
+.createNoteMainContainer form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
 }
 
 .createNoteMainCharacters,
 .createNoteMainSummary,
 .createNoteMainQuotes,
-.createNoteMainPrivate{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 25px;
+.createNoteMainPrivate {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
 }
 
 .createNoteMainContainer form textarea {
-    height: 150px;
-    min-height: 50px;
-    max-height: 300px;
-    resize: vertical;
-    padding: 15px 30px;
-    font-size: 15px;
-    border: 2px solid rgb(219, 219, 219);
-    border-radius: 10px;
+  height: 150px;
+  min-height: 50px;
+  max-height: 300px;
+  resize: vertical;
+  padding: 15px 30px;
+  font-size: 15px;
+  border: 2px solid var(--soft);
+  border-radius: 10px;
+  color: var(--text);
+  background-color: var(--bgLighter);
 }
 
-.createNoteMainContainer form label{
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 15px;
+.createNoteMainContainer form label {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: var(--text);
 }
 
-.createNoteMainPrivateInfoTextContent{
-    display: flex;
-    align-items: center;
+.createNoteMainPrivateInfoTextContent {
+  display: flex;
+  align-items: center;
 }
 
-.createNoteMainPrivateInfoText{
-margin-left: 10px;
-margin-bottom: 15px;
-font-size: 14px;
-color: gray;
+.createNoteMainPrivateInfoText {
+  margin-left: 10px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: var(--textSoft);
 }
 
-.createNoteMainSubmitButton{
-    width: 150px;
-    cursor: pointer;
-    padding: 10px;
-    margin-left: auto;
-    margin-top: 5px;
-    border-radius: 10px;
-    border: 1px solid lightgray;
-    text-align: center;
-    font-size: 18px;
-    font-weight: 500;
-    transition: .2s ease-in-out;
+.createNoteMainSubmitButton {
+  width: 150px;
+  cursor: pointer;
+  padding: 10px;
+  margin-left: auto;
+  margin-top: 5px;
+  border-radius: 10px;
+  border: 1px solid var(--soft);
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  transition: 0.2s all ease-in-out;
+  color: var(--text);
 }
 
-.createNoteMainSubmitButton:disabled{
-    cursor: not-allowed;
+.createNoteMainSubmitButton:disabled {
+  cursor: not-allowed;
 }
 
 .createNoteMainSubmitButton:hover {
-    background-color: #f1f1ef;
+  background-color: var(--hover);
+  border-color: var(--hover);
 }

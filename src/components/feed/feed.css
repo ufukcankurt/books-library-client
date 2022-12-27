@@ -10,5 +10,5 @@
     font-size: 16px;
     font-weight: 500;
     color: red;
-    background-color: #FFFCF7;
+    background-color: var(--inherit);
 }

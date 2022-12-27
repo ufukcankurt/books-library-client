@@ -1,7 +1,7 @@
 .bookDetailOneBookContainer {
-    padding-bottom: 10px;
-    border-bottom: 1px solid lightgray;
-    position: relative;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--soft);
+  position: relative;
 }
 
 .bookDetailOneBookTopside {
@@ -37,9 +37,11 @@
   cursor: pointer;
   padding: 10px;
   border-radius: 10px;
-  border: 1px solid lightgray;
+  border: 1px solid var(--soft);
   font-size: 15px;
   text-align: center;
+  transition: 0.2s all ease-in-out;
+  color: var(--text);
 }
 
 .bookDetailOneBookAddQuoteBtn {
@@ -48,29 +50,38 @@
   justify-content: center;
   padding: 10px;
   border-radius: 10px;
-  border: 1px solid lightgray;
+  border: 1px solid var(--soft);
   font-size: 15px;
   text-align: center;
   margin: 0 10px;
+  color: var(--text);
+  transition: 0.2s all ease-in-out;
+}
+
+.bookDetailOneBookAddQuoteBtn:hover,
+.bookDetailOneBookStatusBtn:hover {
+  background-color: var(--hover);
+  border-color: var(--hover);
 }
 
 .bookDetailOneBookDetailName {
   font-size: 18px;
   font-weight: 700;
+  color: var(--text);
 }
 
 .bookDetailOneBookDetailAuthor {
   font-size: 17px;
   font-weight: 500;
   margin-top: 5px;
-  color: gray;
+  color: var(--textSoft);
 }
 
 .bookDetailOneBookDetailPage {
   font-size: 16px;
   font-weight: 400;
   margin-top: 5px;
-  color: gray;
+  color: var(--textSoft);
 }
 
 .bookDetailOneBookDetailDate,
@@ -79,7 +90,7 @@
   font-size: 14px;
   font-weight: 400;
   margin-top: 5px;
-  color: gray;
+  color: var(--textSoft);
 }
 
 .bookDetailOneBookBehindBook {
@@ -90,16 +101,19 @@
 .bookDetailOneBookBehindBookTitle {
   font-size: 17px;
   font-weight: 700;
+  color: var(--text);
 }
 
 .bookDetailOneBookBehindBookText {
   font-size: 14px;
   font-weight: 400;
   margin-top: 10px;
+  color: var(--text);
 }
 
-.bookDetailOneBookOthersQuote{
-    margin-top: 40px;
-    font-weight: 700;
-    text-transform: uppercase;
+.bookDetailOneBookOthersQuote {
+  margin-top: 40px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text);
 }

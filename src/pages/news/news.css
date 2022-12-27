@@ -11,6 +11,7 @@
   font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 25px;
+  color: var(--text);
 }
 
 .newsLoader {

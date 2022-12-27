@@ -3,8 +3,8 @@
   display: flex;
   flex-direction: column;
   padding: 15px;
-  border-bottom: 1px solid lightgray;
-  background-color: #fffcf7;
+  border-bottom: 1px solid var(--soft);
+  background-color: var(--bg);
 }
 
 .shareTextContent {
@@ -36,14 +36,15 @@
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid lightgray;
+  border: 1px solid var(--soft);
   border-radius: 10px;
   box-sizing: border-box;
   background-color: inherit;
+  color: var(--text);
 }
 
 .shareTextContent textarea::placeholder {
-  color: gray;
+  color: var(--textSoft);
 }
 
 .shareButton {
@@ -51,17 +52,19 @@
   cursor: pointer;
   padding: 10px;
   border-radius: 10px;
-  border: 1px solid lightgray;
+  border: 1px solid var(--soft);
+  color: var(--text);
   text-align: center;
   margin-left: auto;
   margin-top: 5px;
-  transition: .2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
 .shareButton:hover {
-  background-color: #f1f1ef
+  background-color: var(--hover);
+  border-color: var(--hover);
 }
 
-.shareButton:disabled{
+.shareButton:disabled {
   cursor: not-allowed;
 }

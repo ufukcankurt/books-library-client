@@ -19,16 +19,26 @@
 
 .booksFeedNewShelfButton {
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 10px;
   border-radius: 10px;
-  border: 1px solid lightgray;
+  color: var(--text);
+  border: 1px solid var(--soft);
+  transition: 0.2s all ease-in-out;
+}
+
+.booksFeedNewShelfButton:hover {
+  background-color: var(--hover);
+  border-color: var(--hover);
 }
 
 .userBooksContainer .userBooksTimeline {
   width: 46%;
   min-height: 100vh;
-  border-right: 1px solid lightgray;
-  border-left: 1px solid lightgray;
+  border-right: 1px solid var(--soft);
+  border-left: 1px solid var(--soft);
 }
 
 .booksFeedNewShelfModal {
@@ -36,24 +46,30 @@
   flex-direction: column;
   padding: 15px;
   margin-top: 25px;
-  border: 1px solid lightgray;
+  border: 1px solid var(--soft);
   border-radius: 10px;
-  background-color: #fffaf080;
+  background-color: var(--bg);
 }
 
 .booksFeedNewShelfModal input {
   padding: 15px 30px;
   margin: 10px 0;
   font-size: 15px;
-  border: 2px solid rgb(219, 219, 219);
+  border: 2px solid var(--soft);
   border-radius: 10px;
-  background-color: #fffaf080;
+  background-color: inherit;
+  color: var(--text);
+}
+
+.booksFeedNewShelfModal input::placeholder{
+  color: var(--textSoft);
 }
 
 .booksFeedNewShelfModal label {
   margin: 10px 0;
   font-size: 18px;
   font-weight: 700;
+  color: var(--text);
 }
 
 .booksFeedCreateShelfButton {
@@ -62,6 +78,14 @@
   margin-left: auto;
   margin-top: 5px;
   border-radius: 10px;
-  border: 1px solid lightgray;
+  border: 1px solid var(--soft);
   text-align: center;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: .2s all ease-in-out;
+}
+
+.booksFeedCreateShelfButton:hover {
+  background-color: var(--hover);
+  border-color: var(--hover);
 }

@@ -165,17 +165,17 @@ const Post = ({ postDetail, post }) => {
         <div className="postActions">
 
           {isLiked
-            ? <div className="postIcon postLiked" onClick={dislikeHandler}>
+            ? <div className="postIcon postIconLiked postLiked" onClick={dislikeHandler}>
               <FavoriteIcon />
               <HoverActions text="Beğenmekten Vazgeç" />
             </div>
-            : <div className="postIcon" onClick={likeHandler}>
+            : <div className="postIcon postIconLiked" onClick={likeHandler}>
               <FavoriteBorderIcon />
               <HoverActions text="Beğen" />
             </div>}
 
           <Link to={`/post/${post.post._id}`}>
-            <div className="postIcon"><ChatBubbleOutlineOutlinedIcon /> <HoverActions text="Yorum Yap" /></div>
+            <div className="postIcon postIconComment"><ChatBubbleOutlineOutlinedIcon /> <HoverActions text="Yorum Yap" /></div>
           </Link>
 
         </div>
@@ -193,8 +193,8 @@ const Post = ({ postDetail, post }) => {
         className="PostContainer"
         style={
           post.post.type === "post"
-            ? { backgroundColor: "rgba(240, 248, 255, 0.4)" }
-            : { backgroundColor: "inherit" }
+            ? { backgroundColor: "var(--bg)" }
+            : { backgroundColor: "var(--bg)" }
 
         }
       >

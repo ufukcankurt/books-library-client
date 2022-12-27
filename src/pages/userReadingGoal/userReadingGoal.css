@@ -9,8 +9,8 @@
 .userReadingGoalTimeline {
   width: 46%;
   min-height: 100vh;
-  border-right: 1px solid lightgray;
-  border-left: 1px solid lightgray;
+  border-right: 1px solid var(--soft);
+  border-left: 1px solid var(--soft);
 }
 
 .userReadingGoalFeed {
@@ -25,7 +25,8 @@
   font-weight: 700;
   text-transform: uppercase;
   padding: 20px 0 20px 15px;
-  border-bottom: 1px solid lightgray;
+  color: var(--text);
+  border-bottom: 1px solid var(--soft);
 }
 
 .userReadingGoalTimeLeft {
@@ -34,8 +35,10 @@
   margin-bottom: 30px;
   padding: 15px;
   border-radius: 5px;
+  color: var(--text);
   box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
-  background-color: #fffaf080;
+  background-color: transparent;
+  border: 1px solid var(--soft);
 }
 
 .userReadingGoalTimeLeft span {
@@ -48,7 +51,15 @@
   margin-left: auto;
   padding: 10px;
   border-radius: 10px;
-  border: 1px solid lightgray;
+  text-align: center;
+  color: var(--text);
+  border: 1px solid var(--soft);
+  transition: 0.2s all ease-in-out;
+}
+
+.userReadingGoalUpdateButton:hover {
+  background-color: var(--hover);
+  border-color: var(--hover);
 }
 
 .userReadingGoalNewGoalModal {
@@ -57,24 +68,26 @@
   padding: 15px;
   margin-top: 25px;
   margin-bottom: 20px;
-  border: 1px solid lightgray;
+  border: 1px solid var(--soft);
   border-radius: 10px;
-  background-color: #fffaf080;
+  background-color: var(--bg);
 }
 
 .userReadingGoalNewGoalModal label {
   margin: 10px 0;
   font-size: 18px;
   font-weight: 700;
+  color: var(--text);
 }
 
 .userReadingGoalNewGoalModal input {
   padding: 15px 30px;
   margin: 10px 0;
   font-size: 15px;
-  border: 2px solid rgb(219, 219, 219);
+  border: 2px solid var(--soft);
   border-radius: 10px;
-  background-color: #fffaf080;
+  background-color: inherit;
+  color: var(--text);
 }
 
 .userReadingGoalNewGoalButton {
@@ -83,6 +96,14 @@
   margin-left: auto;
   margin-top: 5px;
   border-radius: 10px;
-  border: 1px solid lightgray;
+  border: 1px solid var(--soft);
   text-align: center;
+  color: var(--text);
+  background-color: inherit;
+  transition: 0.2s all ease-in-out;
+}
+
+.userReadingGoalNewGoalButton:hover {
+  background-color: var(--hover);
+  border-color: var(--hover);
 }

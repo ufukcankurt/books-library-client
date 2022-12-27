@@ -3,10 +3,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(211, 211, 211, 1);
+  background-color: var(--bg);
+  border-bottom: 1px solid var(--soft);
 }
 
-.navLogo{
+.navLogo {
   width: 100%;
   max-width: 175px;
 }
@@ -30,7 +31,7 @@
   padding: 10px 42px 10px 15px;
   margin: 0px 0;
   font-size: 15px;
-  border: 2px solid rgb(219, 219, 219);
+  border: 2px solid var(--soft);
   border-radius: 5px;
 }
 
@@ -66,11 +67,24 @@
   list-style: none;
   font-size: 16px;
   text-align: center;
+  /* padding: 5px 0;
+  border-bottom: 1px solid var(--soft); */
+}
+
+.navModalLi {
+  padding: 5px 0;
+  border-bottom: 1px solid var(--soft);
+  background-color: var(--bg);
+  transition: .2s all ease-in-out;
+}
+
+.navModalLi:hover {
+  background-color: var(--hover);
 }
 
 .modalLink {
   padding: 10px 7px;
-  color: black;
+  color: var(--text);
 }
 
 .navProfilePhoto {
@@ -88,16 +102,16 @@
 }
 
 .navModal {
-  width: 250px;
+  width: 324px;
   /* height: 320px; */
-  padding-bottom: 18px;
-  background-color: rgb(211, 211, 211);
+  background-color: var(--bg);
   position: absolute;
   z-index: 5;
-  top: 45px;
+  top: 47px;
   right: 0;
   border-top: 1px solid gray;
   border-radius: 0 0px 5px 5px;
+  border: 1px solid var(--soft);
 }
 
 .navModal ul {
@@ -105,14 +119,17 @@
   flex-direction: column;
 }
 
+/*
 .navModal ul li {
   margin-top: 5px;
   border-bottom: 1px solid lightgray;
-}
+}*/
 
 .modalPrivate {
   display: inline;
   padding: 10px 15px;
+  color: var(--text);
+  margin-left: 10px;
 }
 
 .searchIcon {
@@ -123,6 +140,7 @@
   border: none;
   background-color: transparent;
   padding: 4px 10px;
+  color: var(--text);
 }
 
 .searchIcon svg {
@@ -146,6 +164,7 @@
   justify-content: flex-start;
   align-items: center;
   color: black;
+  background-color: inherit
 }
 
 .hrLink {

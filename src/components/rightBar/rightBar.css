@@ -27,7 +27,13 @@
   font-size: 16px;
   text-align: center;
   margin-bottom: 8px;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid var(--soft);
+  transition: .2s all ease-in-out;
+}
+
+.rightBarLinkContent ul li:hover{
+  background-color: var(--hover);
+  border-bottom: 1px solid var(--hover);
 }
 
 .rightBarLinksDiv {
@@ -44,7 +50,7 @@
 
 .rightbarLink {
   padding: 10px 14px;
-  color: black;
+  color: var(--text);
 }
 
 .homeRightBarTitle {
@@ -52,4 +58,5 @@
   font-weight: 700;
   margin-top: 20px;
   text-transform: uppercase;
+  color: var(--text);
 }

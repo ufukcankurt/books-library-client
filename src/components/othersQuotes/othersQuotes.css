@@ -2,7 +2,7 @@
   width: 100%;
   margin-top: 25px;
   padding-bottom: 20px;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid var(--soft);
 }
 
 .othersQuotesTopside {
@@ -44,11 +44,12 @@
   font-weight: 700;
   font-size: 16px;
   text-transform: capitalize;
+  color: var(--text);
 }
 
 .othersQuotesUsername {
   font-weight: 400;
-  color: gray;
+  color: var(--textSoft);
   font-size: 14px;
   margin-left: 10px;
   text-transform: lowercase;
@@ -64,7 +65,7 @@
 
 .othersQuotesDate {
   font-weight: 400;
-  color: gray;
+  color: var(--textSoft);
   font-size: 14px;
   margin-top: 5px;
 }
@@ -82,4 +83,5 @@
   font-size: 14px;
   font-weight: 400;
   padding: 0 10px;
+  color: var(--text);
 }

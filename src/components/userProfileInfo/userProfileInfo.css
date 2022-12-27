@@ -1,6 +1,6 @@
 .UserProfileInfoContainer {
-  border-bottom: 1px solid lightgray;
-  background-color: #d3d3d333;
+  border-bottom: 1px solid var(--soft);
+  /* background-color: var(--bgLighter); */
 }
 
 .UserProfileInfoContainer svg {
@@ -37,16 +37,24 @@
   padding: 15px 0;
 }
 
-.settingsContainer .settingsButton, 
+.settingsContainer .settingsButton,
 .settingsContainer .settingsFollowingButton {
   cursor: pointer;
   padding: 10px;
   margin-right: 20px;
   border-radius: 10px;
-  border: 1px solid lightgray;
+  border: 1px solid var(--soft);
+  color: var(--text);
+  transition: 0.2s all ease-in-out;
 }
 
-.settingsContainer .FollowingsettingsButton{
+.settingsContainer .settingsButton:hover,
+.settingsContainer .settingsFollowingButton:hover {
+  background-color: var(--hover);
+  border-color: var(--hover);
+}
+
+.settingsContainer .FollowingsettingsButton {
   color: white;
   background-color: rgb(210, 62, 48);
 }
@@ -63,11 +71,12 @@
   font-stretch: 100%;
   font-weight: 700;
   line-height: 24px;
+  color: var(--text);
 }
 
 .descriptionContainer .usernameInfo .usernameText {
   font-size: 16px;
-  color: gray;
+  color: var(--textSoft);
   font-weight: 400;
   margin-top: 5px;
 }
@@ -76,6 +85,7 @@
   max-height: 150px;
   overflow-y: scroll;
   margin: 20px 0;
+  color: var(--textSoft);
 }
 
 .descriptionContainer .userProperty {
@@ -96,9 +106,10 @@
   margin-bottom: 7px;
   font-size: 14px;
   text-transform: capitalize;
+  color: var(--textSoft);
 }
 
-.descriptionContainer .userProperty .website{
+.descriptionContainer .userProperty .website {
   text-transform: lowercase;
 }
 
@@ -119,15 +130,17 @@
   cursor: pointer;
   padding: 12px;
   font-weight: 700;
+  color: var(--text);
+  transition: 0.2s all ease-in-out;
 }
 
 .followersInfo .bookNumbers:hover,
 .followersInfo .followingNumbers:hover,
 .followersInfo .followerNumbers:hover {
-  background-color: #e7e7e7;
+  background-color: var(--hover);
 }
 
 .followersInfo .followersInfoSpan {
-  color: gray;
+  color: var(--textSoft);
   font-weight: 400;
 }

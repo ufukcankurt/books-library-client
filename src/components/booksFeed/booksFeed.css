@@ -2,7 +2,7 @@
     width: 100%;
     padding: 15px;
     box-sizing: border-box;
-    background-color: #fffaf080;
+    background-color: var(--bg);
 }
 
 .booksFeedTitle{
@@ -17,6 +17,6 @@
     margin-top: 15px;
     padding: 15px;
     border-radius: 10px;
-    border: 1px solid lightgray;
+    border: 1px solid var(--soft);
 }
 

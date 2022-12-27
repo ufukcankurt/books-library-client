@@ -9,7 +9,7 @@
 
 .userShelfContainer .userShelfTimeline {
     width: 46%;
-    border-right: 1px solid lightgray;
-    border-left: 1px solid lightgray;
+    border-right: 1px solid var(--soft);
+    border-left: 1px solid var(--soft);
   }
   

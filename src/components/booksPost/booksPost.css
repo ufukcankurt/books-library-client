@@ -40,6 +40,7 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  color: var(--text);
 }
 
 .bookPostPage,
@@ -50,7 +51,7 @@
   font-size: 15px;
   font-weight: 500;
   margin-top: 5px;
-  color: gray;
+  color: var(--textSoft);
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -59,7 +60,7 @@
 .bookPostBold {
   font-size: 15px;
   font-weight: 700;
-  color: black !important;
+  color: var(--text) !important;
 }
 
 .bookPostButton {
@@ -71,13 +72,15 @@
   cursor: pointer;
   padding: 10px;
   border-radius: 10px;
-  border: 1px solid lightgray;
+  border: 1px solid var(--soft);
+  color: var(--text);
   text-align: center;
   margin-left: auto;
   margin-top: 5px;
-  transition: 0.2s ease-in-out;
+  transition: 0.2s all ease-in-out;
 }
 
 .bookPostButton:hover button {
-  background-color: #f1f1ef;
+  background-color: var(--soft);
+  border-color: var(--soft);
 }

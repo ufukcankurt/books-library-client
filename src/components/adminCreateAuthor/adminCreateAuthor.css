@@ -6,6 +6,7 @@
   font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 25px;
+  color: var(--text);
 }
 
 .adminCreateAuthorContainer form {
@@ -27,8 +28,15 @@
   padding: 15px 30px;
   margin: 10px 0;
   font-size: 15px;
-  border: 2px solid rgb(219, 219, 219);
+  border: 2px solid var(--soft);
   border-radius: 10px;
+  color: var(--text);
+  background-color: var(--bg);
+}
+
+.adminCreateAuthorContainer form input::placeholder,
+.adminCreateAuthorContainer form textarea::placeholder {
+  color: var(--textSoft);
 }
 
 .adminCreateAuthorContainer form input::-webkit-outer-spin-button,
@@ -39,6 +47,7 @@
 
 .adminCreateAuthorContainer form label {
   margin: 10px 0;
+  color: var(--text);
 }
 
 .adminCreateAuthorMultiple {
@@ -48,7 +57,7 @@
   justify-content: space-between;
   align-items: center;
   margin: 20px 0;
-  border: 1px solid lightgray;
+  border: 1px solid var(--soft);
   padding: 20px;
   border-radius: 10px;
 }
@@ -64,12 +73,12 @@
   width: 100% !important;
 }
 
-.authorDate{
-    width: 25% !important;
+.authorDate {
+  width: 25% !important;
 }
 
-.authorPlace{
-    width: 70% !important;
+.authorPlace {
+  width: 70% !important;
 }
 
 .adminCreateAuthorSubmit {
@@ -77,11 +86,15 @@
   padding: 15px 30px;
   margin: 10px 0;
   font-size: 15px;
-  border: 2px solid rgb(219, 219, 219);
+  border: 2px solid var(--soft);
   border-radius: 10px;
   margin-top: 25px;
+  background-color: inherit;
+  color: var(--text);
+  transition: 0.2s all ease-in-out;
 }
 
 .adminCreateAuthorSubmit:hover {
-  background-color: rgb(235, 235, 235);
+  background-color: var(--hover);
+  border-color: var(--hover);
 }

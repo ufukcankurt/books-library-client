@@ -4,6 +4,7 @@
     padding: 15px;
     border-radius: 5px;
     box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+    background-color: var(--bgLighter);
 }
 
 .currentBookImg{
@@ -31,11 +32,12 @@
 .currentBookName{
     font-size: 16px;
     font-weight: 700;
+    color: var(--text);
 }
 
 .currentBookAuthor{
     font-size: 15px;
     font-weight: 400;
-    color: gray;
+    color: var(--textSoft);
 }
 

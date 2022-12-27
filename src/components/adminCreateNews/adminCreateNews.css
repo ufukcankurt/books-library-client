@@ -6,6 +6,7 @@
   font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 25px;
+  color: var(--text);
 }
 
 .adminCreateNewsContainer form {
@@ -27,8 +28,10 @@
   padding: 15px 30px;
   margin: 10px 0;
   font-size: 15px;
-  border: 2px solid rgb(219, 219, 219);
+  border: 2px solid var(--soft);
   border-radius: 10px;
+  color: var(--text);
+  background-color: var(--bg);
 }
 
 .adminCreateNewsContainer form input::-webkit-outer-spin-button,
@@ -39,6 +42,7 @@
 
 .adminCreateNewsContainer form label {
   margin: 10px 0;
+  color: var(--text);
 }
 
 .adminCreateNewsMultiple {
@@ -48,7 +52,7 @@
   justify-content: space-between;
   align-items: center;
   margin: 20px 0;
-  border: 1px solid lightgray;
+  border: 1px solid var(--soft);
   padding: 20px;
   border-radius: 10px;
 }
@@ -79,10 +83,11 @@
 .adminCreateNewsContainer form .adminCreateNewsMultiple label {
   cursor: pointer;
   padding: 10px;
-  border: 2px solid rgb(144, 144, 144);
+  border: 2px solid var(--soft);
   border-radius: 10px;
   transition: all 0.3s;
   margin-right: 10px;
+  color: var(--text);
 }
 
 .adminCreateNewsContainer form input[type="radio"] {

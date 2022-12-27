@@ -50,7 +50,7 @@ const AllBooksRightBar = ({ setBooks, allBooks }) => {
               <span style={
               isSelected === "Tüm Kitaplar"
                 ? { color: "red"}
-                : { color: "inherit" }
+                : { color: "var(--text)" }
             } className="allBooksRightBarLink">Tüm Kitaplar</span>
             </div>
           </Link>
@@ -65,7 +65,7 @@ const AllBooksRightBar = ({ setBooks, allBooks }) => {
             style={
               isSelected === genre
                 ? { color: "red", border: "1px solid red" }
-                : { color: "inherit" }
+                : { color: "var(--text)" }
             }
           >
             {genre}
